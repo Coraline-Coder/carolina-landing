@@ -686,7 +686,7 @@ function ProcesoSection() {
                     </span>
                     <h3 className="text-lg font-medium text-[#e8edf3] mb-3" style={{ fontFamily: "var(--font-inter)" }}>
                       {step.title}
-                    </span>
+                    </h3>
                     <p className="text-sm text-[#6b7a8d] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
                       {step.desc}
                     </p>
