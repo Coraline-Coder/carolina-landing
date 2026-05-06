@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback, Component, ReactNode } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import dynamic from "next/dynamic";
+import CalculadoraROAS from "@/components/calculadora-roas";
 
 const GoldParticleChart = dynamic(() => import("@/components/gold-particle-chart"), {
   ssr: false,
@@ -950,6 +951,7 @@ export default function Home() {
           <ErrorBoundary><CapacidadesSection /></ErrorBoundary>
           <ErrorBoundary><ProcesoSection /></ErrorBoundary>
           <ErrorBoundary><ResourcesSection /></ErrorBoundary>
+          <ErrorBoundary><CalculadoraROAS /></ErrorBoundary>
           <ErrorBoundary><ContactSection /></ErrorBoundary>
         </main>
         <Footer />
