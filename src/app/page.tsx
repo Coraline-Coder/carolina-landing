@@ -702,73 +702,111 @@ function ProcesoSection() {
 }
 
 function ResourcesSection() {
-  const resources = [
-    {
-      title: "Checklist: 10 fugas de presupuesto que tu cuenta tiene ahora mismo",
-      desc: "Los errores que estoy viendo en cuentas de Meta este mes. Si tu ad spend no rinde, hay un 90% de probabilidad de que al menos 3 de estos estan pasando en la tuya.",
-      color: "#4A90D9",
-    },
-    {
-      title: "Calculadora de ROAS real",
-      desc: "La mayoria calcula su retorno mal—ignora costos que no ve. Esto te da el numero real. Si el resultado te sorprende, necesitas hablar con alguien.",
-      color: "#10B981",
-    },
-    {
-      title: "Plantilla de estructura de campana",
-      desc: "La misma estructura que uso para lanzar cada cuenta nueva. No es magia—es metodo. Y funciona mejor que 'probar y ver que pasa'.",
-      color: "#8B5CF6",
-    },
-  ];
-
   return (
-    <section id="recursos" className="relative py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="recursos" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="gradient-orb gradient-orb-2 absolute" style={{ top: "20%", right: "-15%" }} />
+      <div className="gradient-orb gradient-orb-1 absolute" style={{ bottom: "10%", left: "-10%" }} />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="section-divider mb-16" />
 
-        <ScrollReveal>
-          <p className="text-xs tracking-[0.25em] text-[#4A90D9] uppercase mb-4" style={{ fontFamily: "var(--font-inter)" }}>
-            Recursos
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl mb-12" style={{ fontFamily: "var(--font-playfair)", color: "#F5F0EB" }}>
-            Sin gate. Sin trucos.{" "}
-            <span style={{ background: "linear-gradient(135deg, #8B5CF6, #FF6B35)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Gratis.
-            </span>
-          </h2>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {resources.map((resource, i) => (
-            <ScrollReveal key={i} delay={0.1 * (i + 1)}>
-              <TiltCard className="h-full">
-                <div className="executive-card h-full flex flex-col" style={{ "--card-accent": resource.color } as React.CSSProperties}>
-                  <h3 className="text-lg font-medium text-[#e8edf3] mb-4" style={{ fontFamily: "var(--font-inter)" }}>
-                    {resource.title}
-                  </h3>
-                  <p className="text-sm text-[#6b7a8d] mb-6 flex-1 leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
-                    {resource.desc}
-                  </p>
-                  <a 
-                    href="#contact" 
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all"
-                    style={{ 
-                      backgroundColor: `${resource.color}15`, 
-                      color: resource.color,
-                      border: `1px solid ${resource.color}30`
-                    }}
-                  >
-                    Descargar gratis
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8 3V11M8 11L4 7M8 11L12 7M3 14H13" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </TiltCard>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <ScrollReveal>
+              <p className="text-xs tracking-[0.25em] text-[#4A90D9] uppercase mb-4" style={{ fontFamily: "var(--font-inter)" }}>
+                Lead Magnet
+              </p>
             </ScrollReveal>
-          ))}
+
+            <ScrollReveal delay={0.1}>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl mb-6" style={{ fontFamily: "var(--font-playfair)", color: "#F5F0EB" }}>
+                Descubre donde se{" "}
+                <span style={{ background: "linear-gradient(135deg, #FF6B35, #4A90D9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  escapa
+                </span>
+                {" "}tu presupuesto
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <p className="text-lg text-[#e8edf3]/70 max-w-xl mb-8" style={{ fontFamily: "var(--font-inter)" }}>
+                10 fugas que estoy viendo en cuentas de Meta este mes. Si tu ad spend no rinde, hay un 90% de probabilidad de que al menos 3 estan pasando en la tuya.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <div className="space-y-4 mb-10">
+                {[
+                  "Publicos superpuestos que compiten entre si",
+                  "Creativos sin mensaje estrategico",
+                  "Landings que no convierten el trafico",
+                  "Presupuesto mal distribuido entre campanas",
+                  "Sin tracking real de conversiones",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-1 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#FF6B3520", border: "1px solid #FF6B3540" }}>
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    <span className="text-sm text-[#e8edf3]/80" style={{ fontFamily: "var(--font-inter)" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.4}>
+              <a
+                href="#contact"
+                className="perf-cta-btn inline-flex"
+              >
+                Descargar el checklist gratis
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="transform group-hover:translate-x-1 transition-transform">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.2}>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#4A90D9]/20 via-[#FF6B35]/10 to-[#4A90D9]/20 rounded-3xl blur-2xl" />
+              <div className="relative rounded-2xl overflow-hidden" style={{ background: "linear-gradient(145deg, #111627, #0B0E18)", border: "1px solid rgba(74,144,217,0.15)" }}>
+                <div className="p-8 md:p-10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider" style={{ backgroundColor: "#FF6B3520", color: "#FF6B35", border: "1px solid #FF6B3530" }}>Gratis</span>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider" style={{ backgroundColor: "#4A90D920", color: "#4A90D9", border: "1px solid #4A90D930" }}>PDF</span>
+                  </div>
+
+                  <div className="mb-8">
+                    <span className="text-7xl md:text-8xl font-bold block mb-2" style={{ fontFamily: "var(--font-playfair)", background: "linear-gradient(135deg, #FF6B35, #4A90D9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                      10
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-medium text-[#e8edf3] mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+                      Fugas de Presupuesto
+                    </h3>
+                    <p className="text-sm text-[#6b7a8d]" style={{ fontFamily: "var(--font-inter)" }}>
+                      que tu cuenta tiene ahora mismo
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    {["Fuga #1: Publicos duplicados", "Fuga #2: Sin pixel verificado", "Fuga #3: Presupuesto mal asignado", "Fuga #4: Creativos genericos", "...y 6 mas"].map((line, i) => (
+                      <div key={i} className="flex items-center gap-3 py-2" style={{ borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#4A90D9] flex-shrink-0" />
+                        <span className="text-sm text-[#e8edf3]/60" style={{ fontFamily: "var(--font-inter)" }}>{line}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="flex items-center gap-2 text-xs text-[#6b7a8d]" style={{ fontFamily: "var(--font-inter)" }}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#4A90D9" strokeWidth="1.5"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M5 7L6.5 8.5L9 5.5"/></svg>
+                      Sin gate. Sin trucos. Directo a tu inbox.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
