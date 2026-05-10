@@ -99,7 +99,7 @@ function Marquee() {
   ];
   return (
     <div
-      style={{ background: NAVY, overflow: "hidden", borderTop: `1px solid rgba(74,124,247,0.25)` }}
+      style={{ background: NAVY, overflow: "hidden", borderTop: "1px solid rgba(74,124,247,0.25)" }}
     >
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
@@ -172,6 +172,7 @@ function Navbar() {
           justifyContent: "space-between",
         }}
       >
+        {/* Logo CJB */}
         <a
           href="#"
           style={{
@@ -185,15 +186,9 @@ function Navbar() {
         >
           CJB
         </a>
-        {/* Desktop links */}
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem",
-            alignItems: "center",
-          }}
-          className="hidden md:flex"
-        >
+
+        {/* Desktop links — WHITE on dark hero */}
+        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }} className="hidden md:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -202,14 +197,14 @@ function Navbar() {
                 fontFamily: "var(--font-jost)",
                 fontWeight: 400,
                 fontSize: "0.85rem",
-                color: "rgba(255,255,255,0.8)",
+                color: "rgba(255,255,255,0.85)",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase" as const,
                 textDecoration: "none",
                 transition: "color 0.25s",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.85)")}
             >
               {l.label}
             </a>
@@ -232,6 +227,7 @@ function Navbar() {
             Agendar llamada
           </a>
         </div>
+
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -242,13 +238,12 @@ function Navbar() {
             {mobileOpen ? (
               <path d="M6 6l12 12M6 18L18 6" />
             ) : (
-              <>
-                <path d="M3 6h18M3 12h18M3 18h18" />
-              </>
+              <path d="M3 6h18M3 12h18M3 18h18" />
             )}
           </svg>
         </button>
       </div>
+
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
@@ -303,7 +298,7 @@ function Navbar() {
   );
 }
 
-/* ─── HERO ─── */
+/* ─── HERO — navy bg, WHITE text ─── */
 function HeroSection() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.4]);
@@ -319,7 +314,6 @@ function HeroSection() {
         overflow: "hidden",
       }}
     >
-      {/* Particle canvas */}
       <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
         <GoldParticleChart />
       </div>
@@ -351,10 +345,8 @@ function HeroSection() {
           CJB by Carolina Betancourt
         </motion.p>
 
-        <WordRevealText
-          text="Convierte cada peso en Meta Ads en retorno real"
-          className=""
-        />
+        <WordRevealText text="Convierte cada peso en Meta Ads en retorno real" />
+
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -417,7 +409,7 @@ function HeroSection() {
               fontFamily: "var(--font-jost)",
               fontWeight: 400,
               fontSize: "0.9rem",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(255,255,255,0.85)",
               border: "1px solid rgba(255,255,255,0.3)",
               padding: "0.85rem 2rem",
               borderRadius: 6,
@@ -433,12 +425,10 @@ function HeroSection() {
   );
 }
 
-/* ─── PROBLEMA (white bg) ─── */
+/* ─── PROBLEMA — white bg, NAVY text ─── */
 function ProblemaSection() {
   return (
-    <section
-      style={{ background: WHITE, padding: "6rem 2rem" }}
-    >
+    <section style={{ background: WHITE, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -486,7 +476,7 @@ function ProblemaSection() {
               <div
                 style={{
                   padding: "2rem",
-                  borderLeft: `3px solid ${BLUE}`,
+                  borderLeft: "3px solid " + BLUE,
                   background: LGRAY,
                   borderRadius: "0 8px 8px 0",
                 }}
@@ -522,7 +512,7 @@ function ProblemaSection() {
   );
 }
 
-/* ─── SISTEMA FILTRO (blue bg) ─── */
+/* ─── SISTEMA FILTRO — BLUE bg, WHITE text ─── */
 function SistemaFiltroSection() {
   const fases = [
     {
@@ -552,10 +542,7 @@ function SistemaFiltroSection() {
     },
   ];
   return (
-    <section
-      id="sistema-filtro"
-      style={{ background: BLUE, padding: "6rem 2rem" }}
-    >
+    <section id="sistema-filtro" style={{ background: BLUE, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -587,13 +574,7 @@ function SistemaFiltroSection() {
         <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           {fases.map((f, i) => (
             <ScrollReveal key={i}>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "2rem",
-                  alignItems: "flex-start",
-                }}
-              >
+              <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
                 <span
                   style={{
                     fontFamily: "var(--font-cormorant)",
@@ -641,7 +622,7 @@ function SistemaFiltroSection() {
   );
 }
 
-/* ─── CAPACIDADES (light gray bg) ─── */
+/* ─── CAPACIDADES — light gray bg, NAVY text ─── */
 function CapacidadesSection() {
   const caps = [
     {
@@ -662,10 +643,7 @@ function CapacidadesSection() {
     },
   ];
   return (
-    <section
-      id="capacidades"
-      style={{ background: LGRAY, padding: "6rem 2rem" }}
-    >
+    <section id="capacidades" style={{ background: LGRAY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -745,7 +723,7 @@ function CapacidadesSection() {
   );
 }
 
-/* ─── PROCESO (navy bg) ─── */
+/* ─── PROCESO — navy bg, WHITE text ─── */
 function ProcesoSection() {
   const pasos = [
     { step: "1", title: "Llamada de diagnóstico", text: "Entiendo tu negocio, objetivos y situación actual en Meta Ads en 30 minutos." },
@@ -753,10 +731,7 @@ function ProcesoSection() {
     { step: "3", title: "Activación", text: "Implemento el sistema completo: campañas, tracking, creatividades y optimización diaria desde el día uno." },
   ];
   return (
-    <section
-      id="proceso"
-      style={{ background: NAVY, padding: "6rem 2rem" }}
-    >
+    <section id="proceso" style={{ background: NAVY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -843,7 +818,7 @@ function ProcesoSection() {
   );
 }
 
-/* ─── RECURSOS (white bg) ─── */
+/* ─── RECURSOS — white bg, NAVY text ─── */
 function RecursosSection() {
   const resources = [
     {
@@ -863,10 +838,7 @@ function RecursosSection() {
     },
   ];
   return (
-    <section
-      id="recursos"
-      style={{ background: WHITE, padding: "6rem 2rem" }}
-    >
+    <section id="recursos" style={{ background: WHITE, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -961,13 +933,10 @@ function RecursosSection() {
   );
 }
 
-/* ─── CONTACTO (light gray bg) ─── */
+/* ─── CONTACTO — light gray bg, NAVY text ─── */
 function ContactSection() {
   return (
-    <section
-      id="contacto"
-      style={{ background: LGRAY, padding: "6rem 2rem" }}
-    >
+    <section id="contacto" style={{ background: LGRAY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <ScrollReveal>
           <p
@@ -1008,14 +977,7 @@ function ContactSection() {
             Agenda una llamada de 30 minutos donde analizo tu situación actual y te
             doy un plan de acción concreto. Sin compromiso, sin venta forzada.
           </p>
-          <div
-            style={{
-              display: "flex",
-              gap: "1rem",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="https://calendly.com/carolina-mkt"
               target="_blank"
@@ -1070,14 +1032,14 @@ function ContactSection() {
   );
 }
 
-/* ─── FOOTER (navy bg) ─── */
+/* ─── FOOTER — navy bg, WHITE text ─── */
 function Footer() {
   return (
     <footer
       style={{
         background: NAVY,
         padding: "3rem 2rem 2rem",
-        borderTop: `1px solid rgba(74,124,247,0.15)`,
+        borderTop: "1px solid rgba(74,124,247,0.15)",
       }}
     >
       <div
@@ -1113,13 +1075,7 @@ function Footer() {
         >
           Performance Marketing &amp; Paid Media Strategy
         </p>
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem",
-            marginTop: "0.5rem",
-          }}
-        >
+        <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
             href="https://wa.me/5223111396364"
             target="_blank"
