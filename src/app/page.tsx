@@ -1,39 +1,50 @@
 ﻿"use client";
 
-import dynamic from "next/dynamic";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef, ComponentType } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
-const GoldParticleChart = dynamic(
-  () => import("@/components/gold-particle-chart"),
-  { ssr: false }
+/* ─── dynamic import (no SSR) ─── */
+function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
+  let Comp: ComponentType | null = null;
+  return function Dyn(props: Record<string, unknown>) {
+    const [C, setC] = useState<ComponentType | null>(null);
+    useEffect(() => {
+      loader().then((m) => { Comp = m.default; setC(() => m.default); });
+    }, []);
+    return C ? <C {...props} /> : null;
+  };
+}
+
+const GoldParticleChart = dynamicNoSSR(
+  () => import("@/components/gold-particle-chart")
 );
 
-/* ─── HELPERS ─── */
-function useInView(th = 0.12) {
+/* ─── colours ─── */
+const NAVY = "#0A0F1E";
+const BLUE = "#4A7CF7";
+const WHITE = "#FFFFFF";
+const LGRAY = "#F5F6FA";
+
+/* ─── tiny helpers ─── */
+function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const o = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVis(true); o.unobserve(el); } },
-      { threshold: th }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } },
+      { threshold: 0.15 }
     );
-    o.observe(el);
-    return () => o.disconnect();
-  }, [th]);
-  return { ref, vis };
-}
-
-function ScrollReveal({ children, d = 0, className = "" }: { children: React.ReactNode; d?: number; className?: string }) {
-  const { ref, vis } = useInView();
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 32 }}
       animate={vis ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, delay: d, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       className={className}
     >
       {children}
@@ -41,179 +52,467 @@ function ScrollReveal({ children, d = 0, className = "" }: { children: React.Rea
   );
 }
 
+function WordRevealText({ text, className = "" }: { text: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [vis, setVis] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  const words = text.split(" ");
+  return (
+    <div ref={ref} className={`flex flex-wrap gap-x-[0.3em] ${className}`}>
+      {words.map((w, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 14 }}
+          animate={vis ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45, delay: i * 0.06 }}
+          style={{ display: "inline-block" }}
+        >
+          {w}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+/* ─── MARQUEE ─── */
+function Marquee() {
+  const items = [
+    "Meta Ads",
+    "Performance Marketing",
+    "ROAS Real",
+    "Estrategia de Inversión",
+    "Escalamiento",
+    "Optimización Continua",
+    "Paid Media Strategy",
+    "Meta Ads",
+    "Performance Marketing",
+    "ROAS Real",
+  ];
+  return (
+    <div
+      style={{ background: NAVY, overflow: "hidden", borderTop: `1px solid rgba(74,124,247,0.25)` }}
+    >
+      <motion.div
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        style={{ display: "flex", whiteSpace: "nowrap", padding: "14px 0" }}
+      >
+        {[...items, ...items].map((t, i) => (
+          <span
+            key={i}
+            style={{
+              color: BLUE,
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.95rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase" as const,
+              margin: "0 2.5rem",
+              opacity: 0.9,
+            }}
+          >
+            {t}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════
+   SECCIONES
+   ════════════════════════════════════════════ */
+
 /* ─── NAVBAR ─── */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
-
   const links = [
-    { label: "Problema", href: "#problema" },
-    { label: "Sistema Filtro", href: "#estrategia" },
+    { label: "Sistema Filtro", href: "#sistema-filtro" },
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
+    { label: "Recursos", href: "#recursos" },
     { label: "Contacto", href: "#contacto" },
   ];
-
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#0A0F1E]/95 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.3)]"
-          : "bg-transparent"
-      }`}
+    <nav
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        background: scrolled ? "rgba(10,15,30,0.88)" : "transparent",
+        borderBottom: scrolled ? "1px solid rgba(74,124,247,0.15)" : "none",
+        transition: "all 0.35s ease",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl font-light tracking-[0.15em] text-white" style={{ fontFamily: "var(--font-cormorant)" }}>
-            CJB
-          </span>
-          <span className="hidden sm:inline text-[11px] text-white/40 tracking-wider uppercase border-l border-white/10 pl-2 ml-1" style={{ fontFamily: "var(--font-jost)" }}>
-            by Carolina Betancourt
-          </span>
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "1rem 2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <a
+          href="#"
+          style={{
+            fontFamily: "var(--font-cormorant)",
+            fontWeight: 600,
+            fontSize: "1.65rem",
+            color: WHITE,
+            letterSpacing: "0.04em",
+            textDecoration: "none",
+          }}
+        >
+          CJB
         </a>
-
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop links */}
+        <div
+          style={{
+            display: "flex",
+            gap: "2rem",
+            alignItems: "center",
+          }}
+          className="hidden md:flex"
+        >
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-[13px] text-white/50 hover:text-white transition-colors duration-300 tracking-wide" style={{ fontFamily: "var(--font-jost)", fontWeight: 400 }}>
+            <a
+              key={l.href}
+              href={l.href}
+              style={{
+                fontFamily: "var(--font-jost)",
+                fontWeight: 400,
+                fontSize: "0.85rem",
+                color: "rgba(255,255,255,0.8)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                textDecoration: "none",
+                transition: "color 0.25s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+            >
               {l.label}
             </a>
           ))}
           <a
             href="#contacto"
-            className="px-5 py-2 text-[13px] font-medium rounded-full border border-[#4A7CF7] text-[#4A7CF7] hover:bg-[#4A7CF7] hover:text-white transition-all duration-300" style={{ fontFamily: "var(--font-jost)" }}
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 500,
+              fontSize: "0.85rem",
+              color: WHITE,
+              background: BLUE,
+              padding: "0.5rem 1.4rem",
+              borderRadius: 6,
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase" as const,
+            }}
           >
             Agendar llamada
           </a>
         </div>
-
-        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white/70">
-          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d={menuOpen ? "M6 6l12 12M6 18L18 6" : "M4 7h16M4 12h16M4 17h16"} /></svg>
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden"
+          style={{ background: "none", border: "none", cursor: "pointer" }}
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={WHITE} strokeWidth="2">
+            {mobileOpen ? (
+              <path d="M6 6l12 12M6 18L18 6" />
+            ) : (
+              <>
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </>
+            )}
+          </svg>
         </button>
       </div>
-
+      {/* Mobile menu */}
       <AnimatePresence>
-        {menuOpen && (
+        {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0A0F1E]/98 backdrop-blur-xl overflow-hidden"
+            style={{ background: "rgba(10,15,30,0.96)", padding: "1rem 2rem" }}
+            className="md:hidden"
           >
-            <div className="px-6 py-6 flex flex-col gap-5">
-              {links.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="text-white/60 hover:text-white transition-colors text-[15px]" style={{ fontFamily: "var(--font-jost)" }}>{l.label}</a>
-              ))}
-              <a href="#contacto" onClick={() => setMenuOpen(false)} className="px-5 py-2.5 text-[13px] font-medium rounded-full border border-[#4A7CF7] text-[#4A7CF7] text-center hover:bg-[#4A7CF7] hover:text-white transition-all" style={{ fontFamily: "var(--font-jost)" }}>Agendar llamada</a>
-            </div>
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-jost)",
+                  fontWeight: 400,
+                  fontSize: "0.9rem",
+                  color: "rgba(255,255,255,0.85)",
+                  padding: "0.65rem 0",
+                  textDecoration: "none",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contacto"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-jost)",
+                fontWeight: 500,
+                fontSize: "0.85rem",
+                color: WHITE,
+                background: BLUE,
+                padding: "0.5rem 1.4rem",
+                borderRadius: 6,
+                textDecoration: "none",
+                marginTop: "0.5rem",
+              }}
+            >
+              Agendar llamada
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }
 
-/* ─── HERO — Navy #0A0F1E ─── */
+/* ─── HERO ─── */
 function HeroSection() {
+  const { scrollYProgress } = useScroll();
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.4]);
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(74,124,247,0.08)_0%,transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,rgba(74,124,247,0.05)_0%,transparent_50%)]" />
-      <GoldParticleChart />
+    <section
+      style={{
+        position: "relative",
+        background: NAVY,
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        overflow: "hidden",
+      }}
+    >
+      {/* Particle canvas */}
+      <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
+        <GoldParticleChart />
+      </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center pt-20">
-        <motion.div
+      <motion.div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: 860,
+          margin: "0 auto",
+          padding: "8rem 2rem 4rem",
+          opacity: heroOpacity,
+        }}
+      >
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{
+            fontFamily: "var(--font-jost)",
+            fontWeight: 400,
+            fontSize: "0.85rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase" as const,
+            color: BLUE,
+            marginBottom: "1.5rem",
+          }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] tracking-[0.2em] uppercase text-white/50" style={{ fontFamily: "var(--font-jost)" }}>
-            Performance Marketing &amp; Paid Media Strategy
-          </span>
-        </motion.div>
+          CJB by Carolina Betancourt
+        </motion.p>
 
+        <WordRevealText
+          text="Convierte cada peso en Meta Ads en retorno real"
+          className=""
+        />
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-light leading-[1.12] text-white" style={{ fontFamily: "var(--font-cormorant)" }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          style={{
+            fontFamily: "var(--font-cormorant)",
+            fontWeight: 300,
+            fontSize: "clamp(2.4rem,5.5vw,4.2rem)",
+            lineHeight: 1.08,
+            color: WHITE,
+            marginTop: "0.5rem",
+          }}
         >
-          Convierte clics en{" "}
-          <span className="text-[#4A7CF7]">clientes</span>{" "}
-          con estrategia, no con suerte
+          Performance Marketing &amp; Paid Media Strategy
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="mt-8 text-base md:text-lg text-white/45 max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          style={{
+            fontFamily: "var(--font-jost)",
+            fontWeight: 300,
+            fontSize: "1.1rem",
+            color: "rgba(255,255,255,0.7)",
+            lineHeight: 1.7,
+            marginTop: "1.8rem",
+            maxWidth: 580,
+          }}
         >
-          Performance Marketing para marcas que quieren escalar con Meta Ads y un sistema probado: <span className="text-[#4A7CF7]/80">Sistema Filtro</span>
+          No gestiono campañas. Diseño sistemas de inversión que escalan marcas con
+          rentabilidad probada en Meta Ads. Sin excusas, sin métricas de vanidad.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.7, delay: 1.2 }}
+          style={{ display: "flex", gap: "1rem", marginTop: "2.5rem", flexWrap: "wrap" }}
         >
           <a
             href="#contacto"
-            className="px-8 py-3.5 rounded-full bg-[#4A7CF7] text-white font-medium text-[15px] hover:bg-[#3B6AE6] hover:shadow-[0_8px_30px_rgba(74,124,247,0.35)] transition-all duration-300" style={{ fontFamily: "var(--font-jost)" }}
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 500,
+              fontSize: "0.9rem",
+              color: WHITE,
+              background: BLUE,
+              padding: "0.85rem 2rem",
+              borderRadius: 6,
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+            }}
           >
-            Quiero escalar con Meta Ads
+            Agendar llamada estratégica
           </a>
           <a
-            href="#estrategia"
-            className="px-8 py-3.5 rounded-full border border-white/20 text-white/70 font-medium text-[15px] hover:border-white/40 hover:text-white transition-all duration-300" style={{ fontFamily: "var(--font-jost)" }}
+            href="#sistema-filtro"
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.9rem",
+              color: "rgba(255,255,255,0.8)",
+              border: "1px solid rgba(255,255,255,0.3)",
+              padding: "0.85rem 2rem",
+              borderRadius: 6,
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+            }}
           >
-            Ver el Sistema Filtro
+            Conocer el Sistema Filtro
           </a>
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      </motion.div>
     </section>
   );
 }
 
-/* ─── PROBLEMA — White #FFFFFF ─── */
+/* ─── PROBLEMA (white bg) ─── */
 function ProblemaSection() {
-  const problems = [
-    { icon: "📉", title: "Gastas sin medir", desc: "Inviertes en anuncios pero no sabes qué funciona y qué no. Cada peso se convierte en un tiro al aire sin métricas claras que te digan el retorno real de tu inversión." },
-    { icon: "🎯", title: "Atracción sin conversión", desc: "Tienes likes y reach, pero no ventas. Tu audiencia crece en papel pero el embudo no convierte, y los números de engagement no se traducen en revenue." },
-    { icon: "🔄", title: "Estrategias genéricas", desc: "Copias lo que ven otros hacer sin adaptarlo a tu marca. Lo que funciona para uno no siempre funciona para otro, y las plantillas genéricas matan la diferenciación." },
-    { icon: "⏳", title: "Tiempo perdido probando", desc: "Meses probando sin un sistema claro de testeo y optimización. Sin metodología, cada cambio es una apuesta, no una decisión basada en data." },
-  ];
-
   return (
-    <section id="problema" className="relative py-24 md:py-32 bg-white">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section
+      style={{ background: WHITE, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[#4A7CF7]/60 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>El problema real</span>
-            <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light leading-tight text-[#0A0F1E]" style={{ fontFamily: "var(--font-cormorant)" }}>
-              No es falta de anuncios,<br />es falta de <span className="text-[#4A7CF7]">estrategia</span>
-            </h2>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: BLUE,
+              marginBottom: "0.75rem",
+            }}
+          >
+            El problema real
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: NAVY,
+              lineHeight: 1.15,
+              marginBottom: "2.5rem",
+            }}
+          >
+            Tu inversión en Meta Ads no está generando el retorno que deberías
+          </h2>
         </ScrollReveal>
-
-        <div className="grid md:grid-cols-2 gap-5">
-          {problems.map((p, i) => (
-            <ScrollReveal key={i} d={i * 0.1}>
-              <div className="group p-7 rounded-xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 h-full">
-                <span className="text-2xl">{p.icon}</span>
-                <h3 className="mt-4 text-[17px] font-medium text-[#0A0F1E]" style={{ fontFamily: "var(--font-jost)" }}>{p.title}</h3>
-                <p className="mt-2 text-[#0A0F1E]/50 leading-relaxed text-[14px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>{p.desc}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: "2rem" }}>
+          {[
+            {
+              title: "Gasto sin estrategia",
+              text: "La mayoría de las marcas lanzan campañas sin un sistema claro de inversión, desperdiciando presupuesto en audiences y formatos que no convierten.",
+            },
+            {
+              title: "Métricas de vanidad",
+              text: "Alcanzos e impresiones no pagan facturas. Sin un marco de ROAS real, es imposible saber si tus campañas son realmente rentables.",
+            },
+            {
+              title: "Agencias genéricas",
+              text: "Muchas agencias aplican la misma plantilla a todos los clientes. Tu marca merece una estrategia diseñada específicamente para tus objetivos.",
+            },
+          ].map((item, i) => (
+            <ScrollReveal key={i}>
+              <div
+                style={{
+                  padding: "2rem",
+                  borderLeft: `3px solid ${BLUE}`,
+                  background: LGRAY,
+                  borderRadius: "0 8px 8px 0",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontWeight: 500,
+                    fontSize: "1.35rem",
+                    color: NAVY,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-jost)",
+                    fontWeight: 300,
+                    fontSize: "0.95rem",
+                    color: "#4A4A4A",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {item.text}
+                </p>
               </div>
             </ScrollReveal>
           ))}
@@ -223,83 +522,220 @@ function ProblemaSection() {
   );
 }
 
-/* ─── ESTRATEGIA / SISTEMA FILTRO — Blue #4A7CF7 ─── */
-function EstrategiaSection() {
+/* ─── SISTEMA FILTRO (blue bg) ─── */
+function SistemaFiltroSection() {
+  const fases = [
+    {
+      num: "01",
+      title: "Auditoría Profunda",
+      desc: "Analizo tu cuenta, píxel, audiences y estructura actual para identificar exactamente dónde se está fugando tu presupuesto y qué oportunidades estás dejando sobre la mesa.",
+    },
+    {
+      num: "02",
+      title: "Estrategia de Inversión",
+      desc: "Diseño un plan de inversión con presupuesto asignado por fase del embudo, formato y audience, optimizado para maximizar el ROAS desde el primer día.",
+    },
+    {
+      num: "03",
+      title: "Implementación Técnica",
+      desc: "Configuro campañas, conjuntos y anuncios con tracking preciso, píxel verificado y eventos de conversión alineados a tus objetivos reales de negocio.",
+    },
+    {
+      num: "04",
+      title: "Optimización Diaria",
+      desc: "Monitoreo y ajustes constantes: redistribución de presupuesto, pausa de creatividades gastadoras, escalamiento de lo que funciona, sin dejar nada al azar.",
+    },
+    {
+      num: "05",
+      title: "Escalamiento Rentable",
+      desc: "Cuando el sistema funciona, escalamos invirtiendo más en lo probado, expandiendo audiences ganadoras y diversificando formatos sin sacrificar rentabilidad.",
+    },
+  ];
   return (
-    <section id="estrategia" className="relative py-24 md:py-32 bg-[#4A7CF7] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.06)_0%,transparent_50%)]" />
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-14 items-center">
-          <ScrollReveal>
-            <div>
-              <span className="text-white/50 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>La solución</span>
-              <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light leading-tight text-white" style={{ fontFamily: "var(--font-cormorant)" }}>
-                Sistema Filtro
-              </h2>
-              <p className="mt-6 text-white/60 leading-relaxed text-[15px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>
-                Un sistema propietario de 5 fases diseñado para filtrar, cualificar y convertir tu audiencia ideal en clientes rentables. No es una plantilla, es una metodología adaptada a cada marca que trabaja conmigo.
-              </p>
-              <p className="mt-4 text-white/60 leading-relaxed text-[15px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>
-                Cada fase está diseñada para eliminar el ruido y concentrar tu inversión en los segmentos que realmente convierten, reduciendo el costo por adquisición y maximizando el retorno de cada peso invertido en Meta Ads.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal d={0.15}>
-            <div className="space-y-3">
-              {[
-                { n: "01", t: "Auditoría profunda", d: "Analizamos tu cuenta, tu pixel, tu embudo y tu competencia. Sin diagnóstico, no hay receta." },
-                { n: "02", t: "Estrategia personalizada", d: "Diseñamos la arquitectura de campañas, audiences y creativos específicos para tu marca." },
-                { n: "03", t: "Implementación técnica", d: "Pixel, CAPI, eventos personalizados, catálogos. Todo configurado con precisión quirúrgica." },
-                { n: "04", t: "Optimización continua", d: "Testeo A/B, ajustes diarios, escalado inteligente. No lanzamos y olvidamos." },
-                { n: "05", t: "Reportes y transparencia", d: "Dashboards en tiempo real, reuniones semanales y reportes mensuales con insights accionables." },
-              ].map((f, i) => (
-                <div key={i} className="group flex gap-5 p-5 rounded-xl border border-white/[0.08] bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-300">
-                  <span className="text-white/20 text-[28px] font-light leading-none" style={{ fontFamily: "var(--font-cormorant)" }}>{f.n}</span>
-                  <div>
-                    <h4 className="text-white font-medium text-[14px]" style={{ fontFamily: "var(--font-jost)" }}>{f.t}</h4>
-                    <p className="text-white/45 text-[13px] mt-1 leading-relaxed" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>{f.d}</p>
-                  </div>
+    <section
+      id="sistema-filtro"
+      style={{ background: BLUE, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+        <ScrollReveal>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: "rgba(255,255,255,0.6)",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Mi metodología
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 500,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: WHITE,
+              lineHeight: 1.15,
+              marginBottom: "3.5rem",
+            }}
+          >
+            El Sistema Filtro
+          </h2>
+        </ScrollReveal>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+          {fases.map((f, i) => (
+            <ScrollReveal key={i}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "2rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontWeight: 600,
+                    fontSize: "3rem",
+                    color: WHITE,
+                    opacity: 0.2,
+                    lineHeight: 1,
+                    minWidth: "4rem",
+                  }}
+                >
+                  {f.num}
+                </span>
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-cormorant)",
+                      fontWeight: 700,
+                      fontSize: "1.4rem",
+                      color: WHITE,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-jost)",
+                      fontWeight: 300,
+                      fontSize: "0.95rem",
+                      color: WHITE,
+                      opacity: 0.85,
+                      lineHeight: 1.75,
+                    }}
+                  >
+                    {f.desc}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </ScrollReveal>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-/* ─── CAPACIDADES — Light gray #F5F6FA ─── */
+/* ─── CAPACIDADES (light gray bg) ─── */
 function CapacidadesSection() {
   const caps = [
-    { title: "Meta Ads Management", desc: "Gestión integral de campañas en Facebook e Instagram con optimización diaria. Desde la estructura de campañas hasta el ajuste fino de audiences y bids, cada decisión se toma con data." },
-    { title: "Performance Strategy", desc: "Diseño de estrategias de performance centradas en ROI real, no en vanity metrics. Cada campaña tiene un objetivo de negocio claro y un sistema de medición que valida cada peso invertido." },
-    { title: "Data & Analytics", desc: "Implementación de tracking avanzado, CAPI, eventos personalizados y dashboards en tiempo real. Si no se puede medir, no se puede optimizar, y yo me aseguro de que todo se mida." },
-    { title: "Creative Strategy", desc: "Dirección creativa de ads que convierten, no solo que se ven bien. Copy persuasivo, formatos ganadores y testing sistemático de creativos para encontrar las combinaciones que escalan." },
+    {
+      title: "Estrategia de Inversión en Meta",
+      text: "Diseño la arquitectura completa de tu inversión: presupuesto por fase del embudo, distribución entre campañas, y modelo de escalamiento basado en datos reales.",
+    },
+    {
+      title: "Optimización de ROAS",
+      text: "Monitoreo diario con ajustes basados en rendimiento real. Pauso lo que no funciona, escale lo que sí. Tu ROAS mejora semana tras semana, no en reportes mensuales.",
+    },
+    {
+      title: "Tracking y Medición Precisa",
+      text: "Implementación correcta del píxel de Meta, eventos de conversión, UTM parameters y dashboards que te muestran exactamente qué genera cada peso invertido.",
+    },
+    {
+      title: "Creatividades que Convierten",
+      text: "Dirección de briefs creativos basados en datos, no en suposiciones. Cada concepto probado con A/B testing antes de escalar inversión.",
+    },
   ];
-
   return (
-    <section id="capacidades" className="relative py-24 md:py-32 bg-[#F5F6FA]">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section
+      id="capacidades"
+      style={{ background: LGRAY, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[#4A7CF7]/60 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>Lo que hago</span>
-            <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light text-[#0A0F1E]" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Capacidades de <span className="text-[#4A7CF7]">performance</span>
-            </h2>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: BLUE,
+              marginBottom: "0.75rem",
+            }}
+          >
+            En lo que me especializo
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: NAVY,
+              lineHeight: 1.15,
+              marginBottom: "3rem",
+            }}
+          >
+            Capacidades
+          </h2>
         </ScrollReveal>
-
-        <div className="grid md:grid-cols-2 gap-5">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px,1fr))", gap: "1.5rem" }}>
           {caps.map((c, i) => (
-            <ScrollReveal key={i} d={i * 0.08}>
-              <div className="group p-7 rounded-xl bg-white border border-gray-100 hover:border-gray-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 h-full">
-                <div className="w-9 h-9 rounded-lg bg-[#4A7CF7]/10 flex items-center justify-center mb-5">
-                  <div className="w-2 h-2 rounded-full bg-[#4A7CF7]" />
-                </div>
-                <h3 className="text-[17px] font-medium text-[#0A0F1E]" style={{ fontFamily: "var(--font-jost)" }}>{c.title}</h3>
-                <p className="mt-3 text-[#0A0F1E]/45 leading-relaxed text-[14px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>{c.desc}</p>
+            <ScrollReveal key={i}>
+              <div
+                style={{
+                  background: WHITE,
+                  border: "1px solid #E8E8E8",
+                  borderRadius: 12,
+                  padding: "2rem",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.08)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontWeight: 500,
+                    fontSize: "1.25rem",
+                    color: NAVY,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  {c.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-jost)",
+                    fontWeight: 300,
+                    fontSize: "0.9rem",
+                    color: "#4A4A4A",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {c.text}
+                </p>
               </div>
             </ScrollReveal>
           ))}
@@ -309,89 +745,94 @@ function CapacidadesSection() {
   );
 }
 
-/* ─── PROCESO — Navy #0A0F1E ─── */
+/* ─── PROCESO (navy bg) ─── */
 function ProcesoSection() {
-  const steps = [
-    { n: "01", t: "Solicitud", d: "Completas el formulario y agendamos una llamada de diagnóstico de 30 minutos sin compromiso.", icon: "📋" },
-    { n: "02", t: "Diagnóstico", d: "Analizamos tu situación actual, objetivos y identificamos las oportunidades de mejora inmediata en tus campañas.", icon: "🔍" },
-    { n: "03", t: "Propuesta", d: "Recibes una propuesta personalizada con estrategia, tiempos, inversión recomendada y proyección de resultados.", icon: "📊" },
-    { n: "04", t: "Lanzamiento", d: "Implementamos el Sistema Filtro completo y comenzamos a optimizar desde el día uno con foco en resultados.", icon: "🚀" },
+  const pasos = [
+    { step: "1", title: "Llamada de diagnóstico", text: "Entiendo tu negocio, objetivos y situación actual en Meta Ads en 30 minutos." },
+    { step: "2", title: "Propuesta a medida", text: "Recibes un plan de acción concreto con estrategia de inversión, estructura de campañas y proyección de ROAS." },
+    { step: "3", title: "Activación", text: "Implemento el sistema completo: campañas, tracking, creatividades y optimización diaria desde el día uno." },
   ];
-
   return (
-    <section id="proceso" className="relative py-24 md:py-32 bg-[#0A0F1E]">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(74,124,247,0.04)_0%,transparent_60%)]" />
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
+    <section
+      id="proceso"
+      style={{ background: NAVY, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[#4A7CF7]/50 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>Cómo empezamos</span>
-            <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light text-white" style={{ fontFamily: "var(--font-cormorant)" }}>
-              De la duda al <span className="text-[#4A7CF7]">resultado</span>
-            </h2>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: BLUE,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Cómo empezamos
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: WHITE,
+              lineHeight: 1.15,
+              marginBottom: "3.5rem",
+            }}
+          >
+            El proceso
+          </h2>
         </ScrollReveal>
-
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#4A7CF7]/15 to-transparent" />
-
-          <div className="space-y-10 md:space-y-14">
-            {steps.map((s, i) => (
-              <ScrollReveal key={i} d={i * 0.12}>
-                <div className={`flex flex-col md:flex-row items-center gap-6 ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
-                  <div className="flex-1">
-                    <div className={`p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#4A7CF7]/15 transition-all duration-400 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
-                      <div className={`flex items-center gap-3 mb-3 ${i % 2 !== 0 ? "md:justify-end" : ""}`}>
-                        <span className="text-lg">{s.icon}</span>
-                        <span className="text-[#4A7CF7]/40 text-[12px] font-mono" style={{ fontFamily: "var(--font-jost)" }}>{s.n}</span>
-                      </div>
-                      <h3 className="text-[17px] font-medium text-white/90" style={{ fontFamily: "var(--font-jost)" }}>{s.t}</h3>
-                      <p className="mt-2 text-white/40 text-[14px] leading-relaxed" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>{s.d}</p>
-                    </div>
-                  </div>
-                  <div className="hidden md:flex w-3.5 h-3.5 rounded-full bg-[#0A0F1E] border-2 border-[#4A7CF7]/30 items-center justify-center relative z-10">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#4A7CF7]/60" />
-                  </div>
-                  <div className="flex-1" />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── RESOURCES — White #FFFFFF ─── */
-function ResourcesSection() {
-  const resources = [
-    { t: "Guía: 5 errores que matan tus campañas", tag: "Guía gratuita" },
-    { t: "Checklist de auditoría de pixel", tag: "Checklist" },
-    { t: "Plantilla de estructura de campañas", tag: "Template" },
-    { t: "Calculadora de ROAS en tiempo real", tag: "Herramienta" },
-  ];
-
-  return (
-    <section className="relative py-24 md:py-32 bg-white">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[#4A7CF7]/60 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>Recursos gratuitos</span>
-            <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light text-[#0A0F1E]" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Herramientas para <span className="text-[#4A7CF7]">empezar hoy</span>
-            </h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {resources.map((r, i) => (
-            <ScrollReveal key={i} d={i * 0.06}>
-              <div className="group p-6 rounded-xl border border-gray-100 bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 cursor-pointer h-full">
-                <span className="inline-block px-3 py-1 rounded-full bg-[#4A7CF7]/[0.07] text-[#4A7CF7] text-[10px] tracking-wider uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>{r.tag}</span>
-                <h4 className="mt-4 text-[#0A0F1E] font-medium text-[14px] leading-snug" style={{ fontFamily: "var(--font-jost)" }}>{r.t}</h4>
-                <div className="mt-4 flex items-center text-[#4A7CF7]/60 text-[12px] font-medium group-hover:text-[#4A7CF7] transition-colors" style={{ fontFamily: "var(--font-jost)" }}>
-                  Descargar <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {pasos.map((p, i) => (
+            <ScrollReveal key={i}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1.5rem",
+                  alignItems: "flex-start",
+                  padding: "1.5rem",
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 10,
+                  border: "1px solid rgba(74,124,247,0.15)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-jost)",
+                    fontWeight: 600,
+                    fontSize: "1.5rem",
+                    color: BLUE,
+                    minWidth: "2rem",
+                  }}
+                >
+                  {p.step}
+                </span>
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-cormorant)",
+                      fontWeight: 500,
+                      fontSize: "1.3rem",
+                      color: WHITE,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {p.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-jost)",
+                      fontWeight: 300,
+                      fontSize: "0.95rem",
+                      color: "rgba(255,255,255,0.7)",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {p.text}
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -402,105 +843,366 @@ function ResourcesSection() {
   );
 }
 
-/* ─── CTA / CONTACT — Blue #4A7CF7 ─── */
+/* ─── RECURSOS (white bg) ─── */
+function RecursosSection() {
+  const resources = [
+    {
+      title: "Checklist: 27 puntos para auditar tu Meta Business",
+      desc: "Una auditoría completa punto por punto para descubrir fugas de presupuesto, errores de configuración y oportunidades que estás dejando pasar en tu Business Manager.",
+      btn: "Descargar",
+    },
+    {
+      title: "Calculadora de ROAS Real: ¿Tus campañas realmente son rentables?",
+      desc: "Herramienta interactiva que calcula tu ROAS real considerando costos ocultos, métricas de plataforma vs. métricas de negocio, y el verdadero retorno de tu inversión.",
+      btn: "Usar calculadora",
+    },
+    {
+      title: "Guía: Cómo estructuro una campaña ganadora en Meta desde cero",
+      desc: "El paso a paso completo de cómo diseño y lanzo una campaña en Meta Ads: desde la investigación de audiences hasta la estructura de conjuntos y la estrategia de pujas.",
+      btn: "Descargar",
+    },
+  ];
+  return (
+    <section
+      id="recursos"
+      style={{ background: WHITE, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+        <ScrollReveal>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: BLUE,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Recursos gratuitos
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: NAVY,
+              lineHeight: 1.15,
+              marginBottom: "3rem",
+            }}
+          >
+            Herramientas para empezar hoy
+          </h2>
+        </ScrollReveal>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "1.5rem" }}>
+          {resources.map((r, i) => (
+            <ScrollReveal key={i}>
+              <div
+                style={{
+                  background: WHITE,
+                  border: "1px solid #E8E8E8",
+                  borderRadius: 12,
+                  padding: "2rem",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontWeight: 500,
+                    fontSize: "1.2rem",
+                    color: NAVY,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  {r.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-jost)",
+                    fontWeight: 300,
+                    fontSize: "0.9rem",
+                    color: "#4A4A4A",
+                    lineHeight: 1.7,
+                    flex: 1,
+                  }}
+                >
+                  {r.desc}
+                </p>
+                <a
+                  href="#contacto"
+                  style={{
+                    display: "inline-block",
+                    fontFamily: "var(--font-jost)",
+                    fontWeight: 500,
+                    fontSize: "0.85rem",
+                    color: WHITE,
+                    background: BLUE,
+                    padding: "0.65rem 1.5rem",
+                    borderRadius: 6,
+                    textDecoration: "none",
+                    marginTop: "1.2rem",
+                    textAlign: "center",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {r.btn}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CONTACTO (light gray bg) ─── */
 function ContactSection() {
   return (
-    <section id="contacto" className="relative py-24 md:py-32 bg-[#4A7CF7]">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_50%)]" />
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
+    <section
+      id="contacto"
+      style={{ background: LGRAY, padding: "6rem 2rem" }}
+    >
+      <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <ScrollReveal>
-          <div className="text-center">
-            <span className="text-white/50 text-[11px] tracking-[0.25em] uppercase font-medium" style={{ fontFamily: "var(--font-jost)" }}>¿Listo para escalar?</span>
-            <h2 className="mt-4 text-3xl md:text-[2.75rem] font-light text-white" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Hablemos de tu potencial
-            </h2>
-            <p className="mt-6 text-white/55 max-w-xl mx-auto leading-relaxed text-[15px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>
-              Agenda una llamada de diagnóstico de 30 minutos. Sin compromiso, sin venderte algo que no necesitas. Solo un análisis honesto de tu situación actual y un plan claro para mejorar.
-            </p>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com/carolina-mkt"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5 rounded-full bg-white text-[#0A0F1E] font-medium text-[15px] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] transition-all duration-300" style={{ fontFamily: "var(--font-jost)" }}
-              >
-                Agendar llamada gratuita
-              </a>
-              <a
-                href="https://wa.me/5223111396364"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5 rounded-full border border-white/30 text-white font-medium text-[15px] hover:bg-white/10 transition-all duration-300" style={{ fontFamily: "var(--font-jost)" }}
-              >
-                WhatsApp directo
-              </a>
-            </div>
-
-            <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6 text-white/40 text-[13px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>
-              <a href="mailto:carolinajuarezbetancourt@gmail.com" className="hover:text-white/70 transition-colors">
-                carolinajuarezbetancourt@gmail.com
-              </a>
-              <span className="hidden sm:inline text-white/20">|</span>
-              <a href="https://wa.me/5223111396364" target="_blank" rel="noopener noreferrer" className="hover:text-white/70 transition-colors">
-                +52 231 113 96364
-              </a>
-            </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: BLUE,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Siguiente paso
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.8rem,4vw,2.8rem)",
+              color: NAVY,
+              lineHeight: 1.15,
+              marginBottom: "1.5rem",
+            }}
+          >
+            ¿Listo para que tu inversión en Meta Ads realmente funcione?
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 300,
+              fontSize: "1.05rem",
+              color: "#4A4A4A",
+              lineHeight: 1.7,
+              marginBottom: "2.5rem",
+            }}
+          >
+            Agenda una llamada de 30 minutos donde analizo tu situación actual y te
+            doy un plan de acción concreto. Sin compromiso, sin venta forzada.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <a
+              href="https://calendly.com/carolina-mkt"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "var(--font-jost)",
+                fontWeight: 500,
+                fontSize: "0.9rem",
+                color: WHITE,
+                background: BLUE,
+                padding: "0.9rem 2.2rem",
+                borderRadius: 6,
+                textDecoration: "none",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Agendar llamada estratégica
+            </a>
+            <a
+              href="https://wa.me/5223111396364"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "var(--font-jost)",
+                fontWeight: 400,
+                fontSize: "0.9rem",
+                color: NAVY,
+                border: "1px solid #E8E8E8",
+                padding: "0.9rem 2.2rem",
+                borderRadius: 6,
+                textDecoration: "none",
+                letterSpacing: "0.04em",
+              }}
+            >
+              WhatsApp directo
+            </a>
           </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 300,
+              fontSize: "0.85rem",
+              color: "#7A7A7A",
+              marginTop: "1.5rem",
+            }}
+          >
+            carolinajuarezbetancourt@gmail.com
+          </p>
         </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ─── FOOTER — Navy #0A0F1E ─── */
+/* ─── FOOTER (navy bg) ─── */
 function Footer() {
   return (
-    <footer className="bg-[#0A0F1E] border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-light tracking-[0.12em] text-white" style={{ fontFamily: "var(--font-cormorant)" }}>CJB</span>
-              <span className="text-[10px] text-white/30 tracking-wider uppercase" style={{ fontFamily: "var(--font-jost)" }}>by Carolina Betancourt</span>
-            </div>
-            <p className="mt-2 text-white/25 text-[12px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>Performance Marketing &amp; Paid Media Strategy</p>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="flex gap-6">
-              <a href="#problema" className="text-white/30 hover:text-white/60 text-[12px] transition-colors" style={{ fontFamily: "var(--font-jost)" }}>Problema</a>
-              <a href="#estrategia" className="text-white/30 hover:text-white/60 text-[12px] transition-colors" style={{ fontFamily: "var(--font-jost)" }}>Sistema Filtro</a>
-              <a href="#capacidades" className="text-white/30 hover:text-white/60 text-[12px] transition-colors" style={{ fontFamily: "var(--font-jost)" }}>Capacidades</a>
-              <a href="#contacto" className="text-white/30 hover:text-white/60 text-[12px] transition-colors" style={{ fontFamily: "var(--font-jost)" }}>Contacto</a>
-            </div>
-          </div>
+    <footer
+      style={{
+        background: NAVY,
+        padding: "3rem 2rem 2rem",
+        borderTop: `1px solid rgba(74,124,247,0.15)`,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 900,
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          gap: "1rem",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-cormorant)",
+            fontWeight: 600,
+            fontSize: "1.4rem",
+            color: WHITE,
+            letterSpacing: "0.06em",
+          }}
+        >
+          CJB by Carolina Betancourt
+        </p>
+        <p
+          style={{
+            fontFamily: "var(--font-jost)",
+            fontWeight: 300,
+            fontSize: "0.85rem",
+            color: "rgba(255,255,255,0.5)",
+            letterSpacing: "0.1em",
+          }}
+        >
+          Performance Marketing &amp; Paid Media Strategy
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: "2rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          <a
+            href="https://wa.me/5223111396364"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              color: "rgba(255,255,255,0.6)",
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+              transition: "color 0.25s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+          >
+            WhatsApp
+          </a>
+          <a
+            href="mailto:carolinajuarezbetancourt@gmail.com"
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              color: "rgba(255,255,255,0.6)",
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+              transition: "color 0.25s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+          >
+            Email
+          </a>
+          <a
+            href="https://calendly.com/carolina-mkt"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              color: "rgba(255,255,255,0.6)",
+              textDecoration: "none",
+              letterSpacing: "0.06em",
+              transition: "color 0.25s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+          >
+            Calendly
+          </a>
         </div>
-
-        <div className="mt-10 pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/15 text-[11px]" style={{ fontFamily: "var(--font-jost)" }}>&copy; 2026 CJB by Carolina Betancourt. Todos los derechos reservados.</p>
-          <div className="flex gap-5 text-white/15 text-[11px]" style={{ fontFamily: "var(--font-jost)", fontWeight: 300 }}>
-            <a href="mailto:carolinajuarezbetancourt@gmail.com" className="hover:text-white/40 transition-colors">Email</a>
-            <a href="https://wa.me/5223111396364" target="_blank" rel="noopener noreferrer" className="hover:text-white/40 transition-colors">WhatsApp</a>
-            <a href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer" className="hover:text-white/40 transition-colors">Calendly</a>
-          </div>
-        </div>
+        <p
+          style={{
+            fontFamily: "var(--font-jost)",
+            fontWeight: 300,
+            fontSize: "0.75rem",
+            color: "rgba(255,255,255,0.35)",
+            marginTop: "1.5rem",
+          }}
+        >
+          © 2026 CJB by Carolina Betancourt
+        </p>
       </div>
     </footer>
   );
 }
 
-/* ─── MAIN PAGE ─── */
-export default function Home() {
+/* ════════════════════════════════════════════
+   PAGE
+   ════════════════════════════════════════════ */
+export default function Page() {
   return (
-    <main className="overflow-x-hidden">
+    <main style={{ overflowX: "hidden" }}>
       <Navbar />
       <HeroSection />
+      <Marquee />
       <ProblemaSection />
-      <EstrategiaSection />
+      <SistemaFiltroSection />
       <CapacidadesSection />
       <ProcesoSection />
-      <ResourcesSection />
+      <RecursosSection />
       <ContactSection />
       <Footer />
     </main>
