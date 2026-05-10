@@ -1,35 +1,33 @@
 ﻿import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "CJB by Carolina Betancourt | Performance Marketing & Paid Media Strategy",
+  title: "CJB | Performance Marketing & Paid Media Strategy",
   description:
-    "Estrategias de marketing digital basadas en datos que generan crecimiento real. Meta Ads, Performance Marketing, Sistema Filtro.",
+    "Estrategias de marketing digital basadas en datos que generan crecimiento real. ROAS 4.2x, +12M Ad Spend gestionado, 47% reducción en CPA.",
   keywords: [
     "marketing digital",
     "ROAS",
     "performance marketing",
     "paid media",
-    "CJB",
     "Carolina Betancourt",
-    "Meta Ads",
-    "Sistema Filtro",
+    "ad spend",
     "CPA",
   ],
   icons: {
@@ -43,9 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning className="scroll-smooth">
+    <html lang="es" suppressHydrationWarning className="dark scroll-smooth">
       <body
-        className={`${cormorant.variable} ${jost.variable} antialiased bg-[#0A0F1E] text-white`}
+        className={`${playfair.variable} ${inter.variable} antialiased bg-[#0B0E18] text-white`}
       >
         {children}
         <Toaster />
