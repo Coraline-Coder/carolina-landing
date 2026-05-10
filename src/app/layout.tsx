@@ -1,34 +1,40 @@
 ﻿import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-cormorant",
   display: "swap",
 });
 
 const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  variable: "--font-jost",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "CJB | Performance Marketing & Paid Media Strategy",
+  title: "CJB by Carolina Betancourt | Performance Marketing & Paid Media Strategy",
   description:
-    "Estrategia de Performance Marketing y Meta Ads por Carolina Betancourt. ROAS real, sistema probado, resultados medibles.",
+    "Estrategias de marketing digital basadas en datos que generan crecimiento real. Meta Ads, Performance Marketing, Sistema Filtro.",
   keywords: [
-    "Meta Ads",
-    "Performance Marketing",
+    "marketing digital",
     "ROAS",
-    "Paid Media",
+    "performance marketing",
+    "paid media",
+    "CJB",
     "Carolina Betancourt",
-    "Facebook Ads",
-    "Instagram Ads",
+    "Meta Ads",
+    "Sistema Filtro",
+    "CPA",
   ],
+  icons: {
+    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+  },
 };
 
 export default function RootLayout({
@@ -37,8 +43,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="es" suppressHydrationWarning className="scroll-smooth">
+      <body
+        className={`${cormorant.variable} ${jost.variable} antialiased bg-[#0A0F1E] text-white`}
+      >
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
