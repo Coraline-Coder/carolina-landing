@@ -150,11 +150,10 @@ function Navbar() {
   );
 }
 
-/* ─── HERO ─── */
+/* ─── HERO — Deep navy base ─── */
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background layers */}
       <div className="absolute inset-0 bg-[#060918]" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#0a0f2e]/40 to-[#060918]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.06)_0%,transparent_70%)]" />
@@ -226,16 +225,17 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#060918] to-transparent" />
+      {/* Fade into marquee */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0E0C16] to-transparent" />
     </section>
   );
 }
 
-/* ─── MARQUEE ─── */
+/* ─── MARQUEE — Dark plum ─── */
 function Marquee() {
   const items = ["Meta Ads", "Performance Marketing", "Sistema Filtro", "Estrategia", "Escalabilidad", "ROAS", "Conversión", "Data-Driven"];
   return (
-    <div className="relative py-8 overflow-hidden border-y border-[#C9A96E]/[0.06] bg-[#060918]">
+    <div className="relative py-8 overflow-hidden border-y border-[#C9A96E]/[0.06] bg-[#0E0C16]">
       <div className="flex animate-[marquee_30s_linear_infinite]">
         {[...items, ...items].map((t, i) => (
           <span key={i} className="flex items-center mx-8 text-sm tracking-[0.15em] text-[#C9A96E]/30 uppercase whitespace-nowrap">
@@ -248,7 +248,7 @@ function Marquee() {
   );
 }
 
-/* ─── PROBLEMA ─── */
+/* ─── PROBLEMA — Deep indigo/violet ─── */
 function ProblemaSection() {
   const problems = [
     { icon: "📉", title: "Gastas sin medir", desc: "Inviertes en anuncios pero no sabes qué funciona y qué no. Cada peso se convierte en un tiro al aire sin métricas claras que te digan el retorno real de tu inversión." },
@@ -259,13 +259,16 @@ function ProblemaSection() {
 
   return (
     <section id="problema" className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#080d28] to-[#060918]" />
+      {/* Deep indigo background */}
+      <div className="absolute inset-0 bg-[#120A24]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0E0C16] via-[#120A24] to-[#120A24]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(120,80,200,0.06)_0%,transparent_60%)]" />
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">El problema real</span>
+            <span className="text-purple-300/40 text-xs tracking-[0.25em] uppercase">El problema real</span>
             <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
-              No es falta de anuncios,<br />es falta de <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">estrategia</span>
+              No es falta de anuncios,<br />es falta de <span className="bg-gradient-to-r from-[#A78BFA] to-[#C9A96E] bg-clip-text text-transparent">estrategia</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -274,7 +277,7 @@ function ProblemaSection() {
           {problems.map((p, i) => (
             <ScrollReveal key={i} d={i * 0.12}>
               <TiltCard>
-                <div className="group p-8 rounded-2xl border border-[#C9A96E]/[0.07] bg-gradient-to-br from-white/[0.03] to-transparent hover:border-[#C9A96E]/20 hover:shadow-[0_0_40px_rgba(201,169,110,0.06)] transition-all duration-500 h-full">
+                <div className="group p-8 rounded-2xl border border-purple-400/[0.08] bg-gradient-to-br from-purple-400/[0.04] to-transparent hover:border-purple-400/20 hover:shadow-[0_0_40px_rgba(120,80,200,0.08)] transition-all duration-500 h-full">
                   <span className="text-3xl">{p.icon}</span>
                   <h3 className="mt-4 text-lg font-semibold text-white/90">{p.title}</h3>
                   <p className="mt-2 text-white/40 leading-relaxed text-sm">{p.desc}</p>
@@ -284,23 +287,28 @@ function ProblemaSection() {
           ))}
         </div>
       </div>
+
+      {/* Fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#081A16] to-transparent" />
     </section>
   );
 }
 
-/* ─── ESTRATEGIA ─── */
+/* ─── ESTRATEGIA — Deep emerald/teal ─── */
 function EstrategiaSection() {
   return (
     <section id="estrategia" className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#0a1030] to-[#060918]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,169,110,0.04)_0%,transparent_60%)]" />
+      {/* Deep emerald background */}
+      <div className="absolute inset-0 bg-[#081A16]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(52,211,153,0.05)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,169,110,0.03)_0%,transparent_50%)]" />
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <div>
-              <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">La solución</span>
+              <span className="text-emerald-400/40 text-xs tracking-[0.25em] uppercase">La solución</span>
               <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
-                Sistema <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">Filtro</span>
+                Sistema <span className="bg-gradient-to-r from-[#34D399] to-[#C9A96E] bg-clip-text text-transparent">Filtro</span>
               </h2>
               <p className="mt-6 text-white/45 leading-relaxed">
                 Un sistema propietario de 5 fases diseñado para filtrar, cualificar y convertir tu audiencia ideal en clientes rentables. No es una plantilla, es una metodología adaptada a cada marca que trabaja conmigo.
@@ -309,9 +317,9 @@ function EstrategiaSection() {
                 Cada fase está diseñada para eliminar el ruido y concentrar tu inversión en los segmentos que realmente convierten, reduciendo el costo por adquisición y maximizando el retorno de cada peso invertido en Meta Ads.
               </p>
               <div className="mt-8 flex items-center gap-4">
-                <div className="h-px flex-1 bg-gradient-to-r from-[#C9A96E]/30 to-transparent" />
-                <span className="text-[#C9A96E]/40 text-xs tracking-[0.2em] uppercase">5 fases</span>
-                <div className="h-px flex-1 bg-gradient-to-l from-[#C9A96E]/30 to-transparent" />
+                <div className="h-px flex-1 bg-gradient-to-r from-emerald-400/30 to-transparent" />
+                <span className="text-emerald-400/40 text-xs tracking-[0.2em] uppercase">5 fases</span>
+                <div className="h-px flex-1 bg-gradient-to-l from-emerald-400/30 to-transparent" />
               </div>
             </div>
           </ScrollReveal>
@@ -325,8 +333,8 @@ function EstrategiaSection() {
                 { n: "04", t: "Optimización continua", d: "Testeo A/B, ajustes diarios, escalado inteligente. No lanzamos y olvidamos." },
                 { n: "05", t: "Reportes y transparencia", d: "Dashboards en tiempo real, reuniones semanales y reportes mensuales con insights accionables." },
               ].map((f, i) => (
-                <div key={i} className="group flex gap-5 p-5 rounded-xl border border-[#C9A96E]/[0.05] bg-white/[0.02] hover:border-[#C9A96E]/15 hover:bg-white/[0.04] transition-all duration-400">
-                  <span className="text-[#C9A96E]/50 text-sm font-mono mt-0.5">{f.n}</span>
+                <div key={i} className="group flex gap-5 p-5 rounded-xl border border-emerald-400/[0.06] bg-emerald-400/[0.02] hover:border-emerald-400/15 hover:bg-emerald-400/[0.05] transition-all duration-400">
+                  <span className="text-emerald-400/50 text-sm font-mono mt-0.5">{f.n}</span>
                   <div>
                     <h4 className="text-white/90 font-medium text-sm">{f.t}</h4>
                     <p className="text-white/35 text-xs mt-1 leading-relaxed">{f.d}</p>
@@ -337,29 +345,34 @@ function EstrategiaSection() {
           </ScrollReveal>
         </div>
       </div>
+
+      {/* Fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#1A100A] to-transparent" />
     </section>
   );
 }
 
-/* ─── CAPACIDADES ─── */
+/* ─── CAPACIDADES — Deep copper/amber ─── */
 function CapacidadesSection() {
   const caps = [
-    { title: "Meta Ads Management", desc: "Gestión integral de campañas en Facebook e Instagram con optimización diaria. Desde la estructura de campañas hasta el ajuste fino de audiences y bids, cada decisión se toma con data.", accent: "from-[#C9A96E]/20 to-[#E8D5B5]/5" },
-    { title: "Performance Strategy", desc: "Diseño de estrategias de performance centradas en ROI real, no en vanity metrics. Cada campaña tiene un objetivo de negocio claro y un sistema de medición que valida cada peso invertido.", accent: "from-[#C9A96E]/15 to-transparent" },
-    { title: "Data & Analytics", desc: "Implementación de tracking avanzado, CAPI, eventos personalizados y dashboards en tiempo real. Si no se puede medir, no se puede optimizar, y yo me aseguro de que todo se mida.", accent: "from-[#E8D5B5]/15 to-transparent" },
-    { title: "Creative Strategy", desc: "Dirección creativa de ads que convierten, no solo que se ven bien. Copy persuasivo, formatos ganadores y testing sistemático de creativos para encontrar las combinaciones que escalan.", accent: "from-[#C9A96E]/10 to-[#E8D5B5]/5" },
+    { title: "Meta Ads Management", desc: "Gestión integral de campañas en Facebook e Instagram con optimización diaria. Desde la estructura de campañas hasta el ajuste fino de audiences y bids, cada decisión se toma con data.", accent: "from-amber-400/20 to-amber-600/5" },
+    { title: "Performance Strategy", desc: "Diseño de estrategias de performance centradas en ROI real, no en vanity metrics. Cada campaña tiene un objetivo de negocio claro y un sistema de medición que valida cada peso invertido.", accent: "from-orange-400/15 to-transparent" },
+    { title: "Data & Analytics", desc: "Implementación de tracking avanzado, CAPI, eventos personalizados y dashboards en tiempo real. Si no se puede medir, no se puede optimizar, y yo me aseguro de que todo se mida.", accent: "from-yellow-400/15 to-transparent" },
+    { title: "Creative Strategy", desc: "Dirección creativa de ads que convierten, no solo que se ven bien. Copy persuasivo, formatos ganadores y testing sistemático de creativos para encontrar las combinaciones que escalan.", accent: "from-amber-300/10 to-amber-500/5" },
   ];
 
   return (
     <section id="capacidades" className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#080d28] to-[#060918]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,169,110,0.03)_0%,transparent_60%)]" />
+      {/* Deep copper/amber background */}
+      <div className="absolute inset-0 bg-[#1A100A]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,119,6,0.06)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(201,169,110,0.04)_0%,transparent_50%)]" />
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">Lo que hago</span>
+            <span className="text-amber-400/40 text-xs tracking-[0.25em] uppercase">Lo que hago</span>
             <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
-              Capacidades de <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">performance</span>
+              Capacidades de <span className="bg-gradient-to-r from-[#F59E0B] to-[#C9A96E] bg-clip-text text-transparent">performance</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -368,11 +381,11 @@ function CapacidadesSection() {
           {caps.map((c, i) => (
             <ScrollReveal key={i} d={i * 0.1}>
               <TiltCard>
-                <div className="group relative p-8 rounded-2xl border border-[#C9A96E]/[0.07] overflow-hidden hover:border-[#C9A96E]/20 transition-all duration-500 h-full">
+                <div className="group relative p-8 rounded-2xl border border-amber-400/[0.08] overflow-hidden hover:border-amber-400/20 transition-all duration-500 h-full">
                   <div className={`absolute inset-0 bg-gradient-to-br ${c.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                   <div className="relative z-10">
-                    <div className="w-10 h-10 rounded-lg bg-[#C9A96E]/10 flex items-center justify-center mb-5">
-                      <div className="w-2 h-2 rounded-full bg-[#C9A96E]" />
+                    <div className="w-10 h-10 rounded-lg bg-amber-400/10 flex items-center justify-center mb-5">
+                      <div className="w-2 h-2 rounded-full bg-amber-400" />
                     </div>
                     <h3 className="text-lg font-semibold text-white/90">{c.title}</h3>
                     <p className="mt-3 text-white/40 leading-relaxed text-sm">{c.desc}</p>
@@ -383,11 +396,14 @@ function CapacidadesSection() {
           ))}
         </div>
       </div>
+
+      {/* Fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0C1428] to-transparent" />
     </section>
   );
 }
 
-/* ─── PROCESO ─── */
+/* ─── PROCESO — Deep royal blue ─── */
 function ProcesoSection() {
   const steps = [
     { n: "01", t: "Solicitud", d: "Completas el formulario y agendamos una llamada de diagnóstico de 30 minutos sin compromiso.", icon: "📋" },
@@ -398,37 +414,39 @@ function ProcesoSection() {
 
   return (
     <section id="proceso" className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#0a1030] to-[#060918]" />
+      {/* Deep royal blue background */}
+      <div className="absolute inset-0 bg-[#0C1428]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05)_0%,transparent_60%)]" />
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">Cómo empezamos</span>
+            <span className="text-blue-400/40 text-xs tracking-[0.25em] uppercase">Cómo empezamos</span>
             <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
-              De la duda al <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">resultado</span>
+              De la duda al <span className="bg-gradient-to-r from-[#3B82F6] to-[#C9A96E] bg-clip-text text-transparent">resultado</span>
             </h2>
           </div>
         </ScrollReveal>
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#C9A96E]/15 to-transparent" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/15 to-transparent" />
 
           <div className="space-y-12 md:space-y-16">
             {steps.map((s, i) => (
               <ScrollReveal key={i} d={i * 0.15}>
                 <div className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                   <div className="flex-1">
-                    <div className={`p-6 rounded-2xl border border-[#C9A96E]/[0.07] bg-white/[0.02] hover:border-[#C9A96E]/15 transition-all duration-500 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
+                    <div className={`p-6 rounded-2xl border border-blue-400/[0.08] bg-blue-400/[0.03] hover:border-blue-400/20 transition-all duration-500 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
                       <div className={`flex items-center gap-3 mb-3 ${i % 2 !== 0 ? "md:justify-end" : ""}`}>
                         <span className="text-xl">{s.icon}</span>
-                        <span className="text-[#C9A96E]/40 text-xs font-mono">{s.n}</span>
+                        <span className="text-blue-400/40 text-xs font-mono">{s.n}</span>
                       </div>
                       <h3 className="text-lg font-semibold text-white/90">{s.t}</h3>
                       <p className="mt-2 text-white/40 text-sm leading-relaxed">{s.d}</p>
                     </div>
                   </div>
-                  <div className="hidden md:flex w-4 h-4 rounded-full bg-[#060918] border-2 border-[#C9A96E]/30 items-center justify-center relative z-10">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#C9A96E]/60" />
+                  <div className="hidden md:flex w-4 h-4 rounded-full bg-[#0C1428] border-2 border-blue-400/30 items-center justify-center relative z-10">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60" />
                   </div>
                   <div className="flex-1" />
                 </div>
@@ -437,11 +455,14 @@ function ProcesoSection() {
           </div>
         </div>
       </div>
+
+      {/* Fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0C1A10] to-transparent" />
     </section>
   );
 }
 
-/* ─── RESOURCES ─── */
+/* ─── RESOURCES — Deep forest green ─── */
 function ResourcesSection() {
   const resources = [
     { t: "Guía: 5 errores que matan tus campañas", tag: "Guía gratuita" },
@@ -452,13 +473,15 @@ function ResourcesSection() {
 
   return (
     <section className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#080d28] to-[#060918]" />
+      {/* Deep forest green background */}
+      <div className="absolute inset-0 bg-[#0C1A10]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.04)_0%,transparent_50%)]" />
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">Recursos gratuitos</span>
+            <span className="text-green-400/40 text-xs tracking-[0.25em] uppercase">Recursos gratuitos</span>
             <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
-              Herramientas para <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">empezar hoy</span>
+              Herramientas para <span className="bg-gradient-to-r from-[#22C55E] to-[#C9A96E] bg-clip-text text-transparent">empezar hoy</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -466,10 +489,10 @@ function ResourcesSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {resources.map((r, i) => (
             <ScrollReveal key={i} d={i * 0.08}>
-              <div className="group p-6 rounded-2xl border border-[#C9A96E]/[0.07] bg-white/[0.02] hover:border-[#C9A96E]/20 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer h-full">
-                <span className="inline-block px-2.5 py-1 rounded-full bg-[#C9A96E]/[0.08] text-[#C9A96E]/70 text-[10px] tracking-wider uppercase">{r.tag}</span>
+              <div className="group p-6 rounded-2xl border border-green-400/[0.08] bg-green-400/[0.02] hover:border-green-400/20 hover:bg-green-400/[0.05] transition-all duration-500 cursor-pointer h-full">
+                <span className="inline-block px-2.5 py-1 rounded-full bg-green-400/[0.08] text-green-400/70 text-[10px] tracking-wider uppercase">{r.tag}</span>
                 <h4 className="mt-4 text-white/80 font-medium text-sm leading-snug">{r.t}</h4>
-                <div className="mt-4 flex items-center text-[#C9A96E]/50 text-xs group-hover:text-[#C9A96E]/80 transition-colors">
+                <div className="mt-4 flex items-center text-green-400/50 text-xs group-hover:text-green-400/80 transition-colors">
                   Descargar <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </div>
               </div>
@@ -477,22 +500,27 @@ function ResourcesSection() {
           ))}
         </div>
       </div>
+
+      {/* Fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#1A0C18] to-transparent" />
     </section>
   );
 }
 
-/* ─── CONTACT ─── */
+/* ─── CONTACT — Deep wine/burgundy ─── */
 function ContactSection() {
   return (
     <section id="contacto" className="relative py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060918] via-[#0a1030] to-[#060918]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.05)_0%,transparent_50%)]" />
+      {/* Deep wine/burgundy background */}
+      <div className="absolute inset-0 bg-[#1A0C18]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(244,114,182,0.04)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(201,169,110,0.05)_0%,transparent_50%)]" />
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center">
-            <span className="text-[#C9A96E]/50 text-xs tracking-[0.25em] uppercase">¿Listo para escalar?</span>
+            <span className="text-pink-400/40 text-xs tracking-[0.25em] uppercase">¿Listo para escalar?</span>
             <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
-              Hablemos de tu <span className="bg-gradient-to-r from-[#C9A96E] to-[#E8D5B5] bg-clip-text text-transparent">potencial</span>
+              Hablemos de tu <span className="bg-gradient-to-r from-[#F472B6] to-[#C9A96E] bg-clip-text text-transparent">potencial</span>
             </h2>
             <p className="mt-6 text-white/40 max-w-xl mx-auto leading-relaxed">
               Agenda una llamada de diagnóstico de 30 minutos. Sin compromiso, sin venderte algo que no necesitas. Solo un análisis honesto de tu situación actual y un plan claro para mejorar.
@@ -512,7 +540,7 @@ function ContactSection() {
                 href="https://wa.me/5223111396364"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full border border-[#C9A96E]/20 text-white/70 font-medium text-base hover:border-[#C9A96E]/50 hover:text-[#C9A96E] transition-all duration-300"
+                className="px-8 py-4 rounded-full border border-pink-400/20 text-white/70 font-medium text-base hover:border-pink-400/50 hover:text-[#F472B6] transition-all duration-300"
               >
                 WhatsApp directo
               </a>
@@ -522,7 +550,7 @@ function ContactSection() {
               <a href="mailto:carolinajuarezbetancourt@gmail.com" className="hover:text-[#C9A96E]/70 transition-colors">
                 carolinajuarezbetancourt@gmail.com
               </a>
-              <span className="hidden sm:inline text-[#C9A96E]/20">|</span>
+              <span className="hidden sm:inline text-pink-400/20">|</span>
               <a href="https://wa.me/5223111396364" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A96E]/70 transition-colors">
                 +52 231 113 96364
               </a>
@@ -530,11 +558,14 @@ function ContactSection() {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Fade to footer */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060918] to-transparent" />
     </section>
   );
 }
 
-/* ─── FOOTER ─── */
+/* ─── FOOTER — Back to deep navy ─── */
 function Footer() {
   return (
     <footer className="relative border-t border-[#C9A96E]/[0.06] py-10">
