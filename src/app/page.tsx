@@ -266,7 +266,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-6 text-sm md:text-base text-white/60 tracking-[0.25em] uppercase"
+            className="mt-8 text-xl md:text-2xl text-white/70 max-w-3xl mx-auto"
             style={{ fontFamily: "var(--font-jost)" }}
           >
             Estrategia de Performance Marketing &{" "}
@@ -277,13 +277,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
               href="https://calendly.com/carolina-mkt"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#4A7CF7] text-white rounded-full font-medium hover:bg-[#3A6CE7] transition-all hover:shadow-lg hover:shadow-[#4A7CF7]/25"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#4A7CF7] text-white rounded-full font-medium text-lg hover:bg-[#3A6CE7] transition-all hover:shadow-lg hover:shadow-[#4A7CF7]/25"
               style={{ fontFamily: "var(--font-jost)" }}
             >
               Agendar llamada estratégica
@@ -292,7 +292,7 @@ export default function Home() {
               href="https://wa.me/5223111396364"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white rounded-full font-medium hover:border-[#4A7CF7] hover:text-[#4A7CF7] transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white rounded-full font-medium text-lg hover:border-[#4A7CF7] hover:text-[#4A7CF7] transition-all"
               style={{ fontFamily: "var(--font-jost)" }}
             >
               WhatsApp
@@ -792,7 +792,7 @@ export default function Home() {
       </section>
 
       {/* ═══════ CTA FINAL ═══════ */}
-      <section id="contacto" className="bg-[#0A0F1E] py-24 md:py-32">
+      <section id="contacto" className="bg-white py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial="hidden"
@@ -803,7 +803,7 @@ export default function Home() {
             <motion.h2
               variants={fadeUp}
               custom={0}
-              className="text-4xl md:text-5xl lg:text-6xl font-light text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-light text-[#0A0F1E]"
               style={{ fontFamily: "var(--font-cormorant)" }}
             >
               ¿Listo para que tus
@@ -813,7 +813,7 @@ export default function Home() {
             <motion.p
               variants={fadeUp}
               custom={1}
-              className="mt-6 text-lg text-white/60"
+              className="mt-6 text-lg text-[#0A0F1E]/60"
               style={{ fontFamily: "var(--font-jost)" }}
             >
               Agenda una llamada estratégica sin compromiso y descubre cómo el
@@ -828,7 +828,7 @@ export default function Home() {
                 href="https://calendly.com/carolina-mkt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#4A7CF7] text-white rounded-full font-medium hover:bg-[#3A6CE7] transition-all hover:shadow-lg hover:shadow-[#4A7CF7]/25"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#4A7CF7] text-white rounded-full font-medium text-lg hover:bg-[#3A6CE7] transition-all hover:shadow-lg hover:shadow-[#4A7CF7]/25"
                 style={{ fontFamily: "var(--font-jost)" }}
               >
                 Agendar llamada estratégica
@@ -837,7 +837,7 @@ export default function Home() {
                 href="https://wa.me/5223111396364"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white rounded-full font-medium hover:border-[#4A7CF7] hover:text-[#4A7CF7] transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#4A7CF7] text-[#4A7CF7] rounded-full font-medium text-lg hover:bg-[#4A7CF7] hover:text-white transition-all"
                 style={{ fontFamily: "var(--font-jost)" }}
               >
                 WhatsApp
@@ -848,7 +848,7 @@ export default function Home() {
       </section>
 
       {/* ═══════ FOOTER ═══════ */}
-      <footer className="bg-[#0A0F1E] border-t border-white/10">
+      <footer className="bg-[#0A0F1E]">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
