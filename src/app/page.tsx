@@ -1,7 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef, ComponentType } from "react";
+import CalculadoraROAS from "@/components/CalculadoraROAS";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import CalculadoraROAS from "@/components/CalculadoraROAS";
 
 /* ─── dynamic import (no SSR) ─── */
 function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
@@ -1161,6 +1163,8 @@ export default function Page() {
       <RecursosSection />
       <ContactSection />
       <Footer />
+          <CalculadoraROAS />
     </main>
   );
 }
+
