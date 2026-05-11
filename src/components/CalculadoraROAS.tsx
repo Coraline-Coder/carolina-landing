@@ -81,7 +81,7 @@ const S = {
   },
   input: {
     background: T.surface,
-    border: 1px solid ,
+    border: `1px solid ${T.border}`,
     borderRadius: 4,
     color: T.text,
     fontSize: 15,
@@ -116,7 +116,7 @@ const S = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
     gap: 1,
-    border: 1px solid ,
+    border: `1px solid ${T.border}`,
     borderRadius: 4,
     overflow: "hidden",
     margin: "1.5rem 0",
@@ -140,7 +140,7 @@ const S = {
     lineHeight: 1,
   },
   diagBox: {
-    border: 1px solid,
+    border: `1px solid`,
     borderRadius: 4,
     padding: "1.5rem",
     margin: "1.5rem 0 0",
@@ -178,7 +178,7 @@ const S = {
     fontSize: 11,
     color: T.subtle,
     lineHeight: 1.9,
-    borderTop: 1px solid ,
+    borderTop: `1px solid ${T.border}`,
     paddingTop: "1.25rem",
     marginTop: "1.5rem",
   },
@@ -235,15 +235,15 @@ export default function CalculadoraROAS() {
     else status = "ok";
 
     const waMessages = {
-      loss: Hola Carolina, acabo de calcular mi ROAS real y estoy en  cuando necesito mínimo  para no perder. Mi ganancia neta está en . Quiero revisar qué está pasando en mi cuenta.,
-      risk: Hola Carolina, mi ROAS real es  y mi punto de equilibrio es . Estoy cubriendo costos por poco y quiero optimizar antes de que empeore.,
-      ok:   Hola Carolina, mis números están sanos — ROAS real  vs breakeven , ganancia neta . Quiero ver hasta dónde puedo escalar esto.,
+      loss: `Hola Carolina, acabo de calcular mi ROAS real y estoy en ${fmtX(roasReal)} cuando necesito mínimo ${fmtX(breakEven)} para no perder. Mi ganancia neta está en ${fmtC(netProfit)}. Quiero revisar qué está pasando en mi cuenta.`,
+      risk: `Hola Carolina, mi ROAS real es ${fmtX(roasReal)} y mi punto de equilibrio es ${fmtX(breakEven)}. Estoy cubriendo costos por poco y quiero optimizar antes de que empeore.`,
+      ok:   `Hola Carolina, mis números están sanos — ROAS real ${fmtX(roasReal)} vs breakeven ${fmtX(breakEven)}, ganancia neta ${fmtC(netProfit)}. Quiero ver hasta dónde puedo escalar esto.`,
     };
 
     setResult({
       roasSimple, roasReal, breakEven, grossMarginPct,
       netProfit, cpl, hiddenCosts, status,
-      waUrl: https://wa.me/5223111396364?text=,
+      waUrl: `https://wa.me/5223111396364?text=${encodeURIComponent(waMessages[status])}`,
     });
   }
 
@@ -253,7 +253,7 @@ export default function CalculadoraROAS() {
       titleColor: T.danger,
       title: "Estás perdiendo dinero aunque no lo parezca.",
       body: result
-        ? Tu ROAS real es  — necesitas al menos  para no operar en negativo. El problema casi nunca es el presupuesto: son los costos que nadie está sumando y las fugas que nadie está tapando.
+        ? `Tu ROAS real es ${fmtX(result.roasReal)} — necesitas al menos ${fmtX(result.breakEven)} para no operar en negativo. El problema casi nunca es el presupuesto: son los costos que nadie está sumando y las fugas que nadie está tapando.`
         : "",
     },
     risk: {
@@ -261,7 +261,7 @@ export default function CalculadoraROAS() {
       titleColor: T.warning,
       title: "Estás en zona de riesgo.",
       body: result
-        ? Cubres costos, pero por poco. Un cambio de algoritmo, una temporada baja o un ajuste en tus costos puede mandarte a pérdida. Con margen del  y ROAS real de , hay trabajo que hacer antes de que se vuelva urgente.
+        ? `Cubres costos, pero por poco. Un cambio de algoritmo, una temporada baja o un ajuste en tus costos puede mandarte a pérdida. Con margen del ${fmtPct(result.grossMarginPct)} y ROAS real de ${fmtX(result.roasReal)}, hay trabajo que hacer antes de que se vuelva urgente.`
         : "",
     },
     ok: {
@@ -269,7 +269,7 @@ export default function CalculadoraROAS() {
       titleColor: T.success,
       title: "Tus números son sanos. Ahora la pregunta es cuánto puedes escalar.",
       body: result
-        ? ROAS real de  vs punto de equilibrio de . Generas  de ganancia neta. El sistema funciona — la pregunta es si está configurado para crecer o para mantenerse.
+        ? `ROAS real de ${fmtX(result.roasReal)} vs punto de equilibrio de ${fmtX(result.breakEven)}. Generas ${fmtC(result.netProfit)} de ganancia neta. El sistema funciona — la pregunta es si está configurado para crecer o para mantenerse.`
         : "",
     },
   };
@@ -508,7 +508,7 @@ function Field({ id, label, hint, val, onChange, focused, onFocus, onBlur }) {
         style={{
           ...S.input,
           borderColor: focused ? T.accent : T.border,
-          boxShadow: focused ?   0 0 1px 22 : "none",
+          boxShadow: focused ? `0 0 0 1px ${T.accent}22` : "none",
         }}
       />
       {hint && <span style={S.hint}>{hint}</span>}
@@ -520,8 +520,8 @@ function MetricCard({ label, value, color, highlight }) {
   return (
     <div style={{
       ...S.metricCard,
-      borderRight: 1px solid ,
-      borderBottom: 1px solid ,
+      borderRight: `1px solid ${T.border}`,
+      borderBottom: `1px solid ${T.border}`,
       background: highlight ? "#141414" : T.surface,
     }}>
       <p style={S.metricLabel}>{label}</p>
