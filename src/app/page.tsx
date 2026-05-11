@@ -1,5 +1,5 @@
 "use client"
-import CalculadoraROAS from "@/components/CalculadoraROAS";;
+import CalculadoraROAS from "@/components/CalculadoraROAS";
 
 import { useState, useEffect, useRef, ComponentType } from "react";
 
@@ -149,7 +149,7 @@ function Navbar() {
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
     { label: "Recursos", href: "#recursos" },
-    { label: "Contacto", href: "#calculadora" },
+    { label: "Contacto", href: "#contacto" },
   ];
   return (
     <nav
@@ -910,7 +910,7 @@ function RecursosSection() {
                   {r.desc}
                 </p>
                 <a
-                  href="#contacto"
+                  href="#calculadora"
                   style={{
                     display: "inline-block",
                     fontFamily: "var(--font-jost)",
@@ -1174,6 +1174,7 @@ export default function Page() {
     </main>
   );
 }
+
 
 
 
