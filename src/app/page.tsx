@@ -149,7 +149,7 @@ function Navbar() {
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
     { label: "Recursos", href: "#recursos" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Contacto", href: "#calculadora" },
   ];
   return (
     <nav
@@ -213,7 +213,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="#contacto"
+            href="#calculadora"
             style={{
               fontFamily: "var(--font-jost)",
               fontWeight: 500,
@@ -277,7 +277,7 @@ function Navbar() {
               </a>
             ))}
             <a
-              href="#contacto"
+              href="#calculadora"
               onClick={() => setMobileOpen(false)}
               style={{
                 display: "inline-block",
@@ -391,7 +391,7 @@ function HeroSection() {
           style={{ display: "flex", gap: "1rem", marginTop: "2.5rem", flexWrap: "wrap" }}
         >
           <a
-            href="#contacto"
+            href="#calculadora"
             style={{
               fontFamily: "var(--font-jost)",
               fontWeight: 500,
@@ -934,6 +934,8 @@ function RecursosSection() {
         </div>
       </div>
     
+      
+    
       <CalculadoraROAS />
     </section>
   );
@@ -1172,6 +1174,7 @@ export default function Page() {
     </main>
   );
 }
+
 
 
 
