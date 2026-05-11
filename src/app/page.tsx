@@ -870,7 +870,7 @@ function RecursosSection() {
             Herramientas para empezar hoy
           </h2>
         </ScrollReveal>
-            <CalculadoraROAS />
+            
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "1.5rem" }}>
           {resources.map((r, i) => (
             <ScrollReveal key={i}>
@@ -933,6 +933,8 @@ function RecursosSection() {
           ))}
         </div>
       </div>
+    
+      <CalculadoraROAS />
     </section>
   );
 }
@@ -1170,6 +1172,7 @@ export default function Page() {
     </main>
   );
 }
+
 
 
 
