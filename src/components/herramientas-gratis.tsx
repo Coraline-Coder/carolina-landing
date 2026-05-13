@@ -2254,7 +2254,7 @@ useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.data?.type==="resize"&&type
 return<iframe ref={iframeRef} srcDoc={html} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:500,borderRadius:12}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
 }
 export default function HerramientasGratisSection(){
-const[openTool,setOpenTool]=useState<string|null>(null);
+const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'start'}),200)}},[openTool]);
 const[iframeHeights,setIframeHeights]=useState<Record<string,number>>({});
 const handleHeight=useCallback((toolId:string,h:number)=>{setIframeHeights((prev)=>({...prev,[toolId]:h}))},[]);
 return(
