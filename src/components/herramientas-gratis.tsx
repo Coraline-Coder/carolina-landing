@@ -2254,7 +2254,7 @@ useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.data?.type==="resize"&&type
 return<iframe ref={iframeRef} srcDoc={html} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:500,borderRadius:12}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
 }
 export default function HerramientasGratisSection(){
-const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'start'}),200)}},[openTool]);
+const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'center'}),550)}},[openTool]);
 const[iframeHeights,setIframeHeights]=useState<Record<string,number>>({});
 const handleHeight=useCallback((toolId:string,h:number)=>{setIframeHeights((prev)=>({...prev,[toolId]:h}))},[]);
 return(
@@ -2265,7 +2265,7 @@ return(
 <h2 style={{fontFamily:"var(--font-cormorant)",fontWeight:400,fontSize:"clamp(1.8rem,4vw,2.8rem)",color:NAVY,lineHeight:1.15,marginBottom:"0.5rem"}}>Empieza aqui. Gratis.</h2>
 <p style={{fontFamily:"var(--font-jost)",fontWeight:300,fontSize:"1.05rem",color:"#4A4A4A",lineHeight:1.7,maxWidth:600,marginBottom:"3rem"}}>Tres herramientas para saber exactamente donde esta tu problema — antes de hablar con alguien.</p>
 </ScrollReveal>
-<div className="herramientas-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"1.5rem"}}>
+<div className="herramientas-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"1.5rem"}}>
 {tools.map((t)=>{const isOpen=openTool===t.id;return(
 <ScrollReveal key={t.id}>
 <div style={{background:isOpen?"rgba(74,124,247,0.06)":NAVY,border:isOpen?"2px solid rgba(74,124,247,0.4)":"1px solid rgba(74,124,247,0.15)",borderRadius:16,padding:"2rem 1.5rem",display:"flex",flexDirection:"column",height:"100%",transition:"all 0.3s ease",cursor:"pointer"}} onClick={()=>setOpenTool(isOpen?null:t.id)}>
@@ -2279,7 +2279,7 @@ return(
 </div>
 <AnimatePresence>
 {openTool&&(
-<motion.div initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.4,ease:"easeInOut"}} style={{overflow:"hidden",marginTop:"2rem"}}>
+<motion.div ref={panelRef} initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.4,ease:"easeInOut"}} style={{overflow:"hidden",marginTop:"2rem"}}>
 <div style={{background:"#F5F6FA",border:"1px solid #E2E6F0",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
 <h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.3rem",color:NAVY}}>{tools.find((t)=>t.id===openTool)?.emoji} {tools.find((t)=>t.id===openTool)?.title}</h3>
