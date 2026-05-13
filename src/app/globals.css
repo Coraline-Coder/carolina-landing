@@ -642,3 +642,11 @@
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .animate-marquee{animation:marquee 20s linear infinite}
 html{scroll-behavior:smooth}
+
+/* Caso de Exito Grid - responsive */
+@media (max-width: 768px) {
+  .caso-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}

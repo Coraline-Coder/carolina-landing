@@ -1,4 +1,5 @@
 "use client"
+import CasoDeExitoSection from "@/components/caso-exito";
 import CalculadoraROAS from "@/components/CalculadoraROAS";
 
 import { useState, useEffect, useRef, ComponentType } from "react";
@@ -1163,6 +1164,7 @@ export default function Page() {
       <HeroSection />
       <Marquee />
       <ProblemaSection />
+      <CasoDeExitoSection />
       <SistemaFiltroSection />
       <CapacidadesSection />
       <ProcesoSection />
