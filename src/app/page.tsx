@@ -146,7 +146,7 @@ function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
   const links = [
-    { label: "Sistema Filtro", href: "#sistema-filtro" },
+    { label: "Método P.U.L.S.O.", href: "#sistema-filtro" },
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
     { label: "Contacto", href: "#contacto" },
@@ -515,33 +515,33 @@ function ProblemaSection() {
   );
 }
 
-/* ─── SISTEMA FILTRO — BLUE bg, WHITE text ─── */
+/* ─── MÉTODO P.U.L.S.O. — BLUE bg, WHITE text ─── */
 function SistemaFiltroSection() {
   const fases = [
     {
-      num: "01",
-      title: "Auditoría Profunda",
-      desc: "Analizo tu cuenta, píxel, audiences y estructura actual para identificar exactamente dónde se está fugando tu presupuesto y qué oportunidades estás dejando sobre la mesa.",
+      letra: "P",
+      palabra: "PROBAR",
+      desc: "Recopilar datos con inversión mínima y riesgo controlado. Audiencias amplias, múltiples formatos, sin optimizar los primeros 7 días. El objetivo es datos, no ventas.",
     },
     {
-      num: "02",
-      title: "Estrategia de Inversión",
-      desc: "Diseño un plan de inversión con presupuesto asignado por fase del embudo, formato y audience, optimizado para maximizar el ROAS desde el primer día.",
+      letra: "U",
+      palabra: "UBICAR",
+      desc: "Identificar qué audiencias y formatos generan el menor CPA. La segmentación se estrecha progresivamente: de amplio a geo, de geo a retargeting.",
     },
     {
-      num: "03",
-      title: "Implementación Técnica",
-      desc: "Configuro campañas, conjuntos y anuncios con tracking preciso, píxel verificado y eventos de conversión alineados a tus objetivos reales de negocio.",
+      letra: "L",
+      palabra: "LANZAR",
+      desc: "Escalar lo que funciona en ventanas de oportunidad. Temporadas altas, incrementos de presupuesto calculados, sin romper el aprendizaje del algoritmo.",
     },
     {
-      num: "04",
-      title: "Optimización Diaria",
-      desc: "Monitoreo y ajustes constantes: redistribución de presupuesto, pausa de creatividades gastadoras, escalamiento de lo que funciona, sin dejar nada al azar.",
+      letra: "S",
+      palabra: "SOSTENER",
+      desc: "Monitoreo constante para mantener el CPA bajo. Si el CPA sube más del 20% por 3 días consecutivos, se investiga y corrige en menos de 48 horas.",
     },
     {
-      num: "05",
-      title: "Escalamiento Rentable",
-      desc: "Cuando el sistema funciona, escalamos invirtiendo más en lo probado, expandiendo audiences ganadoras y diversificando formatos sin sacrificar rentabilidad.",
+      letra: "O",
+      palabra: "OPTIMIZAR",
+      desc: "Documentar aprendizajes al cierre de cada ciclo y reiniciar con ventaja. Cada ciclo comienza mejor calibrado que el anterior.",
     },
   ];
   return (
@@ -568,48 +568,93 @@ function SistemaFiltroSection() {
               fontSize: "clamp(1.8rem,4vw,2.8rem)",
               color: WHITE,
               lineHeight: 1.15,
+              marginBottom: "1rem",
+            }}
+          >
+            El Método P.U.L.S.O.
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-jost)",
+              fontWeight: 300,
+              fontSize: "1rem",
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.7,
+              maxWidth: 720,
               marginBottom: "3.5rem",
             }}
           >
-            El Sistema Filtro
-          </h2>
+            No es teoría de libros. Es la metodología que extraje de 15 meses, 18 campañas y $63,000 MXN gestionados — formalizada para replicarla con cada cliente.
+          </p>
         </ScrollReveal>
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {fases.map((f, i) => (
             <ScrollReveal key={i}>
-              <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
-                <span
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1.5rem",
+                  alignItems: "flex-start",
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 16,
+                  padding: "1.75rem 2rem",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div
                   style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontWeight: 600,
-                    fontSize: "3rem",
-                    color: WHITE,
-                    opacity: 0.2,
-                    lineHeight: 1,
-                    minWidth: "4rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    minWidth: "4.5rem",
                   }}
                 >
-                  {f.num}
-                </span>
-                <div>
-                  <h3
+                  <span
                     style={{
                       fontFamily: "var(--font-cormorant)",
                       fontWeight: 700,
-                      fontSize: "1.4rem",
+                      fontSize: "3.2rem",
+                      color: "rgba(255,255,255,0.95)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {f.letra}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-jost)",
+                      fontWeight: 500,
+                      fontSize: "0.6rem",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase" as const,
+                      color: "rgba(255,255,255,0.45)",
+                      marginTop: "0.35rem",
+                    }}
+                  >
+                    {f.palabra}
+                  </span>
+                </div>
+                <div style={{ flex: 1, paddingTop: "0.35rem" }}>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-jost)",
+                      fontWeight: 600,
+                      fontSize: "1.05rem",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase" as const,
                       color: WHITE,
                       marginBottom: "0.5rem",
                     }}
                   >
-                    {f.title}
+                    {f.palabra}
                   </h3>
                   <p
                     style={{
                       fontFamily: "var(--font-jost)",
                       fontWeight: 300,
                       fontSize: "0.95rem",
-                      color: WHITE,
-                      opacity: 0.85,
+                      color: "rgba(255,255,255,0.8)",
                       lineHeight: 1.75,
                     }}
                   >
@@ -620,6 +665,50 @@ function SistemaFiltroSection() {
             </ScrollReveal>
           ))}
         </div>
+        <ScrollReveal>
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant)",
+              fontWeight: 400,
+              fontSize: "clamp(1.15rem,2.5vw,1.45rem)",
+              color: WHITE,
+              lineHeight: 1.6,
+              textAlign: "center",
+              maxWidth: 700,
+              margin: "3.5rem auto 0",
+              fontStyle: "italic",
+            }}
+          >
+            Cada ciclo reduce el costo. Cada peso invertido rinde más que el anterior. Eso es lo que hace un sistema — no campañas sueltas.
+          </p>
+        </ScrollReveal>
+        <ScrollReveal>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "2rem",
+              padding: "1rem 2rem",
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 100,
+              display: "inline-block",
+              margin: "2rem auto 0",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-jost)",
+                fontWeight: 400,
+                fontSize: "0.75rem",
+                letterSpacing: "0.06em",
+                color: "rgba(255,255,255,0.65)",
+                margin: 0,
+              }}
+            >
+              Resultado documentado: CPA reducido 52% en 5 ciclos consecutivos &middot; 8,400+ conversiones &middot; $63K MXN gestionados
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
