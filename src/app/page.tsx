@@ -1,6 +1,7 @@
 "use client"
 import CasoDeExitoSection from "@/components/caso-exito";
 import CalculadoraROAS from "@/components/CalculadoraROAS";
+import HerramientasGratisSection from "@/components/herramientas-gratis";
 
 import { useState, useEffect, useRef, ComponentType } from "react";
 
@@ -1165,6 +1166,7 @@ export default function Page() {
       <Marquee />
       <ProblemaSection />
       <CasoDeExitoSection />
+      <HerramientasGratisSection />
       <SistemaFiltroSection />
       <CapacidadesSection />
       <ProcesoSection />

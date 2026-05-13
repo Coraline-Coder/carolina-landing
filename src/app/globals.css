@@ -650,3 +650,6 @@ html{scroll-behavior:smooth}
     gap: 1rem !important;
   }
 }
+
+.herramientas-grid{display:grid}
+@media(max-width:768px){.herramientas-grid{grid-template-columns:1fr !important;gap:1rem !important}}
