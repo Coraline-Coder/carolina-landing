@@ -1,6 +1,5 @@
 "use client"
 import CasoDeExitoSection from "@/components/caso-exito";
-import CalculadoraROAS from "@/components/CalculadoraROAS";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
 
 import { useState, useEffect, useRef, ComponentType } from "react";
@@ -150,7 +149,6 @@ function Navbar() {
     { label: "Sistema Filtro", href: "#sistema-filtro" },
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
-    { label: "Recursos", href: "#recursos" },
     { label: "Contacto", href: "#contacto" },
   ];
   return (
@@ -823,125 +821,6 @@ function ProcesoSection() {
   );
 }
 
-/* ─── RECURSOS — white bg, NAVY text ─── */
-function RecursosSection() {
-  const resources = [
-    {
-      title: "Checklist: 27 puntos para auditar tu Meta Business",
-      desc: "Una auditoría completa punto por punto para descubrir fugas de presupuesto, errores de configuración y oportunidades que estás dejando pasar en tu Business Manager.",
-      btn: "Descargar",
-    },
-    {
-      title: "Calculadora de ROAS Real: ¿Tus campañas realmente son rentables?",
-      desc: "Herramienta interactiva que calcula tu ROAS real considerando costos ocultos, métricas de plataforma vs. métricas de negocio, y el verdadero retorno de tu inversión.",
-      btn: "Usar calculadora",
-    },
-    {
-      title: "Guía: Cómo estructuro una campaña ganadora en Meta desde cero",
-      desc: "El paso a paso completo de cómo diseño y lanzo una campaña en Meta Ads: desde la investigación de audiences hasta la estructura de conjuntos y la estrategia de pujas.",
-      btn: "Descargar",
-    },
-  ];
-  return (
-    <section id="recursos" style={{ background: WHITE, padding: "6rem 2rem" }}>
-      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <ScrollReveal>
-          <p
-            style={{
-              fontFamily: "var(--font-jost)",
-              fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase" as const,
-              color: BLUE,
-              marginBottom: "0.75rem",
-            }}
-          >
-            Recursos gratuitos
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-cormorant)",
-              fontWeight: 400,
-              fontSize: "clamp(1.8rem,4vw,2.8rem)",
-              color: NAVY,
-              lineHeight: 1.15,
-              marginBottom: "3rem",
-            }}
-          >
-            Herramientas para empezar hoy
-          </h2>
-        </ScrollReveal>
-            
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "1.5rem" }}>
-          {resources.map((r, i) => (
-            <ScrollReveal key={i}>
-              <div
-                style={{
-                  background: WHITE,
-                  border: "1px solid #E8E8E8",
-                  borderRadius: 12,
-                  padding: "2rem",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                }}
-              >
-                <h3
-                  style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontWeight: 500,
-                    fontSize: "1.2rem",
-                    color: NAVY,
-                    marginBottom: "0.6rem",
-                  }}
-                >
-                  {r.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-jost)",
-                    fontWeight: 300,
-                    fontSize: "0.9rem",
-                    color: "#4A4A4A",
-                    lineHeight: 1.7,
-                    flex: 1,
-                  }}
-                >
-                  {r.desc}
-                </p>
-                <a
-                  href="#calculadora"
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "var(--font-jost)",
-                    fontWeight: 500,
-                    fontSize: "0.85rem",
-                    color: WHITE,
-                    background: BLUE,
-                    padding: "0.65rem 1.5rem",
-                    borderRadius: 6,
-                    textDecoration: "none",
-                    marginTop: "1.2rem",
-                    textAlign: "center",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {r.btn}
-                </a>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    
-      
-    
-      <CalculadoraROAS />
-    </section>
-  );
-}
 
 /* ─── CONTACTO — light gray bg, NAVY text ─── */
 function ContactSection() {
@@ -1170,7 +1049,6 @@ export default function Page() {
       <SistemaFiltroSection />
       <CapacidadesSection />
       <ProcesoSection />
-      <RecursosSection />
       <ContactSection />
       <Footer />
           
