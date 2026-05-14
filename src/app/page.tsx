@@ -420,7 +420,7 @@ function HeroSection() {
               letterSpacing: "0.06em",
             }}
           >
-            Conocer el Sistema Filtro
+            Conocer el Método P.U.L.S.O.
           </a>
         </motion.div>
       </motion.div>
@@ -1140,8 +1140,7 @@ export default function Page() {
       <ProcesoSection />
       <ContactSection />
       <Footer />
-          
-          
+      <WhatsAppFAB />
     </main>
   );
 }

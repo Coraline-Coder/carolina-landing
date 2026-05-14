@@ -32,14 +32,79 @@ function ScrollReveal({ children, className = "" }: { children: React.ReactNode;
   );
 }
 
+
+/* ─── ANIMATED COUNTER HOOK ─── */
+function useCountUp(target: number, duration: number = 1500) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setStarted(true); obs.unobserve(el); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!started) return;
+    const absTarget = Math.abs(target);
+    const isFloat = absTarget % 1 !== 0;
+    const startTime = performance.now();
+    let raf: number;
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * absTarget;
+      setCount(isFloat ? parseFloat(current.toFixed(2)) : Math.round(current));
+      if (progress < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [started, target, duration]);
+  const display = target < 0 ? -count : count;
+  return { count: display, ref };
+}
+
+function MetricValue({ m }: { m: { value: string; target: number; suffix: string; prefix: string; label: string; detail: string } }) {
+  const { count, ref } = useCountUp(m.target);
+  const fmt = () => {
+    if (m.suffix === "M") return m.prefix + count.toFixed(1) + m.suffix;
+    if (m.suffix === "%") return m.prefix + count + m.suffix;
+    if (m.suffix === " meses") return m.prefix + count + m.suffix;
+    if (m.suffix === "+") return m.prefix + count.toLocaleString("es-MX") + m.suffix;
+    if (m.prefix === "$") return m.prefix + (count % 1 === 0 ? count.toFixed(0) : count.toFixed(2));
+    return m.prefix + count + m.suffix;
+  };
+  return (
+    <div ref={ref}>
+      <p
+        style={{
+          fontFamily: "var(--font-cormorant)",
+          fontWeight: 600,
+          fontSize: "clamp(2rem,4vw,2.8rem)",
+          color: BLUE,
+          lineHeight: 1.1,
+          marginBottom: "0.4rem",
+        }}
+      >
+        {fmt()}
+      </p>
+    </div>
+  );
+}
+
 export default function CasoDeExitoSection() {
   const metrics = [
-    { value: "-52%", label: "Reducción de CPA", detail: "de $10.55 a $5.05 MXN" },
-    { value: "8,000+", label: "Conversaciones generadas", detail: "a WhatsApp" },
-    { value: "+91%", label: "Mejora en CTR", detail: "de 1.10% a 2.10%" },
-    { value: "1.2M", label: "Reproducciones de video", detail: "" },
-    { value: "$5.05", label: "CPA mínimo alcanzado", detail: "" },
-    { value: "15 meses", label: "Gestión continua", detail: "documentada" },
+    { value: "-52%", target: -52, suffix: "%", prefix: "", label: "Reducción de CPA", detail: "de $10.55 a $5.05 MXN" },
+    { value: "8,000+", target: 8000, suffix: "+", prefix: "", label: "Conversaciones generadas", detail: "a WhatsApp" },
+    { value: "+91%", target: 91, suffix: "%", prefix: "+", label: "Mejora en CTR", detail: "de 1.10% a 2.10%" },
+    { value: "1.2M", target: 1.2, suffix: "M", prefix: "", label: "Reproducciones de video", detail: "" },
+    { value: "$5.05", target: 5.05, suffix: "", prefix: "$", label: "CPA mínimo alcanzado", detail: "" },
+    { value: "15 meses", target: 15, suffix: " meses", prefix: "", label: "Gestión continua", detail: "documentada" },
   ];
   return (
     <section style={{ background: NAVY, padding: "6rem 2rem" }}>
@@ -81,7 +146,7 @@ export default function CasoDeExitoSection() {
               marginBottom: "1.5rem",
             }}
           >
-            Retail de muebles · Mérida, Yucatán · 15 meses de gestión
+            Retail de muebles · 15 meses de gestión
           </p>
           <p
             style={{
@@ -119,18 +184,7 @@ export default function CasoDeExitoSection() {
                   e.currentTarget.style.borderColor = "rgba(74,124,247,0.15)";
                 }}
               >
-                <p
-                  style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontWeight: 600,
-                    fontSize: "clamp(2rem,4vw,2.8rem)",
-                    color: BLUE,
-                    lineHeight: 1.1,
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  {m.value}
-                </p>
+                <MetricValue m={m} />
                 <p
                   style={{
                     fontFamily: "var(--font-jost)",
@@ -198,7 +252,7 @@ export default function CasoDeExitoSection() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Ver cómo funciona el Sistema Filtro
+              Ver cómo funciona el Método P.U.L.S.O.
             </a>
           </div>
         </ScrollReveal>
