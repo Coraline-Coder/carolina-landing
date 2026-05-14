@@ -29,6 +29,7 @@ const BLUE = "#2E5F8A";
 const WHITE = "#FFFFFF";
 const LGRAY = "#F5F6FA";
 const NAVY2 = "#0D1B2A";
+const LW = "data:image/png;base64,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";
 
 /* ─── tiny helpers ─── */
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -174,7 +175,7 @@ function DashboardPreview() {
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
-          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginLeft: 12, letterSpacing: "0.05em" }}>Meta Ads Manager \u2014 Campaign Dashboard</span>
+          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginLeft: 12 }}><img src={LW} alt="" style={{ height: 14, width: "auto", opacity: 0.5, display: "inline", verticalAlign: "middle", marginRight: 4 }} />Meta Ads Manager \u2014 Campaign Dashboard</span>
         </div>
         <div style={{ padding: "1.5rem 2rem 2rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
@@ -305,17 +306,10 @@ function Navbar() {
         {/* Logo CJB */}
         <a
           href="#"
-          style={{
-            fontFamily: "var(--font-cormorant)",
-            fontWeight: 600,
-            fontSize: "1.65rem",
-            color: WHITE,
-            letterSpacing: "0.15em",
-            textDecoration: "none",
-            textTransform: "uppercase" as const,
-          }}
+          style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          CJB
+          <img src={LW} alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
+          <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>CJB
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -1181,15 +1175,8 @@ function Footer() {
       >
         <p
           style={{
-            fontFamily: "var(--font-cormorant)",
-            fontWeight: 600,
-            fontSize: "1.4rem",
-            color: WHITE,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase" as const,
-          }}
-        >
-          CJB by Carolina Betancourt
+            height: 48, width: "auto", objectFit: "contain" as const }} src={LW} alt="CJB Logo" />
+        <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
           style={{
