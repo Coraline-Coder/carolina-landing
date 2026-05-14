@@ -1,165 +1,71 @@
-const fs = require('fs');
-const path = require('path');
-const f1 = path.join(__dirname, 'src', 'app', 'page.tsx');
-let p1 = fs.readFileSync(f1, 'utf8');
-p1 = p1.replace('Conocer el Sistema Filtro', 'Conocer el Método P.U.L.S.O.');
-const waButton = `
-/* ─── WHATSAPP FLOATING BUTTON ─── */
-function WhatsAppFAB() {
-  return (
-    <a
-      href="https://wa.me/522311396364"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="WhatsApp"
-      style={{
-        position: "fixed",
-        bottom: 24,
-        right: 24,
-        width: 60,
-        height: 60,
-        borderRadius: "50%",
-        background: "#25D366",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        boxShadow: "0 4px 16px rgba(37,211,102,0.4)",
-        zIndex: 9999,
-        transition: "transform 0.2s",
-        animation: "waPulse 3s ease-in-out infinite",
-      }}
-      onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.1)"; }}
-      onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
-    >
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      <style>{\`
-        @keyframes waPulse {
-          0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
-          50% { box-shadow: 0 4px 28px rgba(37,211,102,0.65); }
-        }
-        @media (max-width: 640px) {
-          [aria-label="WhatsApp"] { bottom: 20px !important; right: 20px !important; width: 54px !important; height: 54px !important; }
-        }
-      \`}</style>
-    </a>
-  );
-}
-`;
-p1 = p1.replace(
-  '/* \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n   PAGE\n   \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */',
-  waButton + '\n/* \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n   PAGE\n   \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */'
-);
-p1 = p1.replace(
-  /<Footer \/>\s*<\/main>/,
-  '<Footer />\n      <WhatsAppFAB />\n    </main>'
-);
-fs.writeFileSync(f1, p1, 'utf8');
-console.log('OK — page.tsx patched');
-const f2 = path.join(__dirname, 'src', 'components', 'caso-exito.tsx');
-let p2 = fs.readFileSync(f2, 'utf8');
-p2 = p2.replace('Retail de muebles · Mérida, Yucatán · 15 meses de gestión', 'Retail de muebles · 15 meses de gestión');
-p2 = p2.replace('Ver cómo funciona el Sistema Filtro', 'Ver cómo funciona el Método P.U.L.S.O.');
-p2 = p2.replace(
-  `const metrics = [
-    { value: "-52%", label: "Reducción de CPA", detail: "de $10.55 a $5.05 MXN" },
-    { value: "8,000+", label: "Conversaciones generadas", detail: "a WhatsApp" },
-    { value: "+91%", label: "Mejora en CTR", detail: "de 1.10% a 2.10%" },
-    { value: "1.2M", label: "Reproducciones de video", detail: "" },
-    { value: "$5.05", label: "CPA mínimo alcanzado", detail: "" },
-    { value: "15 meses", label: "Gestión continua", detail: "documentada" },
-  ];`,
-  `const metrics = [
-    { value: "-52%", target: -52, suffix: "%", prefix: "", label: "Reducción de CPA", detail: "de $10.55 a $5.05 MXN" },
-    { value: "8,000+", target: 8000, suffix: "+", prefix: "", label: "Conversaciones generadas", detail: "a WhatsApp" },
-    { value: "+91%", target: 91, suffix: "%", prefix: "+", label: "Mejora en CTR", detail: "de 1.10% a 2.10%" },
-    { value: "1.2M", target: 1.2, suffix: "M", prefix: "", label: "Reproducciones de video", detail: "" },
-    { value: "$5.05", target: 5.05, suffix: "", prefix: "$", label: "CPA mínimo alcanzado", detail: "" },
-    { value: "15 meses", target: 15, suffix: " meses", prefix: "", label: "Gestión continua", detail: "documentada" },
-  ];`
-);
-const counterCode = `
-/* ─── ANIMATED COUNTER HOOK ─── */
-function useCountUp(target: number, duration: number = 1500) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setStarted(true); obs.unobserve(el); } },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  useEffect(() => {
-    if (!started) return;
-    const absTarget = Math.abs(target);
-    const isFloat = absTarget % 1 !== 0;
-    const startTime = performance.now();
-    let raf: number;
-    const step = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = eased * absTarget;
-      setCount(isFloat ? parseFloat(current.toFixed(2)) : Math.round(current));
-      if (progress < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [started, target, duration]);
-  const display = target < 0 ? -count : count;
-  return { count: display, ref };
+const fs = require("fs");
+const path = require("path");
+const FILE = path.join("src", "app", "page.tsx");
+let code = fs.readFileSync(FILE, "utf8");
+
+/* CHANGE 1: Add DashboardPreview component after WhatsAppFAB */
+const dash = "\n/* --- DASHBOARD PREVIEW (Meta Ads mockup) --- */\nfunction DashboardPreview() {\n  const ref = useRef<HTMLDivElement>(null);\n  const [vis, setVis] = useState(false);\n  useEffect(() => {\n    const el = ref.current;\n    if (!el) return;\n    const obs = new IntersectionObserver(\n      ([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } },\n      { threshold: 0.2 }\n    );\n    obs.observe(el);\n    return () => obs.disconnect();\n  }, []);\n  const metrics = [\n    { label: \"ROAS\", value: \"3.2x\", color: \"#22C55E\", sub: \"Retorno sobre inversi\\u00f3n\" },\n    { label: \"CPA\", value: \"$5.05\", color: BLUE, sub: \"Costo por conversi\\u00f3n\" },\n    { label: \"CTR\", value: \"2.10%\", color: BLUE, sub: \"Click-through rate\" },\n    { label: \"Conversiones\", value: \"8,400+\", color: BLUE, sub: \"WhatsApp + Leads\" },\n  ];\n  return (\n    <div ref={ref} style={{ maxWidth: 960, margin: \"4rem auto 0\", padding: \"0 2rem\" }}>\n      <motion.div\n        initial={{ opacity: 0, y: 30, scale: 0.97 }}\n        animate={vis ? { opacity: 1, y: 0, scale: 1 } : {}}\n        transition={{ duration: 0.7, ease: \"easeOut\" }}\n        style={{\n          position: \"relative\",\n          borderRadius: 16,\n          overflow: \"hidden\",\n          border: \"1px solid rgba(74,124,247,0.25)\",\n          background: \"linear-gradient(145deg, #0d1225 0%, #0a0f1e 100%)\",\n          boxShadow: \"0 0 60px rgba(74,124,247,0.08), 0 25px 50px rgba(0,0,0,0.4)\",\n        }}\n      >\n        <div style={{ position: \"absolute\", top: \"-40%\", left: \"50%\", transform: \"translateX(-50%)\", width: \"80%\", height: \"60%\", background: \"radial-gradient(ellipse at center, rgba(74,124,247,0.12) 0%, transparent 70%)\", pointerEvents: \"none\" }} />\n        <div style={{ display: \"flex\", alignItems: \"center\", gap: 8, padding: \"14px 20px\", borderBottom: \"1px solid rgba(255,255,255,0.06)\", background: \"rgba(255,255,255,0.02)\" }}>\n          <div style={{ width: 10, height: 10, borderRadius: \"50%\", background: \"#FF5F57\" }} />\n          <div style={{ width: 10, height: 10, borderRadius: \"50%\", background: \"#FEBC2E\" }} />\n          <div style={{ width: 10, height: 10, borderRadius: \"50%\", background: \"#28C840\" }} />\n          <span style={{ fontFamily: \"var(--font-jost)\", fontWeight: 400, fontSize: \"0.75rem\", color: \"rgba(255,255,255,0.4)\", marginLeft: 12, letterSpacing: \"0.05em\" }}>Meta Ads Manager \\u2014 Campaign Dashboard</span>\n        </div>\n        <div style={{ padding: \"1.5rem 2rem 2rem\" }}>\n          <div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\", marginBottom: \"1.5rem\", flexWrap: \"wrap\", gap: \"1rem\" }}>\n            <div>\n              <p style={{ fontFamily: \"var(--font-jost)\", fontWeight: 500, fontSize: \"0.95rem\", color: WHITE, margin: 0 }}>Campa\\u00f1a: Conversiones WhatsApp</p>\n              <p style={{ fontFamily: \"var(--font-jost)\", fontWeight: 300, fontSize: \"0.75rem\", color: \"rgba(255,255,255,0.45)\", margin: \"4px 0 0\" }}>Retail de Muebles \\u00b7 15 meses de gesti\\u00f3n</p>\n            </div>\n            <div style={{ display: \"flex\", gap: \"0.5rem\", alignItems: \"center\" }}>\n              <span style={{ fontFamily: \"var(--font-jost)\", fontWeight: 400, fontSize: \"0.7rem\", color: \"rgba(255,255,255,0.5)\", padding: \"4px 10px\", border: \"1px solid rgba(255,255,255,0.1)\", borderRadius: 4 }}>Ultimos 30 dias</span>\n              <span style={{ fontFamily: \"var(--font-jost)\", fontWeight: 500, fontSize: \"0.7rem\", color: WHITE, padding: \"4px 10px\", background: BLUE, borderRadius: 4 }}>Activo</span>\n            </div>\n          </div>\n          <div style={{ display: \"grid\", gridTemplateColumns: \"repeat(auto-fit, minmax(180px, 1fr))\", gap: \"1rem\", marginBottom: \"1.5rem\" }}>\n            {metrics.map((m, i) => (\n              <motion.div key={m.label} initial={{ opacity: 0, y: 16 }} animate={vis ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }} style={{ background: \"rgba(255,255,255,0.04)\", border: \"1px solid rgba(74,124,247,0.12)\", borderRadius: 10, padding: \"1rem 1.25rem\" }}>\n                <p style={{ fontFamily: \"var(--font-jost)\", fontWeight: 400, fontSize: \"0.7rem\", color: \"rgba(255,255,255,0.5)\", letterSpacing: \"0.08em\", textTransform: \"uppercase\" as const, margin: 0 }}>{m.label}</p>\n                <p style={{ fontFamily: \"var(--font-cormorant)\", fontWeight: 600, fontSize: \"1.8rem\", color: m.color, margin: \"4px 0\", lineHeight: 1.1 }}>{m.value}</p>\n                <p style={{ fontFamily: \"var(--font-jost)\", fontWeight: 300, fontSize: \"0.65rem\", color: \"rgba(255,255,255,0.35)\", margin: 0 }}>{m.sub}</p>\n              </motion.div>\n            ))}\n          </div>\n          <div style={{ background: \"rgba(255,255,255,0.02)\", border: \"1px solid rgba(255,255,255,0.06)\", borderRadius: 10, padding: \"1.25rem\" }}>\n            <p style={{ fontFamily: \"var(--font-jost)\", fontWeight: 400, fontSize: \"0.75rem\", color: \"rgba(255,255,255,0.5)\", margin: \"0 0 1rem\" }}>Tendencia de Conversiones (ultimos 12 meses)</p>\n            <svg viewBox=\"0 0 800 180\" style={{ width: \"100%\", height: \"auto\" }}>\n              <defs><linearGradient id=\"chartGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stopColor=\"#4A7CF7\" stopOpacity=\"0.3\" /><stop offset=\"100%\" stopColor=\"#4A7CF7\" stopOpacity=\"0\" /></linearGradient></defs>\n              {[0,1,2,3,4].map(i => (<line key={i} x1=\"0\" y1={i*40+10} x2=\"800\" y2={i*40+10} stroke=\"rgba(255,255,255,0.04)\" strokeWidth=\"1\" />))}\n              <path d=\"M0,170 L0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14 L800,170 Z\" fill=\"url(#chartGrad)\" />\n              <path d=\"M0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"2.5\" strokeLinecap=\"round\" />\n              <circle cx=\"800\" cy=\"14\" r=\"5\" fill=\"#4A7CF7\" />\n              <circle cx=\"800\" cy=\"14\" r=\"9\" fill=\"#4A7CF7\" opacity=\"0.25\"><animate attributeName=\"r\" values=\"9;14;9\" dur=\"2s\" repeatCount=\"indefinite\" /><animate attributeName=\"opacity\" values=\"0.25;0;0.25\" dur=\"2s\" repeatCount=\"indefinite\" /></circle>\n              {[\"Ene\",\"Feb\",\"Mar\",\"Abr\",\"May\",\"Jun\",\"Jul\",\"Ago\",\"Sep\",\"Oct\",\"Nov\",\"Dic\"].map((m,i) => (<text key={i} x={i*66+30} y=\"178\" fill=\"rgba(255,255,255,0.25)\" fontFamily=\"var(--font-jost)\" fontSize=\"10\" textAnchor=\"middle\">{m}</text>))}\n            </svg>\n          </div>\n        </div>\n      </motion.div>\n    </div>\n  );\n}\n";
+const marker = "/* \u2500── MARQUEE \u2500── */";
+if (code.includes(marker)) {
+  code = code.replace(marker, dash + "\n" + marker);
+  console.log("\u2705 DashboardPreview added");
+} else { console.error("\u274C No MARQUEE marker"); process.exit(1); }
+
+/* CHANGE 2: Add icons to capacidades */
+const oldCapCard = "                <h3\n                  style={{\n                    fontFamily: \"var(--font-cormorant)\",\n                    fontWeight: 500,\n                    fontSize: \"1.25rem\",\n                    color: WHITE,\n                    marginBottom: \"0.6rem\",\n                  }}\n                >\n                  {c.title}\n                </h3>";
+const newCapCard = "                <div style={{ marginBottom: \"1rem\" }} dangerouslySetInnerHTML={{ __html: c.icon }} />\n                <h3\n                  style={{\n                    fontFamily: \"var(--font-cormorant)\",\n                    fontWeight: 500,\n                    fontSize: \"1.25rem\",\n                    color: WHITE,\n                    marginBottom: \"0.6rem\",\n                  }}\n                >\n                  {c.title}\n                </h3>";
+if (code.includes(oldCapCard)) {
+  code = code.replace(oldCapCard, newCapCard);
+  console.log("\u2705 Capacidades icon render added");
+} else { console.error("\u274C No cap card"); process.exit(1); }
+
+const oldCapArr = "  const caps = [\n    {\n      title: \"Estrategia de Inversi\\u00f3n en Meta\",";
+const newCapArr = "  const caps = [\n    {\n      icon: '<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6\"/></svg>',\n      title: \"Estrategia de Inversi\\u00f3n en Meta\",";
+if (code.includes(oldCapArr)) {
+  code = code.replace(oldCapArr, newCapArr);
+  console.log("\u2705 Capacidades icon 1 added");
 }
 
-function MetricValue({ m }: { m: { value: string; target: number; suffix: string; prefix: string; label: string; detail: string } }) {
-  const { count, ref } = useCountUp(m.target);
-  const fmt = () => {
-    if (m.suffix === "M") return m.prefix + count.toFixed(1) + m.suffix;
-    if (m.suffix === "%") return m.prefix + count + m.suffix;
-    if (m.suffix === " meses") return m.prefix + count + m.suffix;
-    if (m.suffix === "+") return m.prefix + count.toLocaleString("es-MX") + m.suffix;
-    if (m.prefix === "$") return m.prefix + (count % 1 === 0 ? count.toFixed(0) : count.toFixed(2));
-    return m.prefix + count + m.suffix;
-  };
-  return (
-    <div ref={ref}>
-      <p
-        style={{
-          fontFamily: "var(--font-cormorant)",
-          fontWeight: 600,
-          fontSize: "clamp(2rem,4vw,2.8rem)",
-          color: BLUE,
-          lineHeight: 1.1,
-          marginBottom: "0.4rem",
-        }}
-      >
-        {fmt()}
-      </p>
-    </div>
-  );
-}
+const oldCap2 = "      title: \"Optimizaci\\u00f3n de ROAS\",";
+const newCap2 = "      icon: '<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"/></svg>',\n      title: \"Optimizaci\\u00f3n de ROAS\",";
+if (code.includes(oldCap2)) { code = code.replace(oldCap2, newCap2); console.log("\u2705 Capacidades icon 2 added"); }
 
-`;
-p2 = p2.replace('export default function CasoDeExitoSection()', counterCode + 'export default function CasoDeExitoSection()');
-p2 = p2.replace(
-  `<p
-                  style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontWeight: 600,
-                    fontSize: "clamp(2rem,4vw,2.8rem)",
-                    color: BLUE,
-                    lineHeight: 1.1,
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  {m.value}
-                </p>`,
-  `<MetricValue m={m} />`
-);
-fs.writeFileSync(f2, p2, 'utf8');
-console.log('OK — caso-exito.tsx patched');
+const oldCap3 = "      title: \"Tracking y Medici\\u00f3n Precisa\",";
+const newCap3 = "      icon: '<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42\"/></svg>',\n      title: \"Tracking y Medici\\u00f3n Precisa\",";
+if (code.includes(oldCap3)) { code = code.replace(oldCap3, newCap3); console.log("\u2705 Capacidades icon 3 added"); }
+
+const oldCap4 = "      title: \"Creatividades que Convierten\",";
+const newCap4 = "      icon: '<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M12 19l7-7 3 3-7 7-3-3z\"/><path d=\"M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z\"/><path d=\"M2 2l7.586 7.586\"/><circle cx=\"11\" cy=\"11\" r=\"2\"/></svg>',\n      title: \"Creatividades que Convierten\",";
+if (code.includes(oldCap4)) { code = code.replace(oldCap4, newCap4); console.log("\u2705 Capacidades icon 4 added"); }
+
+/* CHANGE 3: Add DashboardPreview after CasoDeExitoSection */
+const oldPage = "      <CasoDeExitoSection />";
+const newPage = "      <CasoDeExitoSection />\n      <DashboardPreview />";
+if (code.includes(oldPage)) {
+  code = code.replace(oldPage, newPage);
+  console.log("\u2705 DashboardPreview inserted in Page");
+} else { console.error("\u274C No CasoDeExitoSection"); process.exit(1); }
+
+/* CHANGE 4: Add icons to problema cards */
+const oldProbTitle1 = "              title: \"Gasto sin estrategia\",";
+const newProbTitle1 = "              icon: '<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 8v4M12 16h.01\"/></svg>',\n              title: \"Gasto sin estrategia\",";
+if (code.includes(oldProbTitle1)) { code = code.replace(oldProbTitle1, newProbTitle1); console.log("\u2705 Problema icon 1 added"); }
+
+const oldProbTitle2 = "              title: \"M\\u00e9tricas de vanidad\",";
+const newProbTitle2 = "              icon: '<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>',\n              title: \"M\\u00e9tricas de vanidad\",";
+if (code.includes(oldProbTitle2)) { code = code.replace(oldProbTitle2, newProbTitle2); console.log("\u2705 Problema icon 2 added"); }
+
+const oldProbTitle3 = "              title: \"Agencias gen\\u00e9ricas\",";
+const newProbTitle3 = "              icon: '<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A7CF7\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18M9 21V9\"/></svg>',\n              title: \"Agencias gen\\u00e9ricas\",";
+if (code.includes(oldProbTitle3)) { code = code.replace(oldProbTitle3, newProbTitle3); console.log("\u2705 Problema icon 3 added"); }
+
+// Add icon render to problema card
+const oldProbCard = "                <h3\n                  style={{\n                    fontFamily: \"var(--font-cormorant)\",\n                    fontWeight: 500,\n                    fontSize: \"1.35rem\",\n                    color: WHITE,\n                    marginBottom: \"0.6rem\",\n                  }}\n                >\n                  {item.title}\n                </h3>\n                <p\n                  style={{\n                    fontFamily: \"var(--font-jost)\",\n                    fontWeight: 300,\n                    fontSize: \"0.95rem\",\n                    color: \"rgba(255,255,255,0.7)\",\n                    lineHeight: 1.7,\n                  }}\n                >\n                  {item.text}\n                </p>";
+const newProbCard = "                <div style={{ marginBottom: \"0.75rem\" }} dangerouslySetInnerHTML={{ __html: item.icon }} />\n                <h3\n                  style={{\n                    fontFamily: \"var(--font-cormorant)\",\n                    fontWeight: 500,\n                    fontSize: \"1.35rem\",\n                    color: WHITE,\n                    marginBottom: \"0.6rem\",\n                  }}\n                >\n                  {item.title}\n                </h3>\n                <p\n                  style={{\n                    fontFamily: \"var(--font-jost)\",\n                    fontWeight: 300,\n                    fontSize: \"0.95rem\",\n                    color: \"rgba(255,255,255,0.7)\",\n                    lineHeight: 1.7,\n                  }}\n                >\n                  {item.text}\n                </p>";
+if (code.includes(oldProbCard)) {
+  code = code.replace(oldProbCard, newProbCard);
+  console.log("\u2705 Problema card icon render added");
+} else { console.error("\u274C No prob card"); process.exit(1); }
+
+fs.writeFileSync(FILE, code, "utf8");
+console.log("\n\ud83c\udf89 All visual enhancements applied!");
