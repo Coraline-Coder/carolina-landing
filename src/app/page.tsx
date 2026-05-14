@@ -459,6 +459,19 @@ function HeroSection() {
           opacity: heroOpacity,
         }}
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          style={{ marginBottom: "1.5rem" }}
+        >
+          <img
+            src={LW}
+            alt="CJB Logo"
+            style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(46,95,138,0.3))" }}
+          />
+        </motion.div>
+        
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
