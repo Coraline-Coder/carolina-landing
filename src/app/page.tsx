@@ -584,7 +584,7 @@ function SistemaFiltroSection() {
               marginBottom: "3.5rem",
             }}
           >
-            No es teoría de libros. Es la metodología que extraje de 15 meses, 18 campañas y $63,000 MXN gestionados — formalizada para replicarla con cada cliente.
+            15 meses de ejecución real terminaron convirtiéndose en un sistema. Uno que ahora implemento con cada cliente.
           </p>
         </ScrollReveal>
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
