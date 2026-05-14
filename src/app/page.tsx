@@ -521,27 +521,27 @@ function SistemaFiltroSection() {
     {
       letra: "P",
       palabra: "PROBAR",
-      desc: "Recopilar datos con inversión mínima y riesgo controlado. Audiencias amplias, múltiples formatos, sin optimizar los primeros 7 días. El objetivo es datos, no ventas.",
+      desc: "Antes de escalar, el sistema necesita datos reales. La mayoría de presupuestos se desperdicia aquí.",
     },
     {
       letra: "U",
       palabra: "UBICAR",
-      desc: "Identificar qué audiencias y formatos generan el menor CPA. La segmentación se estrecha progresivamente: de amplio a geo, de geo a retargeting.",
+      desc: "No todas las audiencias convierten igual. Esta fase encuentra a las que sí — con precisión quirúrgica.",
     },
     {
       letra: "L",
       palabra: "LANZAR",
-      desc: "Escalar lo que funciona en ventanas de oportunidad. Temporadas altas, incrementos de presupuesto calculados, sin romper el aprendizaje del algoritmo.",
+      desc: "Cuando el sistema identifica lo que funciona, se escala en el momento exacto. Ni antes ni después.",
     },
     {
       letra: "S",
       palabra: "SOSTENER",
-      desc: "Monitoreo constante para mantener el CPA bajo. Si el CPA sube más del 20% por 3 días consecutivos, se investiga y corrige en menos de 48 horas.",
+      desc: "Un CPA bajo no se mantiene solo. Esta fase es la que la mayoría de agencias omite.",
     },
     {
       letra: "O",
       palabra: "OPTIMIZAR",
-      desc: "Documentar aprendizajes al cierre de cada ciclo y reiniciar con ventaja. Cada ciclo comienza mejor calibrado que el anterior.",
+      desc: "Cada ciclo termina con aprendizajes documentados. El siguiente ciclo comienza mejor calibrado.",
     },
   ];
   return (
