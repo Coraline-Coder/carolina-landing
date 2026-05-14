@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-const NAVY = "#0A0F1E";
-const BLUE = "#4A7CF7";
+const NAVY = "#0A2342";
+const BLUE = "#2E5F8A";
 const WHITE = "#FFFFFF";
 
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -169,19 +169,19 @@ export default function CasoDeExitoSection() {
               <div
                 style={{
                   background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(74,124,247,0.15)",
-                  borderRadius: 12,
+                  border: "1px solid rgba(46,95,138,0.15)",
+                  borderRadius: 16,
                   padding: "2rem 1.5rem",
                   textAlign: "center" as const,
                   transition: "transform 0.3s, border-color 0.3s",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(74,124,247,0.4)";
+                  e.currentTarget.style.borderColor = "rgba(46,95,138,0.4)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "rgba(74,124,247,0.15)";
+                  e.currentTarget.style.borderColor = "rgba(46,95,138,0.15)";
                 }}
               >
                 <MetricValue m={m} />
@@ -237,15 +237,15 @@ export default function CasoDeExitoSection() {
                 fontSize: "0.9rem",
                 color: WHITE,
                 background: BLUE,
-                padding: "0.85rem 2rem",
-                borderRadius: 6,
+                padding: "0.85rem 2.2rem",
+                borderRadius: 100,
                 textDecoration: "none",
                 letterSpacing: "0.06em",
                 transition: "transform 0.25s, box-shadow 0.25s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 24px rgba(74,124,247,0.35)";
+                e.currentTarget.style.boxShadow = "0 6px 24px rgba(46,95,138,0.35)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";

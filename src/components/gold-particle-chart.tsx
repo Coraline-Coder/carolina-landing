@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 /* ====================== */
 /* BRAND COLORS           */
 /* ====================== */
-const BLUE  = { r: 74,  g: 144, b: 217 };
+const BLUE  = { r: 46,  g: 95,  b: 138 };
 const GREEN = { r: 16,  g: 185, b: 129 };
 const VIOLET= { r: 139, g: 92,  b: 246 };
 const ORANGE= { r: 255, g: 107, b: 53  };
@@ -194,7 +194,7 @@ export default function GoldParticleChart() {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(W, y);
-        ctx.strokeStyle = `rgba(74,144,217,0.04)`;
+        ctx.strokeStyle = `rgba(46,95,138,0.04)`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -204,7 +204,7 @@ export default function GoldParticleChart() {
         ctx.beginPath();
         ctx.moveTo(x, H * 0.1);
         ctx.lineTo(x, H * 0.9);
-        ctx.strokeStyle = `rgba(74,144,217,0.03)`;
+        ctx.strokeStyle = `rgba(46,95,138,0.03)`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -226,8 +226,8 @@ export default function GoldParticleChart() {
         const y = H - H * 0.1 - h;
 
         const grad = ctx.createLinearGradient(x, y, x, H - H * 0.1);
-        grad.addColorStop(0, `rgba(74,144,217,0.25)`);
-        grad.addColorStop(1, `rgba(74,144,217,0.05)`);
+        grad.addColorStop(0, `rgba(46,95,138,0.25)`);
+        grad.addColorStop(1, `rgba(46,95,138,0.05)`);
 
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -265,7 +265,7 @@ export default function GoldParticleChart() {
       ctx.closePath();
 
       const areaGrad = ctx.createLinearGradient(0, 0, W, 0);
-      areaGrad.addColorStop(0, `rgba(74,144,217,0.08)`);
+      areaGrad.addColorStop(0, `rgba(46,95,138,0.08)`);
       areaGrad.addColorStop(0.5, `rgba(16,185,129,0.06)`);
       areaGrad.addColorStop(1, `rgba(16,185,129,0.03)`);
       ctx.fillStyle = areaGrad;
@@ -285,7 +285,7 @@ export default function GoldParticleChart() {
 
         if (pass === 0) {
           // Glow
-          ctx.strokeStyle = `rgba(74,144,217,0.15)`;
+          ctx.strokeStyle = `rgba(46,95,138,0.15)`;
           ctx.lineWidth = 8;
           ctx.stroke();
         } else {

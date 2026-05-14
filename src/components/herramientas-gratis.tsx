@@ -1,7 +1,7 @@
 "use client";
 import React,{useState,useRef,useEffect,useCallback} from "react";
 import{motion,AnimatePresence} from "framer-motion";
-const NAVY="#0A0F1E";const BLUE="#4A7CF7";const WHITE="#FFFFFF";const NAVY2="#0F1628";
+const NAVY="#0A2342";const BLUE="#2E5F8A";const WHITE="#FFFFFF";const NAVY2="#0D1B2A";
 function ScrollReveal({children,className=""}:{children:React.ReactNode;className?:string}){
 const ref=useRef<HTMLDivElement>(null);const[vis,setVis]=useState(false);
 useEffect(()=>{const el=ref.current;if(!el)return;const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);obs.unobserve(el)}},{threshold:0.15});obs.observe(el);return()=>obs.disconnect()},[]);
@@ -19,7 +19,7 @@ const calculadoraHTML=`<!DOCTYPE html>
 
   body {
     background: #F5F6FA;
-    color: #0A0F1E;
+    color: #0A2342;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     min-height: 100vh;
@@ -30,8 +30,8 @@ const calculadoraHTML=`<!DOCTYPE html>
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(74,124,247,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,124,247,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(46,95,138,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,95,138,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
@@ -55,9 +55,9 @@ const calculadoraHTML=`<!DOCTYPE html>
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 4px;
-    color: #4A7CF7;
+    color: #2E5F8A;
     text-transform: uppercase;
-    border: 1px solid rgba(74,124,247,0.3);
+    border: 1px solid rgba(46,95,138,0.25);
     padding: 6px 16px;
     border-radius: 100px;
     margin-bottom: 24px;
@@ -69,7 +69,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     font-weight: 300;
     line-height: 1.15;
     margin-bottom: 16px;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   .header h1 span { color: #EF4444; }
@@ -87,7 +87,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     border: 1px solid #E2E6F0;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 24px rgba(10,15,30,0.07);
+    box-shadow: 0 4px 24px rgba(10,35,66,0.07);
   }
 
   .input-group { margin-bottom: 28px; }
@@ -102,7 +102,7 @@ const calculadoraHTML=`<!DOCTYPE html>
   .input-label span {
     font-size: 13px;
     font-weight: 400;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   .input-label .hint {
@@ -130,7 +130,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     border: 1px solid #D0D5E8;
     border-radius: 12px;
     padding: 14px 16px 14px 36px;
-    color: #0A0F1E;
+    color: #0A2342;
     font-family: 'Jost', sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -143,8 +143,8 @@ const calculadoraHTML=`<!DOCTYPE html>
   input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
 
   input:focus {
-    border-color: #4A7CF7;
-    background: #EEF2FF;
+    border-color: #2E5F8A;
+    background: #E8EFF8;
   }
 
   input::placeholder { color: #A0A8C0; }
@@ -238,7 +238,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
     font-weight: 400;
-    color: #0A0F1E;
+    color: #0A2342;
     line-height: 1;
   }
 
@@ -249,11 +249,11 @@ const calculadoraHTML=`<!DOCTYPE html>
   }
 
   .metric-box.highlight {
-    background: #EEF2FF;
-    border-color: rgba(74,124,247,0.3);
+    background: #E8EFF8;
+    border-color: rgba(46,95,138,0.25);
   }
 
-  .metric-box.highlight .m-value { color: #4A7CF7; }
+  .metric-box.highlight .m-value { color: #2E5F8A; }
 
   /* Semáforo */
   .semaforo {
@@ -284,7 +284,7 @@ const calculadoraHTML=`<!DOCTYPE html>
   .semaforo-text .s-title {
     font-size: 13px;
     font-weight: 500;
-    color: #0A0F1E;
+    color: #0A2342;
     margin-bottom: 4px;
   }
 
@@ -305,7 +305,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
     font-weight: 300;
-    color: #0A0F1E;
+    color: #0A2342;
     margin-bottom: 10px;
     line-height: 1.3;
   }
@@ -361,7 +361,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     text-transform: uppercase;
   }
 
-  .btn-restart:hover { border-color: #4A7CF7; color: #4A7CF7; }
+  .btn-restart:hover { border-color: #2E5F8A; color: #2E5F8A; }
 
   .footer {
     text-align: center;
@@ -596,7 +596,7 @@ const scorecardHTML=`<!DOCTYPE html>
 
   body {
     background: #F5F6FA;
-    color: #0A0F1E;
+    color: #0A2342;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     min-height: 100vh;
@@ -607,8 +607,8 @@ const scorecardHTML=`<!DOCTYPE html>
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(74,124,247,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,124,247,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(46,95,138,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,95,138,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
@@ -632,9 +632,9 @@ const scorecardHTML=`<!DOCTYPE html>
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 4px;
-    color: #4A7CF7;
+    color: #2E5F8A;
     text-transform: uppercase;
-    border: 1px solid rgba(74,124,247,0.3);
+    border: 1px solid rgba(46,95,138,0.25);
     padding: 6px 16px;
     border-radius: 100px;
     margin-bottom: 24px;
@@ -646,10 +646,10 @@ const scorecardHTML=`<!DOCTYPE html>
     font-weight: 300;
     line-height: 1.15;
     margin-bottom: 16px;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
-  .header h1 span { color: #4A7CF7; }
+  .header h1 span { color: #2E5F8A; }
 
   .header p {
     font-size: 14px;
@@ -686,7 +686,7 @@ const scorecardHTML=`<!DOCTYPE html>
 
   .progress-fill {
     height: 100%;
-    background: #4A7CF7;
+    background: #2E5F8A;
     border-radius: 100px;
     transition: width 0.4s ease;
     width: 0%;
@@ -698,13 +698,13 @@ const scorecardHTML=`<!DOCTYPE html>
     border: 1px solid #E2E6F0;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 24px rgba(10,15,30,0.07);
+    box-shadow: 0 4px 24px rgba(10,35,66,0.07);
   }
 
   .question-number {
     font-size: 10px;
     letter-spacing: 4px;
-    color: #4A7CF7;
+    color: #2E5F8A;
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -713,7 +713,7 @@ const scorecardHTML=`<!DOCTYPE html>
     font-family: 'Cormorant Garamond', serif;
     font-size: 26px;
     font-weight: 400;
-    color: #0A0F1E;
+    color: #0A2342;
     line-height: 1.3;
     margin-bottom: 12px;
   }
@@ -745,13 +745,13 @@ const scorecardHTML=`<!DOCTYPE html>
   }
 
   .option:hover {
-    border-color: #4A7CF7;
-    background: #EEF2FF;
+    border-color: #2E5F8A;
+    background: #E8EFF8;
   }
 
   .option.selected {
-    border-color: #4A7CF7;
-    background: #EEF2FF;
+    border-color: #2E5F8A;
+    background: #E8EFF8;
   }
 
   .option-dot {
@@ -767,8 +767,8 @@ const scorecardHTML=`<!DOCTYPE html>
   }
 
   .option.selected .option-dot {
-    border-color: #4A7CF7;
-    background: #4A7CF7;
+    border-color: #2E5F8A;
+    background: #2E5F8A;
   }
 
   .option.selected .option-dot::after {
@@ -781,7 +781,7 @@ const scorecardHTML=`<!DOCTYPE html>
 
   .option-text {
     font-size: 14px;
-    color: #0A0F1E;
+    color: #0A2342;
     font-weight: 400;
     line-height: 1.4;
   }
@@ -793,7 +793,7 @@ const scorecardHTML=`<!DOCTYPE html>
     flex-shrink: 0;
   }
 
-  .option.selected .option-score { color: #4A7CF7; }
+  .option.selected .option-score { color: #2E5F8A; }
 
   /* Nav buttons */
   .nav-buttons {
@@ -817,11 +817,11 @@ const scorecardHTML=`<!DOCTYPE html>
     white-space: nowrap;
   }
 
-  .btn-back:hover { border-color: #4A7CF7; color: #4A7CF7; }
+  .btn-back:hover { border-color: #2E5F8A; color: #2E5F8A; }
 
   .btn-next {
     flex: 1;
-    background: #4A7CF7;
+    background: #2E5F8A;
     color: white;
     border: none;
     border-radius: 12px;
@@ -838,7 +838,7 @@ const scorecardHTML=`<!DOCTYPE html>
   .btn-next:hover {
     background: #3a6ce6;
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(74,124,247,0.25);
+    box-shadow: 0 8px 24px rgba(46,95,138,0.25);
   }
 
   .btn-next:disabled {
@@ -916,7 +916,7 @@ const scorecardHTML=`<!DOCTYPE html>
   .b-name {
     font-size: 12px;
     font-weight: 400;
-    color: #0A0F1E;
+    color: #0A2342;
     margin-bottom: 2px;
   }
 
@@ -992,12 +992,12 @@ const scorecardHTML=`<!DOCTYPE html>
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
     font-weight: 300;
-    color: #0A0F1E;
+    color: #0A2342;
     margin-bottom: 10px;
     line-height: 1.3;
   }
 
-  .cta-box h3 span { color: #4A7CF7; }
+  .cta-box h3 span { color: #2E5F8A; }
 
   .cta-box p {
     font-size: 13px;
@@ -1048,7 +1048,7 @@ const scorecardHTML=`<!DOCTYPE html>
     text-transform: uppercase;
   }
 
-  .btn-restart:hover { border-color: #4A7CF7; color: #4A7CF7; }
+  .btn-restart:hover { border-color: #2E5F8A; color: #2E5F8A; }
 
   .footer {
     text-align: center;
@@ -1385,9 +1385,9 @@ const benchmarkHTML=`<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0A0F1E;
-    --blue: #4A7CF7;
-    --blue-dim: rgba(74,124,247,0.15);
+    --navy: #0A2342;
+    --blue: #2E5F8A;
+    --blue-dim: rgba(46,95,138,0.15);
     --white: #FFFFFF;
     --gray: #8A8FA8;
     --light: #F5F6FA;
@@ -1400,7 +1400,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 
   body {
     background: #F5F6FA;
-    color: #0A0F1E;
+    color: #0A2342;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     min-height: 100vh;
@@ -1413,8 +1413,8 @@ const benchmarkHTML=`<!DOCTYPE html>
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(74,124,247,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,124,247,0.06) 1px, transparent 1px);
+      linear-gradient(rgba(46,95,138,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,95,138,0.06) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
@@ -1442,7 +1442,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     letter-spacing: 4px;
     color: var(--blue);
     text-transform: uppercase;
-    border: 1px solid rgba(74,124,247,0.3);
+    border: 1px solid rgba(46,95,138,0.25);
     padding: 6px 16px;
     border-radius: 100px;
     margin-bottom: 24px;
@@ -1455,10 +1455,10 @@ const benchmarkHTML=`<!DOCTYPE html>
     line-height: 1.1;
     margin-bottom: 16px;
     letter-spacing: -0.5px;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
-  .header h1 span { color: #4A7CF7; }
+  .header h1 span { color: #2E5F8A; }
 
   .header p {
     font-size: 15px;
@@ -1481,7 +1481,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(74,124,247,0.2);
+    background: rgba(46,95,138,0.2);
     transition: all 0.3s ease;
   }
 
@@ -1492,7 +1492,7 @@ const benchmarkHTML=`<!DOCTYPE html>
   }
 
   .step-dot.done {
-    background: rgba(74,124,247,0.5);
+    background: rgba(46,95,138,0.5);
   }
 
   /* Card */
@@ -1501,13 +1501,13 @@ const benchmarkHTML=`<!DOCTYPE html>
     border: 1px solid #E2E6F0;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 24px rgba(10,15,30,0.08);
+    box-shadow: 0 4px 24px rgba(10,35,66,0.08);
   }
 
   .section-label {
     font-size: 10px;
     letter-spacing: 4px;
-    color: #4A7CF7;
+    color: #2E5F8A;
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -1517,7 +1517,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     font-size: 28px;
     font-weight: 400;
     margin-bottom: 32px;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   /* Input groups */
@@ -1535,7 +1535,7 @@ const benchmarkHTML=`<!DOCTYPE html>
   .input-label span {
     font-size: 13px;
     font-weight: 400;
-    color: #0A0F1E;
+    color: #0A2342;
     letter-spacing: 0.3px;
   }
 
@@ -1574,7 +1574,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     border: 1px solid #D0D5E8;
     border-radius: 12px;
     padding: 14px 44px 14px 40px;
-    color: #0A0F1E;
+    color: #0A2342;
     font-family: 'Jost', sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -1587,12 +1587,12 @@ const benchmarkHTML=`<!DOCTYPE html>
     padding: 14px 16px;
     cursor: pointer;
     appearance: none;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   select option {
     background: #FFFFFF;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   input[type="number"]::-webkit-outer-spin-button,
@@ -1600,7 +1600,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 
   input:focus, select:focus {
     border-color: var(--blue);
-    background: rgba(74,124,247,0.08);
+    background: rgba(46,95,138,0.08);
   }
 
   input::placeholder { color: rgba(255,255,255,0.35); }
@@ -1635,7 +1635,7 @@ const benchmarkHTML=`<!DOCTYPE html>
   .btn-primary:hover {
     background: #3a6ce6;
     transform: translateY(-1px);
-    box-shadow: 0 8px 32px rgba(74,124,247,0.3);
+    box-shadow: 0 8px 32px rgba(46,95,138,0.25);
   }
 
   .btn-primary:disabled {
@@ -1694,7 +1694,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     font-weight: 300;
     line-height: 1;
     display: block;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   .score-number .out-of {
@@ -1708,7 +1708,7 @@ const benchmarkHTML=`<!DOCTYPE html>
     font-size: 22px;
     font-weight: 400;
     margin-bottom: 8px;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
   .score-sublabel {
@@ -1792,8 +1792,8 @@ const benchmarkHTML=`<!DOCTYPE html>
 
   /* Insight box */
   .insight-box {
-    background: #EEF2FF;
-    border: 1px solid rgba(74,124,247,0.25);
+    background: #E8EFF8;
+    border: 1px solid rgba(46,95,138,0.25);
     border-radius: 16px;
     padding: 24px 28px;
     margin: 24px 0;
@@ -1802,7 +1802,7 @@ const benchmarkHTML=`<!DOCTYPE html>
   .insight-box .insight-title {
     font-size: 11px;
     letter-spacing: 3px;
-    color: #4A7CF7;
+    color: #2E5F8A;
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -1826,10 +1826,10 @@ const benchmarkHTML=`<!DOCTYPE html>
     font-weight: 300;
     margin-bottom: 12px;
     line-height: 1.3;
-    color: #0A0F1E;
+    color: #0A2342;
   }
 
-  .cta-section h3 span { color: #4A7CF7; }
+  .cta-section h3 span { color: #2E5F8A; }
 
   .cta-section p {
     font-size: 13px;
@@ -1881,8 +1881,8 @@ const benchmarkHTML=`<!DOCTYPE html>
   }
 
   .btn-restart:hover {
-    border-color: #4A7CF7;
-    color: #4A7CF7;
+    border-color: #2E5F8A;
+    color: #2E5F8A;
   }
 
   /* Footer */
@@ -2268,7 +2268,7 @@ return(
 <div className="herramientas-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"1.5rem"}}>
 {tools.map((t)=>{const isOpen=openTool===t.id;return(
 <ScrollReveal key={t.id}>
-<div style={{background:isOpen?"rgba(74,124,247,0.06)":NAVY,border:isOpen?"2px solid rgba(74,124,247,0.4)":"1px solid rgba(74,124,247,0.15)",borderRadius:16,padding:"2rem 1.5rem",display:"flex",flexDirection:"column",height:"100%",transition:"all 0.3s ease",cursor:"pointer"}} onClick={()=>setOpenTool(isOpen?null:t.id)}>
+<div style={{background:isOpen?"rgba(46,95,138,0.06)":NAVY,border:isOpen?"2px solid rgba(46,95,138,0.4)":"1px solid rgba(46,95,138,0.15)",borderRadius:16,padding:"2rem 1.5rem",display:"flex",flexDirection:"column",height:"100%",transition:"all 0.3s ease",cursor:"pointer"}} onClick={()=>setOpenTool(isOpen?null:t.id)}>
 <span style={{fontSize:"1.8rem",marginBottom:"0.75rem"}}>{t.emoji}</span>
 <p style={{fontFamily:"var(--font-jost)",fontWeight:400,fontSize:"0.75rem",letterSpacing:"0.1em",textTransform:"uppercase" as const,color:BLUE,marginBottom:"0.5rem"}}>{t.label}</p>
 <h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.25rem",color:isOpen?WHITE:WHITE,marginBottom:"0.5rem",lineHeight:1.2}}>{t.title}</h3>
@@ -2280,7 +2280,7 @@ return(
 <AnimatePresence>
 {openTool&&(
 <motion.div ref={panelRef} initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.4,ease:"easeInOut"}} style={{overflow:"hidden",marginTop:"2rem"}}>
-<div style={{background:"#F5F6FA",border:"1px solid rgba(74,124,247,0.2)",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
+<div style={{background:"#F5F6FA",border:"1px solid rgba(46,95,138,0.2)",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
 <h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.3rem",color:NAVY}}>{tools.find((t)=>t.id===openTool)?.emoji} {tools.find((t)=>t.id===openTool)?.title}</h3>
 <button onClick={()=>setOpenTool(null)} style={{background:"transparent",border:"1px solid #D0D5E8",borderRadius:8,padding:"0.4rem 1rem",fontFamily:"var(--font-jost)",fontSize:"0.75rem",color:"#8A8FA8",cursor:"pointer",letterSpacing:"0.06em",textTransform:"uppercase" as const}}>Cerrar ✕</button>

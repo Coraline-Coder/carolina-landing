@@ -24,11 +24,11 @@ const GoldParticleChart = dynamicNoSSR(
 );
 
 /* ─── colours ─── */
-const NAVY = "#0A0F1E";
-const BLUE = "#4A7CF7";
+const NAVY = "#0A2342";
+const BLUE = "#2E5F8A";
 const WHITE = "#FFFFFF";
 const LGRAY = "#F5F6FA";
-const NAVY2 = "#0F1628";
+const NAVY2 = "#0D1B2A";
 
 /* ─── tiny helpers ─── */
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -162,14 +162,14 @@ function DashboardPreview() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         style={{
           position: "relative",
-          borderRadius: 16,
+          borderRadius: 20,
           overflow: "hidden",
-          border: "1px solid rgba(74,124,247,0.25)",
-          background: "linear-gradient(145deg, #0d1225 0%, #0a0f1e 100%)",
-          boxShadow: "0 0 60px rgba(74,124,247,0.08), 0 25px 50px rgba(0,0,0,0.4)",
+          border: "1px solid rgba(46,95,138,0.25)",
+          background: "linear-gradient(145deg, #0D1B2A 0%, #0a0f1e 100%)",
+          boxShadow: "0 0 80px rgba(46,95,138,0.1), 0 25px 50px rgba(0,0,0,0.5)",
         }}
       >
-        <div style={{ position: "absolute", top: "-40%", left: "50%", transform: "translateX(-50%)", width: "80%", height: "60%", background: "radial-gradient(ellipse at center, rgba(74,124,247,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "-40%", left: "50%", transform: "translateX(-50%)", width: "80%", height: "60%", background: "radial-gradient(ellipse at center, rgba(46,95,138,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
         <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
@@ -189,22 +189,22 @@ function DashboardPreview() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
             {metrics.map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 16 }} animate={vis ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(74,124,247,0.12)", borderRadius: 10, padding: "1rem 1.25rem" }}>
+              <motion.div key={m.label} initial={{ opacity: 0, y: 16 }} animate={vis ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(46,95,138,0.12)", borderRadius: 14, padding: "1rem 1.25rem" }}>
                 <p style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.7rem", color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em", textTransform: "uppercase" as const, margin: 0 }}>{m.label}</p>
                 <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.8rem", color: m.color, margin: "4px 0", lineHeight: 1.1 }}>{m.value}</p>
                 <p style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: "0.65rem", color: "rgba(255,255,255,0.35)", margin: 0 }}>{m.sub}</p>
               </motion.div>
             ))}
           </div>
-          <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "1.25rem" }}>
+          <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "1.25rem" }}>
             <p style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", margin: "0 0 1rem" }}>Tendencia de Conversiones (ultimos 12 meses)</p>
             <svg viewBox="0 0 800 180" style={{ width: "100%", height: "auto" }}>
-              <defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4A7CF7" stopOpacity="0.3" /><stop offset="100%" stopColor="#4A7CF7" stopOpacity="0" /></linearGradient></defs>
+              <defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#2E5F8A" stopOpacity="0.3" /><stop offset="100%" stopColor="#2E5F8A" stopOpacity="0" /></linearGradient></defs>
               {[0,1,2,3,4].map(i => (<line key={i} x1="0" y1={i*40+10} x2="800" y2={i*40+10} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />))}
               <path d="M0,170 L0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14 L800,170 Z" fill="url(#chartGrad)" />
-              <path d="M0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14" fill="none" stroke="#4A7CF7" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="800" cy="14" r="5" fill="#4A7CF7" />
-              <circle cx="800" cy="14" r="9" fill="#4A7CF7" opacity="0.25"><animate attributeName="r" values="9;14;9" dur="2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.25;0;0.25" dur="2s" repeatCount="indefinite" /></circle>
+              <path d="M0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14" fill="none" stroke="#2E5F8A" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="800" cy="14" r="5" fill="#2E5F8A" />
+              <circle cx="800" cy="14" r="9" fill="#2E5F8A" opacity="0.25"><animate attributeName="r" values="9;14;9" dur="2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.25;0;0.25" dur="2s" repeatCount="indefinite" /></circle>
               {["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"].map((m,i) => (<text key={i} x={i*66+30} y="178" fill="rgba(255,255,255,0.25)" fontFamily="var(--font-jost)" fontSize="10" textAnchor="middle">{m}</text>))}
             </svg>
           </div>
@@ -230,7 +230,7 @@ function Marquee() {
   ];
   return (
     <div
-      style={{ background: NAVY, overflow: "hidden", borderTop: "1px solid rgba(74,124,247,0.25)" }}
+      style={{ background: NAVY, overflow: "hidden", borderTop: "1px solid rgba(46,95,138,0.15)" }}
     >
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
@@ -287,8 +287,8 @@ function Navbar() {
         right: 0,
         zIndex: 50,
         backdropFilter: scrolled ? "blur(14px)" : "none",
-        background: scrolled ? "rgba(10,15,30,0.88)" : "transparent",
-        borderBottom: scrolled ? "1px solid rgba(74,124,247,0.15)" : "none",
+        background: scrolled ? "rgba(10,35,66,0.88)" : "transparent",
+        borderBottom: scrolled ? "1px solid rgba(46,95,138,0.1)" : "none",
         transition: "all 0.35s ease",
       }}
     >
@@ -310,8 +310,9 @@ function Navbar() {
             fontWeight: 600,
             fontSize: "1.65rem",
             color: WHITE,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.15em",
             textDecoration: "none",
+            textTransform: "uppercase" as const,
           }}
         >
           CJB
@@ -348,7 +349,7 @@ function Navbar() {
               color: WHITE,
               background: BLUE,
               padding: "0.5rem 1.4rem",
-              borderRadius: 6,
+              borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
               textTransform: "uppercase" as const,
@@ -381,7 +382,7 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            style={{ background: "rgba(10,15,30,0.96)", padding: "1rem 2rem" }}
+            style={{ background: "rgba(10,35,66,0.96)", padding: "1rem 2rem" }}
             className="md:hidden"
           >
             {links.map((l) => (
@@ -414,7 +415,7 @@ function Navbar() {
                 color: WHITE,
                 background: BLUE,
                 padding: "0.5rem 1.4rem",
-                borderRadius: 6,
+                borderRadius: 100,
                 textDecoration: "none",
                 marginTop: "0.5rem",
               }}
@@ -466,10 +467,11 @@ function HeroSection() {
             fontFamily: "var(--font-jost)",
             fontWeight: 400,
             fontSize: "0.85rem",
-            letterSpacing: "0.2em",
+            letterSpacing: "0.25em",
             textTransform: "uppercase" as const,
             color: BLUE,
             marginBottom: "1.5rem",
+            opacity: 0.85,
           }}
         >
           CJB by Carolina Betancourt
@@ -525,8 +527,8 @@ function HeroSection() {
               fontSize: "0.9rem",
               color: WHITE,
               background: BLUE,
-              padding: "0.85rem 2rem",
-              borderRadius: 6,
+              padding: "0.85rem 2.2rem",
+              borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
             }}
@@ -541,8 +543,8 @@ function HeroSection() {
               fontSize: "0.9rem",
               color: "rgba(255,255,255,0.85)",
               border: "1px solid rgba(255,255,255,0.3)",
-              padding: "0.85rem 2rem",
-              borderRadius: 6,
+              padding: "0.85rem 2.2rem",
+              borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
             }}
@@ -590,7 +592,7 @@ function ProblemaSection() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: "2rem" }}>
           {[
             {
-              icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A7CF7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
+              icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5F8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
               title: "Gasto sin estrategia",
               text: "La mayoría de las marcas lanzan campañas sin un sistema claro de inversión, desperdiciando presupuesto en audiences y formatos que no convierten.",
             },
@@ -607,7 +609,7 @@ function ProblemaSection() {
               <div
                 style={{
                   padding: "2rem",
-                  borderLeft: "2px solid " + BLUE,
+                  borderLeft: "3px solid " + BLUE,
                   background: NAVY2,
                   borderRadius: "0 8px 8px 0",
                 }}
@@ -675,7 +677,7 @@ function SistemaFiltroSection() {
   ];
   return (
     <section id="sistema-filtro" style={{ background: NAVY, padding: "6rem 2rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(74,124,247,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(46,95,138,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -726,8 +728,8 @@ function SistemaFiltroSection() {
                   gap: "1.5rem",
                   alignItems: "flex-start",
                   background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: 16,
+                  border: "1px solid rgba(46,95,138,0.12)",
+                  borderRadius: 20,
                   padding: "1.75rem 2rem",
                   transition: "all 0.3s ease",
                 }}
@@ -745,8 +747,9 @@ function SistemaFiltroSection() {
                       fontFamily: "var(--font-cormorant)",
                       fontWeight: 700,
                       fontSize: "3.2rem",
-                      color: "rgba(255,255,255,0.95)",
+                      color: "#2E5F8A",
                       lineHeight: 1,
+                      textShadow: "0 0 30px rgba(46,95,138,0.3), 0 0 60px rgba(46,95,138,0.1)",
                     }}
                   >
                     {f.letra}
@@ -819,7 +822,7 @@ function SistemaFiltroSection() {
               marginTop: "2rem",
               padding: "1rem 2rem",
               background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              border: "1px solid rgba(46,95,138,0.2)",
               borderRadius: 100,
               display: "inline-block",
               margin: "2rem auto 0",
@@ -860,7 +863,7 @@ function CapacidadesSection() {
       text: "Implementación correcta del píxel de Meta, eventos de conversión, UTM parameters y dashboards que te muestran exactamente qué genera cada peso invertido.",
     },
     {
-      icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A7CF7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
+      icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2E5F8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
       title: "Creatividades que Convierten",
       text: "Dirección de briefs creativos basados en datos, no en suposiciones. Cada concepto probado con A/B testing antes de escalar inversión.",
     },
@@ -901,14 +904,14 @@ function CapacidadesSection() {
               <div
                 style={{
                   background: NAVY2,
-                  border: "1px solid rgba(74,124,247,0.2)",
-                  borderRadius: 12,
+                  border: "1px solid rgba(46,95,138,0.2)",
+                  borderRadius: 20,
                   padding: "2rem",
                   transition: "transform 0.3s, box-shadow 0.3s",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(74,124,247,0.15)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(46,95,138,0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
@@ -994,8 +997,8 @@ function ProcesoSection() {
                   alignItems: "flex-start",
                   padding: "1.5rem",
                   background: "rgba(255,255,255,0.04)",
-                  borderRadius: 10,
-                  border: "1px solid rgba(74,124,247,0.15)",
+                  borderRadius: 14,
+                  border: "1px solid rgba(46,95,138,0.15)",
                 }}
               >
                 <span
@@ -1098,8 +1101,8 @@ function ContactSection() {
                 fontSize: "0.9rem",
                 color: WHITE,
                 background: BLUE,
-                padding: "0.9rem 2.2rem",
-                borderRadius: 6,
+                padding: "0.9rem 2.4rem",
+                borderRadius: 100,
                 textDecoration: "none",
                 letterSpacing: "0.04em",
               }}
@@ -1149,7 +1152,7 @@ function Footer() {
       style={{
         background: NAVY,
         padding: "3rem 2rem 2rem",
-        borderTop: "1px solid rgba(74,124,247,0.15)",
+        borderTop: "1px solid rgba(46,95,138,0.08)",
       }}
     >
       <div
@@ -1169,7 +1172,8 @@ function Footer() {
             fontWeight: 600,
             fontSize: "1.4rem",
             color: WHITE,
-            letterSpacing: "0.06em",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase" as const,
           }}
         >
           CJB by Carolina Betancourt
