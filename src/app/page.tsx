@@ -309,7 +309,7 @@ function Navbar() {
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
           <img src={LW} alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
-          <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>CJB
+          <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>CJB</span>
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -1173,9 +1173,7 @@ function Footer() {
           gap: "1rem",
         }}
       >
-        <p
-          style={{
-            height: 48, width: "auto", objectFit: "contain" as const }} src={LW} alt="CJB Logo" />
+        <img src={LW} alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} />
         <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
