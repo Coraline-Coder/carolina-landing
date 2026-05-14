@@ -1,11 +1,11 @@
 "use client";
 import React,{useState,useRef,useEffect,useCallback} from "react";
 import{motion,AnimatePresence} from "framer-motion";
-const NAVY="#0A0F1E";const BLUE="#4A7CF7";const WHITE="#FFFFFF";
+const NAVY="#0A0F1E";const BLUE="#4A7CF7";const WHITE="#FFFFFF";const NAVY2="#0F1628";
 function ScrollReveal({children,className=""}:{children:React.ReactNode;className?:string}){
 const ref=useRef<HTMLDivElement>(null);const[vis,setVis]=useState(false);
 useEffect(()=>{const el=ref.current;if(!el)return;const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);obs.unobserve(el)}},{threshold:0.15});obs.observe(el);return()=>obs.disconnect()},[]);
-return(<motion.div ref={ref} initial={{opacity:0,y:32}} animate={vis?{opacity:1,y:0}:{}} transition={{duration:0.7,ease:"easeOut"}} className={className}>{children}</motion.div>);
+return(<motion.div ref={ref} initial={{opacity:0,y:20}} animate={vis?{opacity:1,y:0}:{}} transition={{duration:0.5,ease:"easeOut"}} className={className}>{children}</motion.div>);
 }
 const calculadoraHTML=`<!DOCTYPE html>
 <html lang="es">
@@ -2258,12 +2258,12 @@ const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HT
 const[iframeHeights,setIframeHeights]=useState<Record<string,number>>({});
 const handleHeight=useCallback((toolId:string,h:number)=>{setIframeHeights((prev)=>({...prev,[toolId]:h}))},[]);
 return(
-<section style={{background:WHITE,padding:"6rem 2rem"}}>
+<section style={{background:NAVY2,padding:"6rem 2rem"}}>
 <div style={{maxWidth:1100,margin:"0 auto"}}>
 <ScrollReveal>
 <p style={{fontFamily:"var(--font-jost)",fontWeight:400,fontSize:"0.8rem",letterSpacing:"0.18em",textTransform:"uppercase" as const,color:BLUE,marginBottom:"0.75rem"}}>Herramientas gratuitas</p>
-<h2 style={{fontFamily:"var(--font-cormorant)",fontWeight:400,fontSize:"clamp(1.8rem,4vw,2.8rem)",color:NAVY,lineHeight:1.15,marginBottom:"0.5rem"}}>Empieza aqui. Gratis.</h2>
-<p style={{fontFamily:"var(--font-jost)",fontWeight:300,fontSize:"1.05rem",color:"#4A4A4A",lineHeight:1.7,maxWidth:600,marginBottom:"3rem"}}>Tres herramientas para saber exactamente donde esta tu problema — antes de hablar con alguien.</p>
+<h2 style={{fontFamily:"var(--font-cormorant)",fontWeight:400,fontSize:"clamp(1.8rem,4vw,2.8rem)",color:WHITE,lineHeight:1.15,marginBottom:"0.5rem"}}>Empieza aqui. Gratis.</h2>
+<p style={{fontFamily:"var(--font-jost)",fontWeight:300,fontSize:"1.05rem",color:"rgba(255,255,255,0.7)",lineHeight:1.7,maxWidth:600,marginBottom:"3rem"}}>Tres herramientas para saber exactamente donde esta tu problema — antes de hablar con alguien.</p>
 </ScrollReveal>
 <div className="herramientas-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"1.5rem"}}>
 {tools.map((t)=>{const isOpen=openTool===t.id;return(
@@ -2271,8 +2271,8 @@ return(
 <div style={{background:isOpen?"rgba(74,124,247,0.06)":NAVY,border:isOpen?"2px solid rgba(74,124,247,0.4)":"1px solid rgba(74,124,247,0.15)",borderRadius:16,padding:"2rem 1.5rem",display:"flex",flexDirection:"column",height:"100%",transition:"all 0.3s ease",cursor:"pointer"}} onClick={()=>setOpenTool(isOpen?null:t.id)}>
 <span style={{fontSize:"1.8rem",marginBottom:"0.75rem"}}>{t.emoji}</span>
 <p style={{fontFamily:"var(--font-jost)",fontWeight:400,fontSize:"0.75rem",letterSpacing:"0.1em",textTransform:"uppercase" as const,color:BLUE,marginBottom:"0.5rem"}}>{t.label}</p>
-<h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.25rem",color:isOpen?NAVY:WHITE,marginBottom:"0.5rem",lineHeight:1.2}}>{t.title}</h3>
-<p style={{fontFamily:"var(--font-jost)",fontWeight:300,fontSize:"0.85rem",color:isOpen?"#4A4A4A":"rgba(255,255,255,0.6)",lineHeight:1.6,flex:1}}>{t.desc}</p>
+<h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.25rem",color:isOpen?WHITE:WHITE,marginBottom:"0.5rem",lineHeight:1.2}}>{t.title}</h3>
+<p style={{fontFamily:"var(--font-jost)",fontWeight:300,fontSize:"0.85rem",color:isOpen?"rgba(255,255,255,0.7)":"rgba(255,255,255,0.6)",lineHeight:1.6,flex:1}}>{t.desc}</p>
 <button style={{fontFamily:"var(--font-jost)",fontWeight:500,fontSize:"0.8rem",color:WHITE,background:BLUE,border:"none",borderRadius:8,padding:"0.65rem 1.2rem",marginTop:"1.2rem",cursor:"pointer",letterSpacing:"0.06em"}} onClick={(e)=>{e.stopPropagation();setOpenTool(isOpen?null:t.id)}}>{isOpen?"Cerrar":"Usar herramienta"} →</button>
 </div>
 </ScrollReveal>);})}
@@ -2280,7 +2280,7 @@ return(
 <AnimatePresence>
 {openTool&&(
 <motion.div ref={panelRef} initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.4,ease:"easeInOut"}} style={{overflow:"hidden",marginTop:"2rem"}}>
-<div style={{background:"#F5F6FA",border:"1px solid #E2E6F0",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
+<div style={{background:"#F5F6FA",border:"1px solid rgba(74,124,247,0.2)",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
 <h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.3rem",color:NAVY}}>{tools.find((t)=>t.id===openTool)?.emoji} {tools.find((t)=>t.id===openTool)?.title}</h3>
 <button onClick={()=>setOpenTool(null)} style={{background:"transparent",border:"1px solid #D0D5E8",borderRadius:8,padding:"0.4rem 1rem",fontFamily:"var(--font-jost)",fontSize:"0.75rem",color:"#8A8FA8",cursor:"pointer",letterSpacing:"0.06em",textTransform:"uppercase" as const}}>Cerrar ✕</button>

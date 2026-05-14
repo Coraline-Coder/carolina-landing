@@ -28,6 +28,7 @@ const NAVY = "#0A0F1E";
 const BLUE = "#4A7CF7";
 const WHITE = "#FFFFFF";
 const LGRAY = "#F5F6FA";
+const NAVY2 = "#0F1628";
 
 /* ─── tiny helpers ─── */
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -476,7 +477,7 @@ function HeroSection() {
 /* ─── PROBLEMA — white bg, NAVY text ─── */
 function ProblemaSection() {
   return (
-    <section style={{ background: WHITE, padding: "6rem 2rem" }}>
+    <section style={{ background: NAVY2, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -497,7 +498,7 @@ function ProblemaSection() {
               fontFamily: "var(--font-cormorant)",
               fontWeight: 400,
               fontSize: "clamp(1.8rem,4vw,2.8rem)",
-              color: NAVY,
+              color: WHITE,
               lineHeight: 1.15,
               marginBottom: "2.5rem",
             }}
@@ -524,8 +525,8 @@ function ProblemaSection() {
               <div
                 style={{
                   padding: "2rem",
-                  borderLeft: "3px solid " + BLUE,
-                  background: LGRAY,
+                  borderLeft: "2px solid " + BLUE,
+                  background: NAVY2,
                   borderRadius: "0 8px 8px 0",
                 }}
               >
@@ -534,7 +535,7 @@ function ProblemaSection() {
                     fontFamily: "var(--font-cormorant)",
                     fontWeight: 500,
                     fontSize: "1.35rem",
-                    color: NAVY,
+                    color: WHITE,
                     marginBottom: "0.6rem",
                   }}
                 >
@@ -545,7 +546,7 @@ function ProblemaSection() {
                     fontFamily: "var(--font-jost)",
                     fontWeight: 300,
                     fontSize: "0.95rem",
-                    color: "#4A4A4A",
+                    color: "rgba(255,255,255,0.7)",
                     lineHeight: 1.7,
                   }}
                 >
@@ -590,7 +591,8 @@ function SistemaFiltroSection() {
     },
   ];
   return (
-    <section id="sistema-filtro" style={{ background: BLUE, padding: "6rem 2rem" }}>
+    <section id="sistema-filtro" style={{ background: NAVY, padding: "6rem 2rem", position: "relative" }}>
+      <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(74,124,247,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -780,7 +782,7 @@ function CapacidadesSection() {
     },
   ];
   return (
-    <section id="capacidades" style={{ background: LGRAY, padding: "6rem 2rem" }}>
+    <section id="capacidades" style={{ background: NAVY2, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -801,7 +803,7 @@ function CapacidadesSection() {
               fontFamily: "var(--font-cormorant)",
               fontWeight: 400,
               fontSize: "clamp(1.8rem,4vw,2.8rem)",
-              color: NAVY,
+              color: WHITE,
               lineHeight: 1.15,
               marginBottom: "3rem",
             }}
@@ -814,15 +816,15 @@ function CapacidadesSection() {
             <ScrollReveal key={i}>
               <div
                 style={{
-                  background: WHITE,
-                  border: "1px solid #E8E8E8",
+                  background: NAVY2,
+                  border: "1px solid rgba(74,124,247,0.2)",
                   borderRadius: 12,
                   padding: "2rem",
                   transition: "transform 0.3s, box-shadow 0.3s",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.08)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(74,124,247,0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
@@ -834,7 +836,7 @@ function CapacidadesSection() {
                     fontFamily: "var(--font-cormorant)",
                     fontWeight: 500,
                     fontSize: "1.25rem",
-                    color: NAVY,
+                    color: WHITE,
                     marginBottom: "0.6rem",
                   }}
                 >
@@ -845,7 +847,7 @@ function CapacidadesSection() {
                     fontFamily: "var(--font-jost)",
                     fontWeight: 300,
                     fontSize: "0.9rem",
-                    color: "#4A4A4A",
+                    color: "rgba(255,255,255,0.7)",
                     lineHeight: 1.7,
                   }}
                 >
@@ -959,7 +961,7 @@ function ProcesoSection() {
 /* ─── CONTACTO — light gray bg, NAVY text ─── */
 function ContactSection() {
   return (
-    <section id="contacto" style={{ background: LGRAY, padding: "6rem 2rem" }}>
+    <section id="contacto" style={{ background: NAVY2, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <ScrollReveal>
           <p
@@ -980,7 +982,7 @@ function ContactSection() {
               fontFamily: "var(--font-cormorant)",
               fontWeight: 400,
               fontSize: "clamp(1.8rem,4vw,2.8rem)",
-              color: NAVY,
+              color: WHITE,
               lineHeight: 1.15,
               marginBottom: "1.5rem",
             }}
@@ -992,7 +994,7 @@ function ContactSection() {
               fontFamily: "var(--font-jost)",
               fontWeight: 300,
               fontSize: "1.05rem",
-              color: "#4A4A4A",
+              color: "rgba(255,255,255,0.7)",
               lineHeight: 1.7,
               marginBottom: "2.5rem",
             }}
@@ -1027,8 +1029,8 @@ function ContactSection() {
                 fontFamily: "var(--font-jost)",
                 fontWeight: 400,
                 fontSize: "0.9rem",
-                color: NAVY,
-                border: "1px solid #E8E8E8",
+                color: WHITE,
+                border: "1px solid rgba(255,255,255,0.3)",
                 padding: "0.9rem 2.2rem",
                 borderRadius: 6,
                 textDecoration: "none",
@@ -1042,8 +1044,8 @@ function ContactSection() {
             style={{
               fontFamily: "var(--font-jost)",
               fontWeight: 300,
-              fontSize: "0.85rem",
-              color: "#7A7A7A",
+              fontSize: "0.75rem",
+              color: "rgba(255,255,255,0.35)",
               marginTop: "1.5rem",
             }}
           >
