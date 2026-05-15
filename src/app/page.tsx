@@ -481,7 +481,7 @@ function HeroSection() {
             opacity: 0.85,
           }}
         >
-          CJB by Carolina Betancourt
+          Carolina Betancourt
         </motion.p>
 
         <WordRevealText text="Convierte cada peso en Meta Ads en retorno real" />
