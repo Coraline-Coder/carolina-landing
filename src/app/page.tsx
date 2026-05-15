@@ -1250,7 +1250,7 @@ function Footer() {
             marginTop: "1.5rem",
           }}
         >
-          © 2026 CJB by Carolina Betancourt
+          © 2026 Carolina Betancourt
         </p>
       </div>
     </footer>
