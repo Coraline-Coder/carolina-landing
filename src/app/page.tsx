@@ -174,7 +174,7 @@ function DashboardPreview() {
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
-          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginLeft: 12 }}><img src="/logo-cb.jpeg" alt="" style={{ height: 14, width: "auto", opacity: 0.5, display: "inline", verticalAlign: "middle", marginRight: 4 }} />Meta Ads Manager \u2014 Campaign Dashboard</span>
+          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginLeft: 12 }}><img src="/logo-cb.png" alt="" style={{ height: 14, width: "auto", opacity: 0.5, display: "inline", verticalAlign: "middle", marginRight: 4 }} />Meta Ads Manager \u2014 Campaign Dashboard</span>
         </div>
         <div style={{ padding: "1.5rem 2rem 2rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
@@ -307,7 +307,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
+          <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
           <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>CJB</span>
         </a>
 
@@ -459,7 +459,7 @@ function HeroSection() {
           style={{ marginBottom: "1.5rem" }}
         >
           <img
-            src="/logo-cb.jpeg"
+            src="/logo-cb.png"
             alt="CJB Logo"
             style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(46,95,138,0.3))" }}
           />
@@ -1172,7 +1172,7 @@ function Footer() {
           gap: "1rem",
         }}
       >
-        <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} />
+        <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} />
         <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
