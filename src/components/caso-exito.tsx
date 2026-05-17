@@ -2,9 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-const NAVY = "#0A2342";
-const BLUE = "#2E5F8A";
-const WHITE = "#FFFFFF";
+const DEEP_NAVY     = "#0B2A5A";
+const CORE_BLUE     = "#1E3A8A";
+const BLUE_ELECTRIC = "#3B82F6";
+const ZINC_900      = "#111827";
+const SILVER_METAL  = "#C0C5CE";
+const WHITE         = "#FFFFFF";
 
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -86,7 +89,7 @@ function MetricValue({ m }: { m: { value: string; target: number; suffix: string
           fontFamily: "var(--font-cormorant)",
           fontWeight: 600,
           fontSize: "clamp(2rem,4vw,2.8rem)",
-          color: BLUE,
+          color: BLUE_ELECTRIC,
           lineHeight: 1.1,
           marginBottom: "0.4rem",
         }}
@@ -107,17 +110,17 @@ export default function CasoDeExitoSection() {
     { value: "15 meses", target: 15, suffix: " meses", prefix: "", label: "Gestión continua", detail: "documentada" },
   ];
   return (
-    <section style={{ background: NAVY, padding: "6rem 2rem" }}>
+    <section style={{ background: DEEP_NAVY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
-              color: BLUE,
+              color: BLUE_ELECTRIC,
               marginBottom: "0.75rem",
             }}
           >
@@ -137,12 +140,12 @@ export default function CasoDeExitoSection() {
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.85rem",
               letterSpacing: "0.1em",
               textTransform: "uppercase" as const,
-              color: "rgba(255,255,255,0.45)",
+              color: SILVER_METAL,
               marginBottom: "1.5rem",
             }}
           >
@@ -150,7 +153,7 @@ export default function CasoDeExitoSection() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 300,
               fontSize: "1.05rem",
               color: "rgba(255,255,255,0.7)",
@@ -168,8 +171,8 @@ export default function CasoDeExitoSection() {
             <ScrollReveal key={i}>
               <div
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(46,95,138,0.15)",
+                  background: ZINC_900,
+                  border: "1px solid " + CORE_BLUE,
                   borderRadius: 16,
                   padding: "2rem 1.5rem",
                   textAlign: "center" as const,
@@ -177,17 +180,19 @@ export default function CasoDeExitoSection() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(46,95,138,0.4)";
+                  e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.12)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "rgba(46,95,138,0.15)";
+                  e.currentTarget.style.borderColor = CORE_BLUE;
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <MetricValue m={m} />
                 <p
                   style={{
-                    fontFamily: "var(--font-jost)",
+                    fontFamily: "'DM Sans', sans-serif",
                     fontWeight: 500,
                     fontSize: "0.9rem",
                     color: WHITE,
@@ -199,7 +204,7 @@ export default function CasoDeExitoSection() {
                 {m.detail && (
                   <p
                     style={{
-                      fontFamily: "var(--font-jost)",
+                      fontFamily: "'DM Sans', sans-serif",
                       fontWeight: 300,
                       fontSize: "0.8rem",
                       color: "rgba(255,255,255,0.45)",
@@ -216,7 +221,7 @@ export default function CasoDeExitoSection() {
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 300,
               fontSize: "1.05rem",
               color: "rgba(255,255,255,0.7)",
@@ -232,23 +237,25 @@ export default function CasoDeExitoSection() {
               href="#sistema-filtro"
               style={{
                 display: "inline-block",
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 500,
                 fontSize: "0.9rem",
                 color: WHITE,
-                background: BLUE,
+                background: BLUE_ELECTRIC,
                 padding: "0.85rem 2.2rem",
                 borderRadius: 100,
                 textDecoration: "none",
                 letterSpacing: "0.06em",
-                transition: "transform 0.25s, box-shadow 0.25s",
+                transition: "all 0.25s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 24px rgba(46,95,138,0.35)";
+                e.currentTarget.style.background = CORE_BLUE;
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.25)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.background = BLUE_ELECTRIC;
                 e.currentTarget.style.boxShadow = "none";
               }}
             >

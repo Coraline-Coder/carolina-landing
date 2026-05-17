@@ -24,11 +24,16 @@ const GoldParticleChart = dynamicNoSSR(
 );
 
 /* ─── colours ─── */
-const NAVY = "#0A2342";
-const BLUE = "#2E5F8A";
-const WHITE = "#FFFFFF";
-const LGRAY = "#F5F6FA";
-const NAVY2 = "#0D1B2A";
+const BLACK         = "#000000";
+const DEEP_NAVY     = "#0B2A5A";
+const CORE_BLUE     = "#1E3A8A";
+const BLUE_ELECTRIC = "#3B82F6";
+const SILVER_METAL  = "#C0C5CE";
+const GRAY_MEDIUM   = "#9CA3AF";
+const ZINC_900      = "#111827";
+const ZINC_800      = "#1F2937";
+const WHITE         = "#FFFFFF";
+const OFF_WHITE     = "#F9FAFB";
 
 /* ─── tiny helpers ─── */
 function ScrollReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -151,7 +156,7 @@ function Marquee() {
   ];
   return (
     <div
-      style={{ background: NAVY, overflow: "hidden", borderTop: "1px solid rgba(46,95,138,0.15)" }}
+      style={{ background: BLACK, overflow: "hidden", borderTop: "1px solid rgba(59,130,246,0.15)" }}
     >
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
@@ -162,8 +167,8 @@ function Marquee() {
           <span
             key={i}
             style={{
-              color: BLUE,
-              fontFamily: "var(--font-jost)",
+              color: BLUE_ELECTRIC,
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.95rem",
               letterSpacing: "0.12em",
@@ -215,8 +220,8 @@ function Navbar() {
         right: 0,
         zIndex: 50,
         backdropFilter: scrolled ? "blur(14px)" : "none",
-        background: scrolled ? "rgba(10,35,66,0.88)" : "transparent",
-        borderBottom: scrolled ? "1px solid rgba(46,95,138,0.1)" : "none",
+        background: scrolled ? "rgba(0,0,0,0.92)" : "transparent",
+        borderBottom: scrolled ? "1px solid rgba(59,130,246,0.1)" : "none",
         transition: "all 0.35s ease",
       }}
     >
@@ -236,7 +241,10 @@ function Navbar() {
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
           <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
-          <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>CJB</span>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>CJB</span>
+            <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: SILVER_METAL, letterSpacing: "0.22em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>ESTRATEGIA · KPIS · PAUTA · RESULTADOS</span>
+          </div>
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -246,7 +254,7 @@ function Navbar() {
               key={l.href}
               href={l.href}
               style={{
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "0.85rem",
                 color: "rgba(255,255,255,0.85)",
@@ -255,7 +263,7 @@ function Navbar() {
                 textDecoration: "none",
                 transition: "color 0.25s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+              onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
               onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.85)")}
             >
               {l.label}
@@ -264,17 +272,20 @@ function Navbar() {
           <a
             href="#calculadora"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 500,
               fontSize: "0.85rem",
               color: WHITE,
-              background: BLUE,
+              background: BLUE_ELECTRIC,
               padding: "0.5rem 1.4rem",
               borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
               textTransform: "uppercase" as const,
+              transition: "background 0.25s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = CORE_BLUE)}
+            onMouseLeave={(e) => (e.currentTarget.style.background = BLUE_ELECTRIC)}
           >
             Agendar llamada
           </a>
@@ -302,7 +313,7 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            style={{ background: "rgba(10,35,66,0.96)", padding: "1rem 2rem" }}
+            style={{ background: "rgba(0,0,0,0.96)", padding: "1rem 2rem" }}
             >
             {links.map((l) => (
               <a
@@ -311,7 +322,7 @@ function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 style={{
                   display: "block",
-                  fontFamily: "var(--font-jost)",
+                  fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 400,
                   fontSize: "0.9rem",
                   color: "rgba(255,255,255,0.85)",
@@ -328,11 +339,11 @@ function Navbar() {
               onClick={() => setMobileOpen(false)}
               style={{
                 display: "inline-block",
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 500,
                 fontSize: "0.85rem",
                 color: WHITE,
-                background: BLUE,
+                background: BLUE_ELECTRIC,
                 padding: "0.5rem 1.4rem",
                 borderRadius: 100,
                 textDecoration: "none",
@@ -356,7 +367,7 @@ function HeroSection() {
     <section
       style={{
         position: "relative",
-        background: NAVY,
+        background: "radial-gradient(ellipse at top right, #0B2A5A 0%, #000000 70%)",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -387,7 +398,7 @@ function HeroSection() {
           <img
             src="/logo-cb.png"
             alt="CJB Logo"
-            style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(46,95,138,0.3))" }}
+            style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(59,130,246,0.3))" }}
           />
         </motion.div>
         
@@ -396,12 +407,12 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           style={{
-            fontFamily: "var(--font-jost)",
+            fontFamily: "'DM Sans', sans-serif",
             fontWeight: 400,
             fontSize: "0.85rem",
             letterSpacing: "0.25em",
             textTransform: "uppercase" as const,
-            color: BLUE,
+            color: BLUE_ELECTRIC,
             marginBottom: "1.5rem",
             opacity: 0.85,
           }}
@@ -432,7 +443,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9 }}
           style={{
-            fontFamily: "var(--font-jost)",
+            fontFamily: "'DM Sans', sans-serif",
             fontWeight: 300,
             fontSize: "1.1rem",
             color: "rgba(255,255,255,0.7)",
@@ -454,31 +465,43 @@ function HeroSection() {
           <a
             href="#calculadora"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 500,
               fontSize: "0.9rem",
               color: WHITE,
-              background: BLUE,
+              background: BLUE_ELECTRIC,
               padding: "0.85rem 2.2rem",
               borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
+              transition: "background 0.25s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = CORE_BLUE)}
+            onMouseLeave={(e) => (e.currentTarget.style.background = BLUE_ELECTRIC)}
           >
             Agendar llamada estratégica
           </a>
           <a
             href="#sistema-filtro"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.9rem",
               color: "rgba(255,255,255,0.85)",
-              border: "1px solid rgba(255,255,255,0.3)",
+              border: "1px solid " + BLUE_ELECTRIC,
               padding: "0.85rem 2.2rem",
               borderRadius: 100,
               textDecoration: "none",
               letterSpacing: "0.06em",
+              transition: "all 0.25s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(59,130,246,0.10)";
+              e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.borderColor = BLUE_ELECTRIC;
             }}
           >
             Conocer el Método P.U.L.S.O.
@@ -489,20 +512,20 @@ function HeroSection() {
   );
 }
 
-/* ─── PROBLEMA — white bg, NAVY text ─── */
+/* ─── PROBLEMA — white bg, DEEP_NAVY text ─── */
 function ProblemaSection() {
   return (
-    <section style={{ background: NAVY2, padding: "6rem 2rem" }}>
+    <section style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
-              color: BLUE,
+              color: BLUE_ELECTRIC,
               marginBottom: "0.75rem",
             }}
           >
@@ -524,7 +547,7 @@ function ProblemaSection() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: "2rem" }}>
           {[
             {
-              icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5F8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
+              icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
               title: "Gasto sin estrategia",
               text: "La mayoría de las marcas lanzan campañas sin un sistema claro de inversión, desperdiciando presupuesto en audiences y formatos que no convierten.",
             },
@@ -541,9 +564,26 @@ function ProblemaSection() {
               <div
                 style={{
                   padding: "2rem",
-                  borderLeft: "3px solid " + BLUE,
-                  background: NAVY2,
+                  borderLeft: "3px solid " + BLUE_ELECTRIC,
+                  background: ZINC_900,
                   borderRadius: "0 8px 8px 0",
+                  border: "1px solid " + CORE_BLUE,
+                  borderLeftWidth: "3px",
+                  borderLeftColor: BLUE_ELECTRIC,
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.borderLeftColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = CORE_BLUE;
+                  e.currentTarget.style.borderLeftColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.borderColor = CORE_BLUE;
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <div style={{ marginBottom: "0.75rem" }} dangerouslySetInnerHTML={{ __html: item.icon }} />
@@ -560,7 +600,7 @@ function ProblemaSection() {
                 </h3>
                 <p
                   style={{
-                    fontFamily: "var(--font-jost)",
+                    fontFamily: "'DM Sans', sans-serif",
                     fontWeight: 300,
                     fontSize: "0.95rem",
                     color: "rgba(255,255,255,0.7)",
@@ -578,7 +618,7 @@ function ProblemaSection() {
   );
 }
 
-/* ─── MÉTODO P.U.L.S.O. — BLUE bg, WHITE text ─── */
+/* ─── MÉTODO P.U.L.S.O. — BLUE_ELECTRIC bg, WHITE text ─── */
 function SistemaFiltroSection() {
   const fases = [
     {
@@ -608,16 +648,16 @@ function SistemaFiltroSection() {
     },
   ];
   return (
-    <section id="sistema-filtro" style={{ background: NAVY, padding: "6rem 2rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(46,95,138,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
+    <section id="sistema-filtro" style={{ background: DEEP_NAVY, padding: "6rem 2rem", position: "relative" }}>
+      <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
               color: "rgba(255,255,255,0.6)",
               marginBottom: "0.75rem",
@@ -639,7 +679,7 @@ function SistemaFiltroSection() {
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 300,
               fontSize: "1rem",
               color: "rgba(255,255,255,0.75)",
@@ -659,11 +699,21 @@ function SistemaFiltroSection() {
                   display: "flex",
                   gap: "1.5rem",
                   alignItems: "flex-start",
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(46,95,138,0.12)",
+                  background: ZINC_900,
+                  border: "1px solid " + CORE_BLUE,
                   borderRadius: 20,
                   padding: "1.75rem 2rem",
                   transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = CORE_BLUE;
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <div
@@ -679,21 +729,21 @@ function SistemaFiltroSection() {
                       fontFamily: "var(--font-cormorant)",
                       fontWeight: 700,
                       fontSize: "3.2rem",
-                      color: "#2E5F8A",
+                      color: "#3B82F6",
                       lineHeight: 1,
-                      textShadow: "0 0 30px rgba(46,95,138,0.3), 0 0 60px rgba(46,95,138,0.1)",
+                      textShadow: "0 0 30px rgba(59,130,246,0.3), 0 0 60px rgba(59,130,246,0.1)",
                     }}
                   >
                     {f.letra}
                   </span>
                   <span
                     style={{
-                      fontFamily: "var(--font-jost)",
+                      fontFamily: "'DM Sans', sans-serif",
                       fontWeight: 500,
                       fontSize: "0.6rem",
                       letterSpacing: "0.2em",
                       textTransform: "uppercase" as const,
-                      color: "rgba(255,255,255,0.45)",
+                      color: SILVER_METAL,
                       marginTop: "0.35rem",
                     }}
                   >
@@ -703,7 +753,7 @@ function SistemaFiltroSection() {
                 <div style={{ flex: 1, paddingTop: "0.35rem" }}>
                   <h3
                     style={{
-                      fontFamily: "var(--font-jost)",
+                      fontFamily: "'DM Sans', sans-serif",
                       fontWeight: 600,
                       fontSize: "1.05rem",
                       letterSpacing: "0.08em",
@@ -716,7 +766,7 @@ function SistemaFiltroSection() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "var(--font-jost)",
+                      fontFamily: "'DM Sans', sans-serif",
                       fontWeight: 300,
                       fontSize: "0.95rem",
                       color: "rgba(255,255,255,0.8)",
@@ -753,8 +803,8 @@ function SistemaFiltroSection() {
               textAlign: "center",
               marginTop: "2rem",
               padding: "1rem 2rem",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(46,95,138,0.2)",
+              background: "rgba(59,130,246,0.06)",
+              border: "1px solid rgba(59,130,246,0.2)",
               borderRadius: 100,
               display: "inline-block",
               margin: "2rem auto 0",
@@ -762,7 +812,7 @@ function SistemaFiltroSection() {
           >
             <p
               style={{
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "0.75rem",
                 letterSpacing: "0.06em",
@@ -779,7 +829,7 @@ function SistemaFiltroSection() {
   );
 }
 
-/* ─── CAPACIDADES — light gray bg, NAVY text ─── */
+/* ─── CAPACIDADES — light gray bg, DEEP_NAVY text ─── */
 function CapacidadesSection() {
   const caps = [
     {
@@ -795,23 +845,23 @@ function CapacidadesSection() {
       text: "Implementación correcta del píxel de Meta, eventos de conversión, UTM parameters y dashboards que te muestran exactamente qué genera cada peso invertido.",
     },
     {
-      icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2E5F8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
+      icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
       title: "Creatividades que Convierten",
       text: "Dirección de briefs creativos basados en datos, no en suposiciones. Cada concepto probado con A/B testing antes de escalar inversión.",
     },
   ];
   return (
-    <section id="capacidades" style={{ background: NAVY2, padding: "6rem 2rem" }}>
+    <section id="capacidades" style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
-              color: BLUE,
+              color: BLUE_ELECTRIC,
               marginBottom: "0.75rem",
             }}
           >
@@ -835,15 +885,16 @@ function CapacidadesSection() {
             <ScrollReveal key={i}>
               <div
                 style={{
-                  background: NAVY2,
-                  border: "1px solid rgba(46,95,138,0.2)",
+                  background: ZINC_900,
+                  border: "1px solid " + CORE_BLUE,
                   borderRadius: 20,
                   padding: "2rem",
                   transition: "transform 0.3s, box-shadow 0.3s",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(46,95,138,0.15)";
+                  e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.12)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
@@ -864,7 +915,7 @@ function CapacidadesSection() {
                 </h3>
                 <p
                   style={{
-                    fontFamily: "var(--font-jost)",
+                    fontFamily: "'DM Sans', sans-serif",
                     fontWeight: 300,
                     fontSize: "0.9rem",
                     color: "rgba(255,255,255,0.7)",
@@ -890,17 +941,17 @@ function ProcesoSection() {
     { step: "3", title: "Activación", text: "Implemento el sistema completo: campañas, tracking, creatividades y optimización diaria desde el día uno." },
   ];
   return (
-    <section id="proceso" style={{ background: NAVY, padding: "6rem 2rem" }}>
+    <section id="proceso" style={{ background: DEEP_NAVY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
-              color: BLUE,
+              color: BLUE_ELECTRIC,
               marginBottom: "0.75rem",
             }}
           >
@@ -928,17 +979,28 @@ function ProcesoSection() {
                   gap: "1.5rem",
                   alignItems: "flex-start",
                   padding: "1.5rem",
-                  background: "rgba(255,255,255,0.04)",
+                  background: ZINC_900,
                   borderRadius: 14,
-                  border: "1px solid rgba(46,95,138,0.15)",
+                  border: "1px solid " + CORE_BLUE,
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = BLUE_ELECTRIC;
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(59,130,246,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = CORE_BLUE;
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <span
                   style={{
-                    fontFamily: "var(--font-jost)",
+                    fontFamily: "'DM Sans', sans-serif",
                     fontWeight: 600,
                     fontSize: "1.5rem",
-                    color: BLUE,
+                    color: BLUE_ELECTRIC,
                     minWidth: "2rem",
                   }}
                 >
@@ -958,7 +1020,7 @@ function ProcesoSection() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "var(--font-jost)",
+                      fontFamily: "'DM Sans', sans-serif",
                       fontWeight: 300,
                       fontSize: "0.95rem",
                       color: "rgba(255,255,255,0.7)",
@@ -978,20 +1040,20 @@ function ProcesoSection() {
 }
 
 
-/* ─── CONTACTO — light gray bg, NAVY text ─── */
+/* ─── CONTACTO — light gray bg, DEEP_NAVY text ─── */
 function ContactSection() {
   return (
-    <section id="contacto" style={{ background: NAVY2, padding: "6rem 2rem" }}>
+    <section id="contacto" style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <ScrollReveal>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
-              fontSize: "0.8rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.7rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase" as const,
-              color: BLUE,
+              color: BLUE_ELECTRIC,
               marginBottom: "0.75rem",
             }}
           >
@@ -1011,7 +1073,7 @@ function ContactSection() {
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 300,
               fontSize: "1.05rem",
               color: "rgba(255,255,255,0.7)",
@@ -1028,16 +1090,19 @@ function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 500,
                 fontSize: "0.9rem",
                 color: WHITE,
-                background: BLUE,
+                background: BLUE_ELECTRIC,
                 padding: "0.9rem 2.4rem",
                 borderRadius: 100,
                 textDecoration: "none",
                 letterSpacing: "0.04em",
+                transition: "background 0.25s",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = CORE_BLUE)}
+              onMouseLeave={(e) => (e.currentTarget.style.background = BLUE_ELECTRIC)}
             >
               Agendar llamada estratégica
             </a>
@@ -1046,15 +1111,22 @@ function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontFamily: "var(--font-jost)",
+                fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "0.9rem",
                 color: WHITE,
-                border: "1px solid rgba(255,255,255,0.3)",
+                border: "1px solid " + BLUE_ELECTRIC,
                 padding: "0.9rem 2.2rem",
-                borderRadius: 6,
+                borderRadius: 100,
+                transition: "all 0.25s",
                 textDecoration: "none",
                 letterSpacing: "0.04em",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(59,130,246,0.10)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
               }}
             >
               WhatsApp directo
@@ -1062,7 +1134,7 @@ function ContactSection() {
           </div>
           <p
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 300,
               fontSize: "0.75rem",
               color: "rgba(255,255,255,0.35)",
@@ -1082,9 +1154,9 @@ function Footer() {
   return (
     <footer
       style={{
-        background: NAVY,
+        background: DEEP_NAVY,
         padding: "3rem 2rem 2rem",
-        borderTop: "1px solid rgba(46,95,138,0.08)",
+        borderTop: "1px solid rgba(59,130,246,0.08)",
       }}
     >
       <div
@@ -1103,7 +1175,7 @@ function Footer() {
         </p>
         <p
           style={{
-            fontFamily: "var(--font-jost)",
+            fontFamily: "'DM Sans', sans-serif",
             fontWeight: 300,
             fontSize: "0.85rem",
             color: "rgba(255,255,255,0.5)",
@@ -1112,13 +1184,26 @@ function Footer() {
         >
           Performance Marketing &amp; Paid Media Strategy
         </p>
+        <p
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontWeight: 400,
+            fontSize: "0.55rem",
+            color: SILVER_METAL,
+            letterSpacing: "0.3em",
+            textTransform: "uppercase" as const,
+            marginTop: "-0.25rem",
+          }}
+        >
+          ESTRATEGIA · KPIS · PAUTA · RESULTADOS
+        </p>
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
             href="https://wa.me/5223111396364"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.8rem",
               color: "rgba(255,255,255,0.6)",
@@ -1126,7 +1211,7 @@ function Footer() {
               letterSpacing: "0.06em",
               transition: "color 0.25s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
           >
             WhatsApp
@@ -1134,7 +1219,7 @@ function Footer() {
           <a
             href="mailto:carolinajuarezbetancourt@gmail.com"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.8rem",
               color: "rgba(255,255,255,0.6)",
@@ -1142,7 +1227,7 @@ function Footer() {
               letterSpacing: "0.06em",
               transition: "color 0.25s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
           >
             Email
@@ -1152,7 +1237,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: "var(--font-jost)",
+              fontFamily: "'DM Sans', sans-serif",
               fontWeight: 400,
               fontSize: "0.8rem",
               color: "rgba(255,255,255,0.6)",
@@ -1160,7 +1245,7 @@ function Footer() {
               letterSpacing: "0.06em",
               transition: "color 0.25s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
           >
             Calendly
@@ -1168,7 +1253,7 @@ function Footer() {
         </div>
         <p
           style={{
-            fontFamily: "var(--font-jost)",
+            fontFamily: "'DM Sans', sans-serif",
             fontWeight: 300,
             fontSize: "0.75rem",
             color: "rgba(255,255,255,0.35)",
@@ -1187,7 +1272,11 @@ function Footer() {
    ════════════════════════════════════════════ */
 export default function Page() {
   return (
-    <main style={{ overflowX: "hidden" }}>
+    <>
+      <style>{String.raw`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+      `}</style>
+      <main style={{ overflowX: "hidden" }}>
       <Navbar />
       <HeroSection />
       <Marquee />
@@ -1201,6 +1290,7 @@ export default function Page() {
       <Footer />
       <WhatsAppFAB />
     </main>
+    </>
   );
 }
 
