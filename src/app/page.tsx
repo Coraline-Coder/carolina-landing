@@ -188,6 +188,13 @@ function Marquee() {
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn, { passive: true });
@@ -233,7 +240,7 @@ function Navbar() {
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
-        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }} className="hidden md:flex">
+        <div style={{ display: isMobile ? "none" : "flex", gap: "2rem", alignItems: "center" }}>
           {links.map((l) => (
             <a
               key={l.href}
@@ -276,8 +283,8 @@ function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden"
-          style={{ background: "none", border: "none", cursor: "pointer" }}
+          style={{ display: isMobile ? "block" : "none", background: "none", border: "none", cursor: "pointer" }}
+        >
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={WHITE} strokeWidth="2">
             {mobileOpen ? (
@@ -291,14 +298,13 @@ function Navbar() {
 
       {/* Mobile menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {isMobile && mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             style={{ background: "rgba(10,35,66,0.96)", padding: "1rem 2rem" }}
-            className="md:hidden"
-          >
+            >
             {links.map((l) => (
               <a
                 key={l.href}
