@@ -285,7 +285,6 @@ function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{ display: isMobile ? "block" : "none", background: "none", border: "none", cursor: "pointer" }}
         >
-        >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={WHITE} strokeWidth="2">
             {mobileOpen ? (
               <path d="M6 6l12 12M6 18L18 6" />
