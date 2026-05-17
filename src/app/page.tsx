@@ -134,85 +134,6 @@ function WhatsAppFAB() {
 }
 
 
-/* --- DASHBOARD PREVIEW (Meta Ads mockup) --- */
-function DashboardPreview() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [vis, setVis] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  const metrics = [
-    { label: "ROAS", value: "3.2x", color: "#22C55E", sub: "Retorno sobre inversi\u00f3n" },
-    { label: "CPA", value: "$5.05", color: BLUE, sub: "Costo por conversi\u00f3n" },
-    { label: "CTR", value: "2.10%", color: BLUE, sub: "Click-through rate" },
-    { label: "Conversiones", value: "8,400+", color: BLUE, sub: "WhatsApp + Leads" },
-  ];
-  return (
-    <div ref={ref} style={{ maxWidth: 960, margin: "4rem auto 0", padding: "0 2rem" }}>
-      <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.97 }}
-        animate={vis ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        style={{
-          position: "relative",
-          borderRadius: 20,
-          overflow: "hidden",
-          border: "1px solid rgba(46,95,138,0.25)",
-          background: "linear-gradient(145deg, #0D1B2A 0%, #0a0f1e 100%)",
-          boxShadow: "0 0 80px rgba(46,95,138,0.1), 0 25px 50px rgba(0,0,0,0.5)",
-        }}
-      >
-        <div style={{ position: "absolute", top: "-40%", left: "50%", transform: "translateX(-50%)", width: "80%", height: "60%", background: "radial-gradient(ellipse at center, rgba(46,95,138,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
-          <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
-          <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
-          <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
-          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginLeft: 12 }}><img src="/logo-cb.png" alt="" style={{ height: 14, width: "auto", opacity: 0.5, display: "inline", verticalAlign: "middle", marginRight: 4 }} />Meta Ads Manager \u2014 Campaign Dashboard</span>
-        </div>
-        <div style={{ padding: "1.5rem 2rem 2rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1rem" }}>
-            <div>
-              <p style={{ fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: "0.95rem", color: WHITE, margin: 0 }}>Campa\u00f1a: Conversiones WhatsApp</p>
-              <p style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", margin: "4px 0 0" }}>Retail de Muebles \u00b7 15 meses de gesti\u00f3n</p>
-            </div>
-            <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-              <span style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.7rem", color: "rgba(255,255,255,0.5)", padding: "4px 10px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 4 }}>Ultimos 30 dias</span>
-              <span style={{ fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: "0.7rem", color: WHITE, padding: "4px 10px", background: BLUE, borderRadius: 4 }}>Activo</span>
-            </div>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
-            {metrics.map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 16 }} animate={vis ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(46,95,138,0.12)", borderRadius: 14, padding: "1rem 1.25rem" }}>
-                <p style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.7rem", color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em", textTransform: "uppercase" as const, margin: 0 }}>{m.label}</p>
-                <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.8rem", color: m.color, margin: "4px 0", lineHeight: 1.1 }}>{m.value}</p>
-                <p style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: "0.65rem", color: "rgba(255,255,255,0.35)", margin: 0 }}>{m.sub}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "1.25rem" }}>
-            <p style={{ fontFamily: "var(--font-jost)", fontWeight: 400, fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", margin: "0 0 1rem" }}>Tendencia de Conversiones (ultimos 12 meses)</p>
-            <svg viewBox="0 0 800 180" style={{ width: "100%", height: "auto" }}>
-              <defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#2E5F8A" stopOpacity="0.3" /><stop offset="100%" stopColor="#2E5F8A" stopOpacity="0" /></linearGradient></defs>
-              {[0,1,2,3,4].map(i => (<line key={i} x1="0" y1={i*40+10} x2="800" y2={i*40+10} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />))}
-              <path d="M0,170 L0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14 L800,170 Z" fill="url(#chartGrad)" />
-              <path d="M0,140 C70,135 140,128 210,120 C280,112 350,100 420,85 C490,70 560,58 630,42 C700,26 770,18 800,14" fill="none" stroke="#2E5F8A" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="800" cy="14" r="5" fill="#2E5F8A" />
-              <circle cx="800" cy="14" r="9" fill="#2E5F8A" opacity="0.25"><animate attributeName="r" values="9;14;9" dur="2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.25;0;0.25" dur="2s" repeatCount="indefinite" /></circle>
-              {["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"].map((m,i) => (<text key={i} x={i*66+30} y="178" fill="rgba(255,255,255,0.25)" fontFamily="var(--font-jost)" fontSize="10" textAnchor="middle">{m}</text>))}
-            </svg>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
 
 /* ─── MARQUEE ─── */
 function Marquee() {
@@ -1267,7 +1188,6 @@ export default function Page() {
       <Marquee />
       <ProblemaSection />
       <CasoDeExitoSection />
-      <DashboardPreview />
       <HerramientasGratisSection />
       <SistemaFiltroSection />
       <CapacidadesSection />
