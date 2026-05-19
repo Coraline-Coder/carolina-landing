@@ -240,7 +240,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
+          <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>CJB</span>
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: SILVER_METAL, letterSpacing: "0.22em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>ESTRATEGIA · KPIS · PAUTA · RESULTADOS</span>
@@ -396,7 +396,7 @@ function HeroSection() {
           style={{ marginBottom: "1.5rem" }}
         >
           <img
-            src="/logo-cb.png"
+            src="/logo-cb.jpeg"
             alt="CJB Logo"
             style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(59,130,246,0.3))" }}
           />
@@ -1107,7 +1107,7 @@ function ContactSection() {
               Agendar llamada estratégica
             </a>
             <a
-              href="https://wa.me/5223111396364"
+              href="https://wa.me/522292924430"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1170,7 +1170,7 @@ function Footer() {
           gap: "1rem",
         }}
       >
-        <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} />
+        <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} />
         <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
@@ -1199,7 +1199,7 @@ function Footer() {
         </p>
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
-            href="https://wa.me/5223111396364"
+            href="https://wa.me/522292924430"
             target="_blank"
             rel="noopener noreferrer"
             style={{

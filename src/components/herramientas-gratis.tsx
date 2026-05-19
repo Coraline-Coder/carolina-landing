@@ -2243,9 +2243,9 @@ const benchmarkHTML=`<!DOCTYPE html>
 </html>
 `;
 const tools=[
-{id:"calculadora",emoji:"\u{1F9CA}",label:"No se si mis ads funcionan",title:"Calculadora de desperdicio",desc:"Calcula en 30 segundos cuanto dinero se va sin generar ventas reales.",html:calculadoraHTML},
-{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente que esta frenando el crecimiento de tus campanas.",html:scorecardHTML},
-{id:"benchmark",emoji:"\u{1F525}",label:"Ya invierto fuerte y quiero comparar",title:"Benchmark de performance",desc:"Compara tus metricas con el promedio de tu industria y detecta las fugas.",html:benchmarkHTML},
+{id:"calculadora",emoji:"\u{1F9CA}",label:"No se si mis ads funcionan",title:"Calculadora de desperdicio",desc:"Calcula en 30 segundos cuánto dinero se va sin generar ventas reales.",html:calculadoraHTML},
+{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente que esta frenando el crecimiento de tus campañas.",html:scorecardHTML},
+{id:"benchmark",emoji:"\u{1F525}",label:"Ya invierto fuerte y quiero comparar",title:"Benchmark de performance",desc:"Compara tus métricas con el promedio de tu industria y detecta las fugas.",html:benchmarkHTML},
 ];
 function ToolIframe({html,onHeight}:{html:string;onHeight:(h:number)=>void}){
 const iframeRef=useRef<HTMLIFrameElement>(null);
