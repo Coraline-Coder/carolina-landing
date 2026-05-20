@@ -1,5 +1,6 @@
-import './effects.css';
 "use client"
+
+import './effects.css';
 import CasoDeExitoSection from "@/components/caso-exito";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
 
