@@ -21,17 +21,15 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
 }
 
       <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}`}</style>
-      {/* Mockup Meta Ads - lado derecho desktop */}
+      {/* Business Manager Mockup - full hero background, diagonal */}
       <div
         style={{
           display: "block",
           position: "absolute",
-          right: 0,
-          top: "50%",
-          className: "hero-mockup",
-          transform: "translateY(-50%) rotate(-6deg)",
-          width: "45%",
-          opacity: 0.18,
+          left: "50%",
+          top: "50%",          transform: "translate(-50%, -50%) rotate(-6deg)",
+          width: "140%",
+          opacity: 0.15,
           borderRadius: 16,
           overflow: "hidden",
           pointerEvents: "none",
@@ -43,11 +41,11 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
           alt="Meta Ads Manager"
           style={{ width: "100%", height: "auto", display: "block" }}
         />
-        {/* Gradiente izquierda */}
+        {/* Gradient both sides */}
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 40%)",
+          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,1) 25%, transparent 50%, rgba(10,15,30,1) 75%, rgba(10,15,30,1) 100%)",
           pointerEvents: "none",
         }} />
         {/* Gradiente abajo */}
@@ -60,6 +58,8 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
           background: "linear-gradient(to top, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",
           pointerEvents: "none",
         }} />
+        {/* Gradient top */}
+        <div style={{position:"absolute",top:0,left:0,right:0,height:"40%",background:"linear-gradient(to bottom, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",pointerEvents:"none"}} />
       </div>
 
 /* ─── colours ─── */
