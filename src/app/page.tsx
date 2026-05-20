@@ -380,7 +380,7 @@ function HeroSection() {
     >
 
       <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
-        <GoldParticleChart />
+
       </div>
 
       <motion.div
