@@ -1,7 +1,7 @@
 "use client";
 import React,{useState,useRef,useEffect,useCallback} from "react";
 import{motion,AnimatePresence} from "framer-motion";
-const DEEP_NAVY="#0B2A5A";const CORE_BLUE="#1E3A8A";const BLUE_ELECTRIC="#3B82F6";const ZINC_900="#111827";const SILVER_METAL="#C0C5CE";const WHITE="#FFFFFF";const BLACK="#000000";
+const DEEP_NAVY="#0B2A5A";const CORE_BLUE="#1E3A8A";const BLUE_ELECTRIC="#3B82F6";const ZINC_900="#0B1929";const SILVER_METAL="#C0C5CE";const WHITE="#FFFFFF";const BLACK="#000000";
 function ScrollReveal({children,className=""}:{children:React.ReactNode;className?:string}){
 const ref=useRef<HTMLDivElement>(null);const[vis,setVis]=useState(false);
 useEffect(()=>{const el=ref.current;if(!el)return;const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);obs.unobserve(el)}},{threshold:0.15});obs.observe(el);return()=>obs.disconnect()},[]);
@@ -2244,7 +2244,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 `;
 const tools=[
 {id:"calculadora",emoji:"\u{1F9CA}",label:"No se si mis ads funcionan",title:"Calculadora de desperdicio",desc:"Calcula en 30 segundos cuánto dinero se va sin generar ventas reales.",html:calculadoraHTML},
-{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente que esta frenando el crecimiento de tus campañas.",html:scorecardHTML},
+{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente qué está frenando el crecimiento de tus campañas.",html:scorecardHTML},
 {id:"benchmark",emoji:"\u{1F525}",label:"Ya invierto fuerte y quiero comparar",title:"Benchmark de performance",desc:"Compara tus métricas con el promedio de tu industria y detecta las fugas.",html:benchmarkHTML},
 ];
 function ToolIframe({html,onHeight}:{html:string;onHeight:(h:number)=>void}){
@@ -2262,8 +2262,8 @@ return(
 <div style={{maxWidth:1100,margin:"0 auto"}}>
 <ScrollReveal>
 <p style={{fontFamily:"'DM Sans', sans-serif",fontWeight:400,fontSize:"0.7rem",letterSpacing:"0.25em",textTransform:"uppercase" as const,color:BLUE_ELECTRIC,marginBottom:"0.75rem",borderLeft:"3px solid "+BLUE_ELECTRIC,paddingLeft:"0.75rem"}}>Herramientas gratuitas</p>
-<h2 style={{fontFamily:"var(--font-cormorant)",fontWeight:400,fontSize:"clamp(1.8rem,4vw,2.8rem)",color:WHITE,lineHeight:1.15,marginBottom:"0.5rem"}}>Empieza aqui. Gratis.</h2>
-<p style={{fontFamily:"'DM Sans', sans-serif",fontWeight:300,fontSize:"1.05rem",color:"rgba(255,255,255,0.7)",lineHeight:1.7,maxWidth:600,marginBottom:"3rem"}}>Tres herramientas para saber exactamente donde esta tu problema — antes de hablar con alguien.</p>
+<h2 style={{fontFamily:"var(--font-cormorant)",fontWeight:400,fontSize:"clamp(1.8rem,4vw,2.8rem)",color:WHITE,lineHeight:1.15,marginBottom:"0.5rem"}}>Empieza aquí. Gratis.</h2>
+<p style={{fontFamily:"'DM Sans', sans-serif",fontWeight:300,fontSize:"1.05rem",color:"rgba(255,255,255,0.7)",lineHeight:1.7,maxWidth:600,marginBottom:"3rem"}}>Tres herramientas para saber exactamente dónde está tu problema — antes de hablar con alguien.</p>
 </ScrollReveal>
 <div className="herramientas-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"1.5rem"}}>
 {tools.map((t)=>{const isOpen=openTool===t.id;return(

@@ -187,7 +187,7 @@ export default function ChecklistAuditoria() {
   const checkedCount = checked.size;
   const progress = Math.round((checkedCount / TOTAL) * 100);
   const diag = getDiagnosis(checked, TOTAL);
-  const waUrl = `https://wa.me/5223111396364?text=${encodeURIComponent(diag.waMsg)}`;
+  const waUrl = `https://wa.me/522292924430?text=${encodeURIComponent(diag.waMsg)}`;
 
   return (
     <>

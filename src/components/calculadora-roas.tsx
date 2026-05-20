@@ -83,7 +83,7 @@ export default function CalculadoraROAS() {
     setResult({
       roasSimple, roasReal, breakEven, grossMarginPct,
       netProfit, cpl, hiddenCosts, status,
-      waUrl: "https://wa.me/5223111396364?text=" + encodeURIComponent(waMessages[status]),
+      waUrl: "https://wa.me/522292924430?text=" + encodeURIComponent(waMessages[status]),
     });
   }
 
@@ -142,14 +142,14 @@ export default function CalculadoraROAS() {
 
         <SectionLabel label="Ingresos" />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12 }}>
-          <Field id="revenue" label="Ingresos generados por ads ($)" hint="Lo que vendiste gracias a tus campanas en Meta" val={vals.revenue} onChange={set("revenue")} focused={focusedField === "revenue"} onFocus={() => setFocusedField("revenue")} onBlur={() => setFocusedField(null)} />
+          <Field id="revenue" label="Ingresos generados por ads ($)" hint="Lo que vendiste gracias a tus campañas en Meta" val={vals.revenue} onChange={set("revenue")} focused={focusedField === "revenue"} onFocus={() => setFocusedField("revenue")} onBlur={() => setFocusedField(null)} />
           <Field id="cogs" label="Costo del producto o servicio ($)" hint="Lo que te costo producir o entregar lo vendido" val={vals.cogs} onChange={set("cogs")} focused={focusedField === "cogs"} onFocus={() => setFocusedField("cogs")} onBlur={() => setFocusedField(null)} />
         </div>
 
         <SectionLabel label="Inversion en ads" />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12 }}>
           <Field id="adspend" label="Gasto en Meta Ads ($)" hint="Lo que le pagaste directamente a Meta" val={vals.adspend} onChange={set("adspend")} focused={focusedField === "adspend"} onFocus={() => setFocusedField("adspend")} onBlur={() => setFocusedField(null)} />
-          <Field id="agency" label="Honorarios / freelancer ($)" hint="Lo que pagas a quien gestiona tus campanas" val={vals.agency} onChange={set("agency")} focused={focusedField === "agency"} onFocus={() => setFocusedField("agency")} onBlur={() => setFocusedField(null)} />
+          <Field id="agency" label="Honorarios / freelancer ($)" hint="Lo que pagas a quien gestiona tus campañas" val={vals.agency} onChange={set("agency")} focused={focusedField === "agency"} onFocus={() => setFocusedField("agency")} onBlur={() => setFocusedField(null)} />
         </div>
 
         <SectionLabel label="Costos ocultos - los que casi nadie suma" />

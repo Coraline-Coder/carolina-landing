@@ -240,7 +240,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 36, width: "auto", objectFit: "contain" }} />
+          <img height={44} src="/logo-cb.jpeg" alt="CJB Logo" style={{ mixBlendMode: "screen", height: 36, width: "auto", objectFit: "contain" }} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1.2rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>CJB</span>
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: SILVER_METAL, letterSpacing: "0.22em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>ESTRATEGIA · KPIS · PAUTA · RESULTADOS</span>
@@ -364,7 +364,7 @@ function HeroSection() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.4]);
   return (
-    <section
+    <section style={{ paddingTop: "140px", paddingBottom: "140px",  paddingTop: "140px", paddingBottom: "140px" }}
       style={{
         position: "relative",
         background: "radial-gradient(ellipse at top right, #0B2A5A 0%, #000000 70%)",
