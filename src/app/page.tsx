@@ -20,13 +20,15 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
   };
 }
 
+      <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}`}</style>
       {/* Mockup Meta Ads - lado derecho desktop */}
       <div
         style={{
-          display: isMob ? "none" : "block",
+          display: "block",
           position: "absolute",
           right: 0,
           top: "50%",
+          className: "hero-mockup",
           transform: "translateY(-50%) rotate(-6deg)",
           width: "45%",
           opacity: 0.18,
