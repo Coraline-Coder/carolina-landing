@@ -20,7 +20,45 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
   };
 }
 
-const GoldParticleChart = dynamicNoSSR(
+      {/* Mockup Meta Ads - lado derecho desktop */}
+      <div
+        style={{
+          display: isMob ? "none" : "block",
+          position: "absolute",
+          right: 0,
+          top: "50%",
+          transform: "translateY(-50%) rotate(-6deg)",
+          width: "45%",
+          opacity: 0.18,
+          borderRadius: 16,
+          overflow: "hidden",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        <img
+          src="/meta-ads.jpeg"
+          alt="Meta Ads Manager"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
+        {/* Gradiente izquierda */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 40%)",
+          pointerEvents: "none",
+        }} />
+        {/* Gradiente abajo */}
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "40%",
+          background: "linear-gradient(to top, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",
+          pointerEvents: "none",
+        }} />
+      </div>
   () => import("@/components/gold-particle-chart")
 );
 
