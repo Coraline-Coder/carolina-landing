@@ -240,7 +240,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img height={60} src="/logo-cb.png" alt="CJB Logo" style={{ height: 60, width: "auto", objectFit: "contain", borderRadius: "8px" }} height={60} />
+          <img src="/logo-cb.png" alt="Carolina Betancourt" style={{ height: 70, width: "auto", objectFit: "contain", borderRadius: "8px" }} />
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -1166,7 +1166,7 @@ function Footer() {
           gap: "1rem",
         }}
       >
-        <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain", borderRadius: "8px" }} height={60} />
+          <img src="/logo-cb.png" alt="Carolina Betancourt" style={{ height: 52, width: "auto", objectFit: "contain", borderRadius: "8px" }} />
         <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
