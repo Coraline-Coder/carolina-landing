@@ -240,7 +240,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img height={44} src="/logo-cb.jpeg" alt="CJB Logo" style={{ mixBlendMode: "screen", height: 44, width: "auto", objectFit: "contain" }} height={44} />
+          <img height={44} src="/logo-cb.png" alt="CJB Logo" style={{ height: 44, width: "auto", objectFit: "contain", borderRadius: "8px" }} height={44} />
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -392,9 +392,9 @@ function HeroSection() {
           style={{ marginBottom: "1.5rem" }}
         >
           <img
-            src="/logo-cb.jpeg"
+            src="/logo-cb.png"
             alt="CJB Logo"
-            style={{ height: 72, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(59,130,246,0.3))" }} height={44}
+            style={{ height: 72, width: "auto", objectFit: "contain", borderRadius: "8px", filter: "drop-shadow(0 0 20px rgba(59,130,246,0.3))" }} height={44}
           />
         </motion.div>
         
@@ -1166,7 +1166,7 @@ function Footer() {
           gap: "1rem",
         }}
       >
-        <img src="/logo-cb.jpeg" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain" }} height={44} />
+        <img src="/logo-cb.png" alt="CJB Logo" style={{ height: 48, width: "auto", objectFit: "contain", borderRadius: "8px" }} height={44} />
         <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 600, fontSize: "1rem", color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginTop: "0.25rem" }}>Carolina Betancourt
         </p>
         <p
