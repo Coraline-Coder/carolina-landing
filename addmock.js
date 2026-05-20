@@ -20,8 +20,7 @@ for(var i=0;i<lines.length;i++){
   }
 }
 
-// 2. Agregar mockup Meta Ads despues de la seccion <section>
-// Buscar el > de cierre del section tag del hero
+// 2. Buscar el > de cierre del section tag del hero
 var sectionClose=-1;
 for(var i=0;i<lines.length;i++){
   if(lines[i].includes('overflow: "hidden"')&&lines[i].includes('>')){
@@ -29,6 +28,10 @@ for(var i=0;i<lines.length;i++){
     break;
   }
 }
+
+// Verificar nombre de imagen
+var imgExt=fs.existsSync('public/meta-ads.png')?'png':'jpeg';
+console.log('Imagen: meta-ads.'+imgExt);
 
 if(sectionClose>-1){
   var mockup=[
@@ -50,18 +53,18 @@ if(sectionClose>-1){
     '        }}',
     '      >',
     '        <img',
-    '          src="/meta-ads.png"',
+    '          src="/meta-ads.'+imgExt+'"',
     '          alt="Meta Ads Manager"',
     '          style={{ width: "100%", height: "auto", display: "block" }}',
     '        />',
-    '        {/* Gradiente izquierda: desvanece hacia el texto */}',
+    '        {/* Gradiente izquierda */}',
     '        <div style={{',
     '          position: "absolute",',
     '          inset: 0,',
     '          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 40%)",',
     '          pointerEvents: "none",',
     '        }} />',
-    '        {/* Gradiente abajo: desvanece hacia el ticker */}',
+    '        {/* Gradiente abajo */}',
     '        <div style={{',
     '          position: "absolute",',
     '          bottom: 0,',
