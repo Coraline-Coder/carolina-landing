@@ -359,22 +359,30 @@ function Navbar() {
 }
 
 /* ─── HERO — navy bg, WHITE text ─── */
+/* --- HERO --- */
 function HeroSection() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.4]);
+  const [isMob, setIsMob] = useState(false);
+  useEffect(() => { setIsMob(window.innerWidth < 768); const fn = () => setIsMob(window.innerWidth < 768); window.addEventListener("resize", fn); return () => window.removeEventListener("resize", fn); }, []);
+
+  const ease = [0.4, 0, 0.2, 1];
+
   return (
     <section
       style={{
         position: "relative",
-        background: "radial-gradient(ellipse at top right, #0B2A5A 0%, #000000 70%)",
+        background: "#0A0F1E",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         overflow: "hidden",
+        paddingTop: "140px",
+        paddingBottom: "140px",
       }}
     >
-        
+
       <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
         <GoldParticleChart />
       </div>
@@ -383,118 +391,145 @@ function HeroSection() {
         style={{
           position: "relative",
           zIndex: 1,
-          maxWidth: 860,
-          margin: "0 auto",
-          padding: "8rem 2rem 4rem",
+          maxWidth: 640,
+          margin: isMob ? "0 auto" : "0",
+          padding: isMob ? "8rem 1.5rem 4rem" : "8rem 2rem 4rem",
+          textAlign: isMob ? "center" : "left",
           opacity: heroOpacity,
         }}
       >
-        
+
+        {/* Eyebrow */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0, ease: ease }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 400,
-            fontSize: "0.85rem",
-            letterSpacing: "0.25em",
+            fontFamily: "var(--font-jost)",
+            fontSize: 11,
+            letterSpacing: "4px",
             textTransform: "uppercase" as const,
-            color: BLUE_ELECTRIC,
-            marginBottom: "1.5rem",
-            opacity: 0.85,
+            color: "#4A7CF7",
+            marginBottom: 16,
           }}
         >
-          Carolina Betancourt
+          — Carolina Betancourt
         </motion.p>
 
-        <WordRevealText text="Convierte cada peso en Meta Ads en retorno real" />
-
+        {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: ease }}
           style={{
             fontFamily: "var(--font-cormorant)",
             fontWeight: 300,
-            fontSize: "clamp(2.4rem,5.5vw,4.2rem)",
-            lineHeight: 1.08,
-            color: WHITE,
-            marginTop: "0.5rem",
+            fontSize: isMob ? 38 : 62,
+            lineHeight: 1.05,
+            color: "#FFFFFF",
+            marginBottom: 24,
           }}
         >
-          Performance Marketing &amp; Paid Media Strategy
+          La mayoria de agencias optimiza anuncios.<br/>
+          Yo optimizo lo que te cuesta <span style={{ color: "#4A7CF7" }}>cada venta</span>.
         </motion.h1>
 
+        {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: ease }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "var(--font-jost)",
             fontWeight: 300,
-            fontSize: "1.1rem",
-            color: "rgba(255,255,255,0.7)",
-            lineHeight: 1.7,
-            marginTop: "1.8rem",
-            maxWidth: 580,
+            fontSize: 16,
+            color: "rgba(255,255,255,0.68)",
+            maxWidth: 560,
+            lineHeight: 1.85,
+            marginBottom: 36,
+            marginLeft: isMob ? "auto" : undefined,
+            marginRight: isMob ? "auto" : undefined,
           }}
         >
-          No gestiono campañas. Diseño sistemas de inversión que escalan marcas con
-          rentabilidad probada en Meta Ads. Sin excusas, sin métricas de vanidad.
+          Trabajo con negocios que ya invierten en Meta Ads y saben que algo no esta funcionando — aunque todavia no logran identificar exactamente que esta frenando el rendimiento.
+          <br/><br/>
+          Ahi es donde entro yo.
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.2 }}
-          style={{ display: "flex", gap: "1rem", marginTop: "2.5rem", flexWrap: "wrap" }}
+          transition={{ duration: 0.6, delay: 0.4, ease: ease }}
+          style={{
+            display: "flex",
+            flexDirection: isMob ? "column" : "row",
+            gap: 14,
+            marginBottom: 20,
+            justifyContent: isMob ? "center" : "flex-start",
+          }}
         >
           <a
-            href="#calculadora"
+            href="https://wa.me/522292924043"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              display: "inline-block",
+              background: "#4A7CF7",
+              color: "#FFFFFF",
+              fontFamily: "var(--font-jost)",
               fontWeight: 500,
-              fontSize: "0.9rem",
-              color: WHITE,
-              background: BLUE_ELECTRIC,
-              padding: "0.85rem 2.2rem",
-              borderRadius: 100,
+              fontSize: "0.85rem",
+              padding: "14px 28px",
+              borderRadius: 10,
               textDecoration: "none",
-              letterSpacing: "0.06em",
-              transition: "background 0.25s",
+              letterSpacing: "0.04em",
+              transition: "all 0.25s",
+              textAlign: "center",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = CORE_BLUE)}
-            onMouseLeave={(e) => (e.currentTarget.style.background = BLUE_ELECTRIC)}
+            onMouseEnter={function(e){e.currentTarget.style.background="#3a6ce6";e.currentTarget.style.transform="translateY(-1px)";}}
+            onMouseLeave={function(e){e.currentTarget.style.background="#4A7CF7";e.currentTarget.style.transform="none";}}
           >
-            Agendar llamada estratégica
+            Quiero saber que esta fallando
           </a>
           <a
             href="#sistema-filtro"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 400,
-              fontSize: "0.9rem",
-              color: "rgba(255,255,255,0.85)",
-              border: "1px solid " + BLUE_ELECTRIC,
-              padding: "0.85rem 2.2rem",
-              borderRadius: 100,
+              display: "inline-block",
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.3)",
+              color: "#FFFFFF",
+              fontFamily: "var(--font-jost)",
+              fontWeight: 500,
+              fontSize: "0.85rem",
+              padding: "14px 28px",
+              borderRadius: 10,
               textDecoration: "none",
-              letterSpacing: "0.06em",
+              letterSpacing: "0.04em",
               transition: "all 0.25s",
+              textAlign: "center",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(59,130,246,0.10)";
-              e.currentTarget.style.borderColor = BLUE_ELECTRIC;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.borderColor = BLUE_ELECTRIC;
-            }}
+            onMouseEnter={function(e){e.currentTarget.style.borderColor="rgba(255,255,255,0.6)";}}
+            onMouseLeave={function(e){e.currentTarget.style.borderColor="rgba(255,255,255,0.3)";}}
           >
-            Conocer el Método P.U.L.S.O.
+            Ver el Metodo P.U.L.S.O.
           </a>
         </motion.div>
+
+        {/* Trust line */}
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55, ease: ease }}
+          style={{
+            fontFamily: "var(--font-jost)",
+            fontSize: 11,
+            letterSpacing: "2px",
+            textTransform: "uppercase" as const,
+            color: "rgba(255,255,255,0.38)",
+          }}
+        >
+          Sin contratos forzosos · Optimizacion basada en datos reales · CPA documentado: -52% en 5 ciclos
+        </motion.p>
+
       </motion.div>
     </section>
   );
