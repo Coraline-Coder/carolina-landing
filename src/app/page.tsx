@@ -201,7 +201,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <span style={{ fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: "1.05rem", color: "#FFFFFF", letterSpacing: "0.12em", textTransform: "uppercase" as const }}>Carolina Betancourt</span>
+          <img src="/logo-cb.png" alt="Carolina Betancourt" style={{ height: 44, width: "auto", objectFit: "contain" }} />
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
