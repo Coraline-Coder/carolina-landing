@@ -61,7 +61,6 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
           pointerEvents: "none",
         }} />
       </div>
-const GoldParticleChart = dynamic(() => import("@/components/gold-particle-chart"));
 
 /* ─── colours ─── */
 const BLACK         = "#000000";
