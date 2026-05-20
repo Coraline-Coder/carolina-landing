@@ -1,6 +1,5 @@
 "use client"
 
-import './effects.css';
 import CasoDeExitoSection from "@/components/caso-exito";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
 
@@ -208,16 +207,7 @@ function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  // Scroll reveal observer
-  useEffect(() => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting) { e.target.classList.add("on"); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
+  
   const links = [
     { label: "Método P.U.L.S.O.", href: "#sistema-filtro" },
     { label: "Capacidades", href: "#capacidades" },
@@ -384,7 +374,7 @@ function HeroSection() {
         overflow: "hidden",
       }}
     >
-        <div className="glow" style={{ width: 800, height: 800, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(30,58,138,0.20) 0%, transparent 65%)", animation: "floatGlow2 11s ease-in-out infinite" }} />
+        
       <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
         <GoldParticleChart />
       </div>
@@ -525,9 +515,9 @@ function HeroSection() {
 /* ─── PROBLEMA — white bg, DEEP_NAVY text ─── */
 function ProblemaSection() {
   return (
-    <section className="reveal" style={{ background: BLACK, padding: "6rem 2rem" }}>
+    <section style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <div className="glow" style={{ width: 700, height: 700, top: -200, right: -200, background: "radial-gradient(circle, rgba(30,58,138,0.25) 0%, transparent 65%)", animation: "floatGlow 10s ease-in-out infinite" }} />
+        
         <ScrollReveal>
           <p
             style={{
@@ -659,7 +649,7 @@ function SistemaFiltroSection() {
     },
   ];
   return (
-    <section className="reveal d1" id="sistema-filtro" style={{ background: DEEP_NAVY, padding: "6rem 2rem", position: "relative" }}>
+    <section id="sistema-filtro" style={{ background: DEEP_NAVY, padding: "6rem 2rem", position: "relative" }}>
       <div style={{ position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)", width: "70%", height: "50%", background: "radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
@@ -862,7 +852,7 @@ function CapacidadesSection() {
     },
   ];
   return (
-    <section className="reveal d2" id="capacidades" style={{ background: BLACK, padding: "6rem 2rem" }}>
+    <section id="capacidades" style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -952,7 +942,7 @@ function ProcesoSection() {
     { step: "3", title: "Activación", text: "Implemento el sistema completo: campañas, tracking, creatividades y optimización diaria desde el día uno." },
   ];
   return (
-    <section className="reveal" id="proceso" style={{ background: DEEP_NAVY, padding: "6rem 2rem" }}>
+    <section id="proceso" style={{ background: DEEP_NAVY, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <ScrollReveal>
           <p
@@ -1054,7 +1044,7 @@ function ProcesoSection() {
 /* ─── CONTACTO — light gray bg, DEEP_NAVY text ─── */
 function ContactSection() {
   return (
-    <section className="reveal d1" id="contacto" style={{ background: BLACK, padding: "6rem 2rem" }}>
+    <section id="contacto" style={{ background: BLACK, padding: "6rem 2rem" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <ScrollReveal>
           <p
