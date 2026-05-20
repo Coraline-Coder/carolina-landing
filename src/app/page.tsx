@@ -241,10 +241,6 @@ function Navbar() {
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
           <img height={44} src="/logo-cb.jpeg" alt="CJB Logo" style={{ mixBlendMode: "screen", height: 44, width: "auto", objectFit: "contain" }} height={44} />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: SILVER_METAL, letterSpacing: "0.22em", textTransform: "uppercase" as const, lineHeight: 1.2 }}>ESTRATEGIA · KPIS · PAUTA · RESULTADOS</span>
-          </div>
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -1195,7 +1191,7 @@ function Footer() {
             marginTop: "-0.25rem",
           }}
         >
-          ESTRATEGIA · KPIS · PAUTA · RESULTADOS
+
         </p>
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
