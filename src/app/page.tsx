@@ -363,7 +363,7 @@ function HeroSection() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.4]);
   return (
-    <section style={{ paddingTop: "140px", paddingBottom: "140px",  paddingTop: "140px", paddingBottom: "140px" }}
+    <section
       style={{
         position: "relative",
         background: "radial-gradient(ellipse at top right, #0B2A5A 0%, #000000 70%)",

@@ -1,0 +1,17 @@
+const fs=require('fs');
+let p=fs.readFileSync('src/app/page.tsx','utf8');
+console.log('Lineas totales:',p.split('\n').length);
+console.log('\nPrimeras 10 lineas:');
+p.split('\n').slice(0,10).forEach((l,i)=>console.log('L'+(i+1)+': '+l));
+console.log('\nBuscando effects.css:');
+if(p.includes('effects.css'))console.log('  AUN PRESENTE!');
+else console.log('  OK - no esta');
+console.log('\nBuscando className="glass-card":');
+if(p.includes('glass-card'))console.log('  AUN PRESENTE!');
+else console.log('  OK - no esta');
+console.log('\nBuscando className="glow":');
+if(p.includes('className="glow"')||p.includes('className="hero-grid"')||p.includes('className="hero-light-line"'))console.log('  GLOW ELEMENTS AUN PRESENTES!');
+else console.log('  OK - no estan');
+console.log('\nBuscando use client:');
+if(p.startsWith('"use client"'))console.log('  OK - primera linea');
+else console.log('  Linea 1:',p.split('\n')[0]);
