@@ -197,7 +197,7 @@ function Navbar() {
           href="#"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
         >
-          <img src="/logo-cb.png" alt="Carolina Betancourt" style={{ height: 44, width: "auto", objectFit: "contain" }} />
+          <img src="/logo-cb.png" alt="Carolina Betancourt" style={{ height: 50, width: "auto", objectFit: "contain" }} />
         </a>
 
         {/* Desktop links — WHITE on dark hero */}
@@ -341,7 +341,7 @@ function HeroSection() {
 
       </div>
 
-      <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}`}</style>
+      <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}`}</style>
       {/* Business Manager Mockup - full hero background, diagonal */}
       <div
         style={{
@@ -350,7 +350,7 @@ function HeroSection() {
           left: "50%",
           top: "50%",          transform: "translate(-50%, -50%) rotate(-6deg)",
           width: "140%",
-          opacity: 0.15,
+          opacity: 0.35,
           borderRadius: 16,
           overflow: "hidden",
           pointerEvents: "none",
@@ -428,7 +428,7 @@ function HeroSection() {
           }}
         >
           La mayoría de agencias optimiza anuncios.<br/>
-          Yo optimizo lo que te cuesta <span style={{ color: "#4A7CF7" }}>cada venta</span>.
+          Yo optimizo lo que te cuesta <span style={{ color: "#4A7CF7" }}>cada venta</span>.<span style={{display:"inline-block",color:"#3B82F6",fontWeight:300,marginLeft:2,animation:"blink 1.1s step-end infinite"}}>|</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -467,7 +467,7 @@ function HeroSection() {
           }}
         >
           <a
-            href="https://wa.me/522292924043"
+            href="https://wa.me/522292924430?text=Hola%20Carolina%2C%20quiero%20saber%20qu%C3%A9%20est%C3%A1%20fallando%20en%20mis%20Meta%20Ads"
             style={{
               display: "inline-block",
               background: "#4A7CF7",
@@ -521,6 +521,7 @@ function HeroSection() {
             fontSize: 11,
             letterSpacing: "2px",
             textTransform: "uppercase" as const,
+            marginTop: "32px",
             color: "rgba(255,255,255,0.38)",
           }}
         >
