@@ -20,48 +20,6 @@ function dynamicNoSSR(loader: () => Promise<{ default: ComponentType }>) {
   };
 }
 
-      <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}`}</style>
-      {/* Business Manager Mockup - full hero background, diagonal */}
-      <div
-        style={{
-          display: "block",
-          position: "absolute",
-          left: "50%",
-          top: "50%",          transform: "translate(-50%, -50%) rotate(-6deg)",
-          width: "140%",
-          opacity: 0.15,
-          borderRadius: 16,
-          overflow: "hidden",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      >
-        <img
-          src="/meta-ads.jpeg"
-          alt="Meta Ads Manager"
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
-        {/* Gradient both sides */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,1) 25%, transparent 50%, rgba(10,15,30,1) 75%, rgba(10,15,30,1) 100%)",
-          pointerEvents: "none",
-        }} />
-        {/* Gradiente abajo */}
-        <div style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: "40%",
-          background: "linear-gradient(to top, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",
-          pointerEvents: "none",
-        }} />
-        {/* Gradient top */}
-        <div style={{position:"absolute",top:0,left:0,right:0,height:"40%",background:"linear-gradient(to bottom, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",pointerEvents:"none"}} />
-      </div>
-
 /* ─── colours ─── */
 const BLACK         = "#000000";
 const DEEP_NAVY     = "#0B2A5A";
@@ -382,6 +340,49 @@ function HeroSection() {
       <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}>
 
       </div>
+
+      <style>{`@media(max-width:767px){.hero-mockup{display:none!important}}`}</style>
+      {/* Business Manager Mockup - full hero background, diagonal */}
+      <div
+        style={{
+          display: "block",
+          position: "absolute",
+          left: "50%",
+          top: "50%",          transform: "translate(-50%, -50%) rotate(-6deg)",
+          width: "140%",
+          opacity: 0.15,
+          borderRadius: 16,
+          overflow: "hidden",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        <img
+          src="/meta-ads.jpeg"
+          alt="Meta Ads Manager"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
+        {/* Gradient both sides */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,1) 25%, transparent 50%, rgba(10,15,30,1) 75%, rgba(10,15,30,1) 100%)",
+          pointerEvents: "none",
+        }} />
+        {/* Gradiente abajo */}
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "40%",
+          background: "linear-gradient(to top, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",
+          pointerEvents: "none",
+        }} />
+        {/* Gradient top */}
+        <div style={{position:"absolute",top:0,left:0,right:0,height:"40%",background:"linear-gradient(to bottom, rgba(10,15,30,1) 0%, rgba(10,15,30,0) 100%)",pointerEvents:"none"}} />
+      </div>
+
 
       <motion.div
         style={{
