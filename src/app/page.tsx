@@ -366,7 +366,7 @@ function HeroSection() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, rgba(10,15,30,1) 0%, rgba(10,15,30,1) 25%, transparent 50%, rgba(10,15,30,1) 75%, rgba(10,15,30,1) 100%)",
+          background: "linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 25%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0) 100%)",
           pointerEvents: "none",
         }} />
         {/* Gradiente abajo */}
