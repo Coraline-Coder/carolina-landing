@@ -209,7 +209,7 @@ function Navbar() {
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
-                fontSize: "0.85rem",
+                fontSize: "10px",
                 color: "rgba(255,255,255,0.85)",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase" as const,
@@ -229,16 +229,16 @@ function Navbar() {
               fontWeight: 500,
               fontSize: "0.85rem",
               color: WHITE,
-              background: BLUE_ELECTRIC,
-              padding: "0.5rem 1.4rem",
+              background: "rgba(59,130,246,0.85)",
+              padding: "9px 18px",
               borderRadius: 100,
               textDecoration: "none",
-              letterSpacing: "0.06em",
+              letterSpacing: "1.5px",
               textTransform: "uppercase" as const,
               transition: "background 0.25s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = CORE_BLUE)}
-            onMouseLeave={(e) => (e.currentTarget.style.background = BLUE_ELECTRIC)}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "#3B82F6")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(59,130,246,0.85)")}
           >
             Agendar llamada
           </a>
@@ -332,7 +332,7 @@ function HeroSection() {
         flexDirection: "column",
         justifyContent: "center",
         overflow: "hidden",
-        paddingTop: "100px",
+        paddingTop: "140px",
         paddingBottom: "80px",
       }}
     >
@@ -422,9 +422,9 @@ function HeroSection() {
             fontFamily: "var(--font-cormorant)",
             fontWeight: 300,
             fontSize: isMob ? 34 : 52,
-            lineHeight: 1.0,
+            lineHeight: 1.05,
             color: "#FFFFFF",
-            marginBottom: 18,
+            marginBottom: 28,
           }}
         >
           La mayoría de agencias optimiza anuncios.<br/>
@@ -439,11 +439,12 @@ function HeroSection() {
           style={{
             fontFamily: "var(--font-jost)",
             fontWeight: 300,
-            fontSize: 16,
-            color: "rgba(255,255,255,0.68)",
-            maxWidth: 560,
+            fontSize: 14,
+            marginTop: "24px",
+            color: "rgba(156,163,175,0.90)",
+            maxWidth: 420,
             lineHeight: 1.85,
-            marginBottom: 28,
+            marginBottom: 36,
             marginLeft: isMob ? "auto" : undefined,
             marginRight: isMob ? "auto" : undefined,
           }}
@@ -476,14 +477,14 @@ function HeroSection() {
               fontWeight: 500,
               fontSize: "0.85rem",
               padding: "14px 28px",
-              borderRadius: 10,
+              borderRadius: 3,
               textDecoration: "none",
-              letterSpacing: "0.04em",
-              transition: "all 0.25s",
+              letterSpacing: "1.5px",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               textAlign: "center",
             }}
-            onMouseEnter={function(e){e.currentTarget.style.background="#3a6ce6";e.currentTarget.style.transform="translateY(-1px)";}}
-            onMouseLeave={function(e){e.currentTarget.style.background="#4A7CF7";e.currentTarget.style.transform="none";}}
+            onMouseEnter={function(e){e.currentTarget.style.background="#2563EB";e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(37,99,235,0.25)";e.currentTarget.style.letterSpacing="2px";}}
+            onMouseLeave={function(e){e.currentTarget.style.background="#3B82F6";e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";e.currentTarget.style.letterSpacing="1.5px";}}
           >
             Quiero saber qué está fallando
           </a>
