@@ -1156,17 +1156,6 @@ function ContactSection() {
               WhatsApp directo
             </a>
           </div>
-          <p
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: "0.75rem",
-              color: "rgba(255,255,255,0.35)",
-              marginTop: "1.5rem",
-            }}
-          >
-            carolinajuarezbetancourt@gmail.com
-          </p>
         </ScrollReveal>
       </div>
     </section>
