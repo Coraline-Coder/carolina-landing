@@ -332,7 +332,7 @@ function HeroSection() {
         flexDirection: "column",
         justifyContent: "center",
         overflow: "hidden",
-        paddingTop: "140px",
+        paddingTop: "88px",
         paddingBottom: "80px",
       }}
     >
