@@ -6,6 +6,7 @@ import HerramientasGratisSection from "@/components/herramientas-gratis";
 import { useState, useEffect, useRef, ComponentType, useCallback } from "react";
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import ServiciosSection from "@/components/servicios-section";
 
 
 /* ─── dynamic import (no SSR) ─── */
@@ -1308,7 +1309,8 @@ export default function Page() {
       <HerramientasGratisSection />
       <SistemaFiltroSection />
       <CapacidadesSection />
-      <ProcesoSection />
+      <ServiciosSection />
+<ProcesoSection />
       <ContactSection />
       <Footer />
       
