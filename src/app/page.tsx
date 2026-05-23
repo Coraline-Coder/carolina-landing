@@ -187,7 +187,7 @@ function Navbar() {
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "1rem 2rem",
+          padding: "12px 48px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -302,6 +302,7 @@ function Navbar() {
                 borderRadius: 100,
                 textDecoration: "none",
                 marginTop: "0.5rem",
+            marginBottom: "32px",
               }}
             >
               Agendar llamada
