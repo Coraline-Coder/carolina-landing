@@ -23,7 +23,6 @@ export default function ServiciosSection() {
     { i: "💻", t: "Diseño Web", x: "Landing pages y sitios web orientados a conversión. No solo bonitos — diseñados para vender." },
     { i: "📷", t: "Fotografía", x: "De producto y marca personal. El contenido visual es el 70% del resultado de un anuncio." },
     { i: "📊", t: "Estrategia Digital", x: "Auditoría de marca, análisis de competencia y plan de marketing basado en datos reales." },
-    { i: "🤖", t: "Marketing con IA", x: "Automatización, personalización y análisis de datos con inteligencia artificial integrada al proceso." },
     { i: "🧾", t: "Contabilidad", x: "Para negocios en crecimiento que necesitan orden fiscal. En alianza con especialista certificada." },
   ];
 
@@ -67,9 +66,20 @@ export default function ServiciosSection() {
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <h3 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: isMob ? 24 : 30, color: "#0A0F1E", marginBottom: 12 }}>Servicios complementarios</h3>
         <p style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: 16, color: "rgba(10,15,30,0.5)", marginBottom: 40 }}>Para que la estrategia tenga todo lo que necesita para funcionar.</p>
-        <div style={{ display: "grid", gridTemplateColumns: isMob ? "1fr" : "1fr 1fr 1fr", gap: 20 }}>
-          {compServices.map((sv, idx) => (
+        <div style={{ display: "grid", gridTemplateColumns: isMob ? "1fr" : "repeat(3, 1fr)", gap: 20 }}>
+          {compServices.slice(0, 3).map((sv, idx) => (
             <div key={idx} style={{ background: "#FFFFFF", border: "1px solid #E2E6F0", borderRadius: 16, padding: 28, transition: "all 0.3s", cursor: "default" }}
+              onMouseEnter={function(e){e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(74,124,247,0.1)";}}
+              onMouseLeave={function(e){e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+              <div style={{ fontSize: 28, marginBottom: 12 }}>{sv.i}</div>
+              <div style={{ fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: 16, color: "#0A0F1E", marginBottom: 8 }}>{sv.t}</div>
+              <div style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: 14, color: "rgba(10,15,30,0.6)", lineHeight: 1.7 }}>{sv.x}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: isMob ? "1fr" : "repeat(2, 1fr)", gap: 20, maxWidth: isMob ? "100%" : "66.666%", margin: "20px auto 0", justifyContent: "center" }}>
+          {compServices.slice(3).map((sv, idx) => (
+            <div key={idx+3} style={{ background: "#FFFFFF", border: "1px solid #E2E6F0", borderRadius: 16, padding: 28, transition: "all 0.3s", cursor: "default" }}
               onMouseEnter={function(e){e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(74,124,247,0.1)";}}
               onMouseLeave={function(e){e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
               <div style={{ fontSize: 28, marginBottom: 12 }}>{sv.i}</div>
