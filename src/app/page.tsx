@@ -470,7 +470,7 @@ function HeroSection() {
           }}
         >
           <a
-            href="https://wa.me/522292924430?text=Hola%20Carolina%2C%20quiero%20saber%20qu%C3%A9%20est%C3%A1%20fallando%20en%20mis%20Meta%20Ads"
+            href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20quiero%20saber%20qu%C3%A9%20est%C3%A1%20fallando%20en%20mis%20Meta%20Ads"
             style={{
               display: "inline-block",
               background: "#4A7CF7",
@@ -1132,7 +1132,7 @@ function ContactSection() {
               Agendar llamada estratégica
             </a>
             <a
-              href="https://wa.me/522292924430"
+              href="https://wa.me/522292924043"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1213,7 +1213,7 @@ function Footer() {
         </p>
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
-            href="https://wa.me/522292924430"
+            href="https://wa.me/522292924043"
             target="_blank"
             rel="noopener noreferrer"
             style={{

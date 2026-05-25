@@ -573,7 +573,7 @@ const calculadoraHTML=`<!DOCTYPE html>
     const msg = encodeURIComponent(
       \`Hola Carolina, acabo de calcular que estoy desperdiciando \${fmt(desperdicio)} MXN al mes en Meta Ads con un ROAS de \${roas.toFixed(1)}x. Quiero saber cómo mejorar esto.\`
     );
-    document.getElementById('btnWA').href = \`https://wa.me/522311396364?text=\${msg}\`;
+    document.getElementById('btnWA').href = \`https://wa.me/522292924043?text=\${msg}\`;
   }
 
   function restart() {
@@ -1353,7 +1353,7 @@ function mostrarResultados() {
   const msg = encodeURIComponent(
     \`Hola Carolina, hice el Scorecard de madurez Meta Ads y obtuve \${scoreNorm}/100 — nivel: \${nivelText}. Me interesa saber cómo mejorar mi cuenta.\`
   );
-  document.getElementById('btnWA').href = \`https://wa.me/522311396364?text=\${msg}\`;
+  document.getElementById('btnWA').href = \`https://wa.me/522292924043?text=\${msg}\`;
 
   // Progress 100%
   document.getElementById('progressFill').style.width = '100%';
@@ -2229,7 +2229,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 
     // WhatsApp message
     const msg = encodeURIComponent(\`Hola Carolina, acabo de hacer el Benchmark de Performance Meta Ads y obtuve un score de \${totalScore}/100. Me interesa saber cómo mejorar mis métricas.\`);
-    document.getElementById('btnWhatsapp').href = \`https://wa.me/522311396364?text=\${msg}\`;
+    document.getElementById('btnWhatsapp').href = \`https://wa.me/522292924043?text=\${msg}\`;
   }
 
   function restart() {

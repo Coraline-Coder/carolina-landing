@@ -243,7 +243,7 @@ export default function CalculadoraROAS() {
     setResult({
       roasSimple, roasReal, breakEven, grossMarginPct,
       netProfit, cpl, hiddenCosts, status,
-      waUrl: `https://wa.me/522292924430?text=${encodeURIComponent(waMessages[status])}`,
+      waUrl: `https://wa.me/522292924043?text=${encodeURIComponent(waMessages[status])}`,
     });
   }
 
