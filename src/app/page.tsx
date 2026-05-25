@@ -224,7 +224,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="#calculadora"
+            href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontWeight: 500,
@@ -289,7 +289,9 @@ function Navbar() {
               </a>
             ))}
             <a
-              href="#calculadora"
+              href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
               style={{
                 display: "inline-block",
@@ -470,7 +472,7 @@ function HeroSection() {
           }}
         >
           <a
-            href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20quiero%20saber%20qu%C3%A9%20est%C3%A1%20fallando%20en%20mis%20Meta%20Ads"
+            href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20invierto%20en%20Meta%20Ads%20pero%20siento%20que%20algo%20no%20est%C3%A1%20funcionando%20bien.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20est%C3%A1%20frenando%20mis%20resultados."
             style={{
               display: "inline-block",
               background: "#4A7CF7",
@@ -1111,7 +1113,7 @@ function ContactSection() {
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a
-              href="https://calendly.com/carolina-mkt"
+              href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1132,7 +1134,7 @@ function ContactSection() {
               Agendar llamada estratégica
             </a>
             <a
-              href="https://wa.me/522292924043"
+              href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20me%20interesa%20agendar%20una%20llamada%20estrat%C3%A9gica%20para%20hablar%20sobre%20mis%20campa%C3%B1as%20de%20Meta%20Ads."
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1213,7 +1215,7 @@ function Footer() {
         </p>
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
-            href="https://wa.me/522292924043"
+            href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20c%C3%B3mo%20puedes%20ayudarme%20con%20mis%20Meta%20Ads."
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -1247,7 +1249,7 @@ function Footer() {
             Email
           </a>
           <a
-            href="https://calendly.com/carolina-mkt"
+            href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
             target="_blank"
             rel="noopener noreferrer"
             style={{
