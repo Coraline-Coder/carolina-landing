@@ -405,7 +405,8 @@ const calculadoraHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="inversion" placeholder="5,000" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="inversion" placeholder="5000" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
@@ -414,7 +415,8 @@ const calculadoraHTML=`<!DOCTYPE html>
         <span>¿Cuántas ventas genera ese presupuesto al mes?</span>
       </div>
       <div class="input-wrapper">
-        <input type="number" id="ventas" placeholder="12" min="0" autocomplete="off" inputmode="numeric" style="padding-left:16px;">
+        <input type="number" id="ventas" placeholder="12" min="0" step="1" autocomplete="off" 
+style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
       <p class="helper">Si no tienes el dato exacto, pon tu mejor estimado.</p>
     </div>
@@ -426,7 +428,8 @@ const calculadoraHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="ticket" placeholder="800" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="ticket" placeholder="800" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
@@ -435,7 +438,8 @@ const calculadoraHTML=`<!DOCTYPE html>
         <span>¿Cuántas ventas necesitas al mes para ser rentable?</span>
       </div>
       <div class="input-wrapper">
-        <input type="number" id="meta" placeholder="25" min="0" autocomplete="off" inputmode="numeric" style="padding-left:16px;">
+        <input type="number" id="meta" placeholder="25" min="0" step="1" autocomplete="off" 
+style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
       <p class="helper">Tu objetivo de ventas mensual mínimo.</p>
     </div>
@@ -1962,7 +1966,8 @@ const benchmarkHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="presupuesto" placeholder="5,000" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="presupuesto" placeholder="5,000" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
@@ -1973,7 +1978,8 @@ const benchmarkHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="ticket" placeholder="800" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="ticket" placeholder="800" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
@@ -1991,7 +1997,8 @@ const benchmarkHTML=`<!DOCTYPE html>
         <span class="hint">Ingreso / Inversión</span>
       </div>
       <div class="input-wrapper">
-        <input type="number" id="roas" placeholder="2.5" min="0" autocomplete="off" inputmode="numeric" step="0.1" style="padding-left:16px;">
+        <input type="number" id="roas" placeholder="2.5" min="0" step="0.1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()" style="padding-left:16px;">
         <span class="input-suffix">x</span>
       </div>
     </div>
@@ -2002,7 +2009,8 @@ const benchmarkHTML=`<!DOCTYPE html>
         <span class="hint">Clicks / Impresiones</span>
       </div>
       <div class="input-wrapper">
-        <input type="number" id="ctr" placeholder="1.8" min="0" autocomplete="off" inputmode="numeric" step="0.01" style="padding-left:16px;">
+        <input type="number" id="ctr" placeholder="1.8" min="0" step="0.01" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()" style="padding-left:16px;">
         <span class="input-suffix">%</span>
       </div>
     </div>
@@ -2014,7 +2022,8 @@ const benchmarkHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="cpm" placeholder="120" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="cpm" placeholder="120" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
@@ -2025,7 +2034,8 @@ const benchmarkHTML=`<!DOCTYPE html>
       </div>
       <div class="input-wrapper">
         <span class="input-prefix">\$</span>
-        <input type="number" id="cpl" placeholder="350" min="0" autocomplete="off" inputmode="numeric">
+        <input type="number" id="cpl" placeholder="350" min="0" step="1" autocomplete="off" 
+onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
     </div>
 
