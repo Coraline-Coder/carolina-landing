@@ -498,7 +498,7 @@ function Field({ id, label, hint, val, onChange, focused, onFocus, onBlur }) {
       <input
         id={id}
         type="number"
-        min="0"
+        min="0" autocomplete="off" inputmode="numeric"
         step="any"
         value={val}
         onChange={onChange}

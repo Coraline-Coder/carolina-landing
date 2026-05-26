@@ -233,7 +233,7 @@ function Field({ id, label, hint, val, onChange, focused, onFocus, onBlur }: {
         {label}
       </label>
       <input
-        id={id} type="number" min="0" step="any"
+        id={id} type="number" min="0" autocomplete="off" inputmode="numeric" step="any"
         value={val} onChange={onChange} onFocus={onFocus} onBlur={onBlur}
         placeholder="0"
         style={{
