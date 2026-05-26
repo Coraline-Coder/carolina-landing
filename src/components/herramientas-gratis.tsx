@@ -381,6 +381,7 @@ const calculadoraHTML=`<!DOCTYPE html>
 
   @media (max-width: 480px) {
     .card { padding: 28px 20px; }
+    .score-display { font-size: 42px; }
     .container { padding: 40px 16px 60px; }
     .metrics-row { grid-template-columns: 1fr; }
   }
@@ -1068,6 +1069,7 @@ const scorecardHTML=`<!DOCTYPE html>
 
   @media (max-width: 480px) {
     .card { padding: 28px 20px; }
+    .score-number .num { font-size: 32px; }
     .container { padding: 40px 16px 60px; }
   }
 </style>
@@ -1908,6 +1910,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 
   @media (max-width: 480px) {
     .card { padding: 28px 20px; }
+    .score-number .num { font-size: 32px; }
     .container { padding: 40px 16px 60px; }
   }
 </style>
