@@ -1,0 +1,13 @@
+var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/app/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0gonm60._.js")
+R.c("server/chunks/ssr/0.oy_next_dist_esm_build_templates_app-page_092gh2_.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0j~4jbl._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__05.kra6._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__07aj30o._.js")
+R.c("server/chunks/ssr/0.oy_next_dist_client_components_0bxpfac._.js")
+R.c("server/chunks/ssr/0.oy_next_dist_client_components_builtin_forbidden_11ic7ci.js")
+R.c("server/chunks/ssr/0.oy_next_dist_client_components_builtin_unauthorized_0he76_g.js")
+R.c("server/chunks/ssr/0.oy_next_dist_client_components_builtin_global-error_0itjd.t.js")
+R.c("server/chunks/ssr/carolina-landing__next-internal_server_app_page_actions_0owdrls.js")
+R.m(11492)
+module.exports=R.m(11492).exports

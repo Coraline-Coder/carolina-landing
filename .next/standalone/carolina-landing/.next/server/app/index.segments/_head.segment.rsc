@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[47685,["/_next/static/chunks/0n1qf-nyut0u4.js","/_next/static/chunks/0y8ay674dow_n.js"],"ViewportBoundary"]
+3:I[47685,["/_next/static/chunks/0n1qf-nyut0u4.js","/_next/static/chunks/0y8ay674dow_n.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"CJB | Performance Marketing & Paid Media Strategy"}],["$","meta","1",{"name":"description","content":"Estrategia de Performance Marketing y Meta Ads por Carolina Betancourt. ROAS real, sistema probado, resultados medibles."}],["$","meta","2",{"name":"keywords","content":"Meta Ads,Performance Marketing,ROAS,Paid Media,Carolina Betancourt,Facebook Ads,Instagram Ads"}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"X3-SVg2eceSkkPl5HqQKN"}
