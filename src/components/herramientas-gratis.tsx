@@ -388,7 +388,7 @@ const calculadoraHTML=`<!DOCTYPE html>
 <div class="container">
 
   <div class="header animate-in">
-    <div class="badge">CJB · Herramienta Gratuita</div>
+    <div class="badge">Carolina Betancourt</div>
     <h1>¿Cuánto está<br><span>desperdiciando</span><br>tu negocio en Meta Ads?</h1>
     <p>Calcula en 30 segundos cuánto dinero se está yendo sin generar ventas reales.</p>
   </div>
@@ -498,7 +498,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
 
   </div>
 
-  <div class="footer">CJB by Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
+  <div class="footer">Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
 
 </div>
 
@@ -1073,7 +1073,7 @@ const scorecardHTML=`<!DOCTYPE html>
 <div class="container">
 
   <div class="header animate-in">
-    <div class="badge">CJB · Herramienta Gratuita</div>
+    <div class="badge">Carolina Betancourt</div>
     <h1>¿Cuánto está<br><span>desperdiciando</span><br>tu negocio en Meta Ads?</h1>
     <p>Calcula en 30 segundos cuánto dinero se está yendo sin generar ventas reales.</p>
   </div>
@@ -1183,7 +1183,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
 
   </div>
 
-  <div class="footer">CJB by Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
+  <div class="footer">Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
 
 </div>
 
@@ -1276,7 +1276,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benchmark de Performance · CJB</title>
+<title>Carolina Betancourt</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1797,7 +1797,7 @@ const benchmarkHTML=`<!DOCTYPE html>
 <div class="container">
 
   <div class="header animate-in">
-    <div class="badge">CJB · Herramienta Gratuita</div>
+    <div class="badge">Carolina Betancourt</div>
     <h1>Benchmark de<br><span>Performance Meta Ads</span></h1>
     <p>Descubre si tus métricas están por encima o por debajo del promedio de tu industria — y qué está frenando tu escalamiento.</p>
   </div>
@@ -1954,7 +1954,7 @@ onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDow
     </div>
   </div>
 
-  <div class="footer">CJB by Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
+  <div class="footer">Carolina Betancourt · Performance Marketing & Paid Media Strategy</div>
 
 </div>
 
