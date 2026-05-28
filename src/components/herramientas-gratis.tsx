@@ -12,7 +12,7 @@ const calculadoraHTML=`<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Cuánto estás desperdiciando en Meta Ads? · CJB</title>
+<title>¿Cuánto estás desperdiciando en Meta Ads? · Carolina Betancourt</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -591,7 +591,7 @@ const scorecardHTML=`<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Qué tan lista está tu cuenta Meta para escalar? · CJB</title>
+<title>¿Qué tan lista está tu cuenta Meta para escalar? · Carolina Betancourt</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
