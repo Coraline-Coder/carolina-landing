@@ -18,6 +18,8 @@ const calculadoraHTML=`<!DOCTYPE html>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    margin: 0;
+    padding: 0;
     background: #000000;
     color: #EEF0FF;
     font-family: 'DM Sans', sans-serif;
@@ -597,6 +599,8 @@ const scorecardHTML=`<!DOCTYPE html>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    margin: 0;
+    padding: 0;
     background: #000000;
     color: #EEF0FF;
     font-family: 'DM Sans', sans-serif;
@@ -1294,6 +1298,8 @@ const benchmarkHTML=`<!DOCTYPE html>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    margin: 0;
+    padding: 0;
     background: #000000;
     color: #EEF0FF;
     font-family: 'DM Sans', sans-serif;
@@ -2137,7 +2143,7 @@ function ToolIframe({html,onHeight}:{html:string;onHeight:(h:number)=>void}){
 const iframeRef=useRef<HTMLIFrameElement>(null);
 const handleLoad=useCallback(()=>{try{const doc=iframeRef.current?.contentDocument;if(doc?.body)onHeight(doc.body.scrollHeight)}catch{onHeight(900)}},[onHeight]);
 useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.data?.type==="resize"&&typeof e.data.height==="number")onHeight(e.data.height)};window.addEventListener("message",handler);return()=>window.removeEventListener("message",handler)},[onHeight]);
-return<iframe ref={iframeRef} srcDoc={html} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:500,borderRadius:12}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
+return<iframe ref={iframeRef} srcDoc={html} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:600,borderRadius:0,background:"transparent"}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
 }
 export default function HerramientasGratisSection(){
 const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'center'}),550)}},[openTool]);
@@ -2166,12 +2172,14 @@ return(
 <AnimatePresence>
 {openTool&&(
 <motion.div ref={panelRef} initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.4,ease:"easeInOut"}} style={{overflow:"hidden",marginTop:"2rem"}}>
-<div style={{background:"#F5F6FA",border:"1px solid rgba(46,95,138,0.2)",borderRadius:16,padding:"1.5rem",maxWidth:720,margin:"0 auto"}}>
-<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
-<h3 style={{fontFamily:"var(--font-cormorant)",fontWeight:500,fontSize:"1.3rem",color:"#0B2A5A"}}>{tools.find((t)=>t.id===openTool)?.emoji} {tools.find((t)=>t.id===openTool)?.title}</h3>
-<button onClick={()=>setOpenTool(null)} style={{background:"transparent",border:"1px solid #D0D5E8",borderRadius:8,padding:"0.4rem 1rem",fontFamily:"'DM Sans', sans-serif",fontSize:"0.75rem",color:"#8A8FA8",cursor:"pointer",letterSpacing:"0.06em",textTransform:"uppercase" as const}}>Cerrar ✕</button>
+<div style={{background:"#000000",border:"1px solid rgba(59,130,246,0.20)",borderRadius:12,padding:0,maxWidth:720,margin:"0 auto",overflow:"hidden",boxShadow:"0 24px 60px rgba(0,0,0,0.7), 0 0 40px rgba(59,130,246,0.06)"}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#0B2A5A",borderBottom:"1px solid rgba(59,130,246,0.20)",padding:"12px 20px"}}>
+<h3 style={{fontFamily:"var(--font-dm-sans)",fontWeight:400,fontSize:"0.8rem",letterSpacing:"0.06em",color:"#EEF0FF"}}>{tools.find((t)=>t.id===openTool)?.emoji} {tools.find((t)=>t.id===openTool)?.title}</h3>
+<button onClick={()=>setOpenTool(null)} style={{background:"transparent",border:"1px solid rgba(156,163,175,0.20)",borderRadius:3,padding:"4px 10px",fontFamily:"var(--font-dm-sans)",fontSize:"0.7rem",color:"#9CA3AF",cursor:"pointer",letterSpacing:"0.12em",textTransform:"uppercase" as const,transition:"all 0.2s"}}>Cerrar ✕</button>
 </div>
-<ToolIframe key={openTool} html={tools.find((t)=>t.id===openTool)!.html} onHeight={(h)=>handleHeight(openTool,h)}/>
+<div style={{ width: "100%", overflow: "hidden" }}>
+                <ToolIframe key={openTool} html={tools.find((t)=>t.id===openTool)!.html} onHeight={(h)=>handleHeight(openTool,h)}/>
+</div>
 </div>
 </motion.div>)}
 </AnimatePresence>
