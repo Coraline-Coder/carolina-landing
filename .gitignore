@@ -3,3 +3,6 @@ node_modules/
 
 # next.js build output
 .next/
+
+_fix*.js
+_diag*.js
