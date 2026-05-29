@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+const fs=require('fs');
+const html=`<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -567,4 +568,20 @@ function restart(){
 renderQ();
 </script>
 </body>
-</html>
+</html>`;
+fs.writeFileSync('public/scorecard-meta-ads.html',html,'utf8');
+console.log('=== SCORECARD DARK BRANDING ===');
+console.log('Size:',html.length,'chars');
+console.log('Dark bg #0B0E18:',html.includes('#0B0E18'));
+console.log('Brand blue #4A90D9:',(html.match(/#4A90D9/g)||[]).length);
+console.log('No old blue #4A7CF7:',!html.includes('#4A7CF7'));
+console.log('No Jost:',!html.includes('Jost'));
+console.log('No CJB:',!html.includes('CJB'));
+console.log('Glassmorphism blur:',html.includes('backdrop-filter'));
+console.log('Gradient btn:',html.includes('linear-gradient(135deg'));
+console.log('Card::before highlight:',html.includes('card::before'));
+console.log('Emerald green #34D399:',html.includes('#34D399'));
+console.log('Violet #8B5CF6:',html.includes('#8B5CF6'));
+console.log('Cream text #F5F0EB:',html.includes('#F5F0EB'));
+console.log('WA 522292924043:',html.includes('522292924043'));
+console.log('Footer Carolina:',html.includes('Carolina Betancourt'));
