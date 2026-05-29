@@ -1,0 +1,10 @@
+const fs=require('fs');
+const c=fs.readFileSync('src/components/herramientas-gratis.tsx','utf8');
+console.log('=== CHECK GLOBAL EN TODO EL ARCHIVO ===');
+console.log('Jost font refs:',(c.match(/Jost/g)||[]).length);
+console.log('522311396364 viejo:',(c.match(/522311396364/g)||[]).length);
+console.log('522292924043 correcto:',(c.match(/522292924043/g)||[]).length);
+console.log('CJB refs:',(c.match(/CJB/g)||[]).length);
+console.log("font-family DM Sans:",(c.match(/DM Sans/g)||[]).length);
+console.log("font-family Cormorant:",(c.match(/Cormorant Garamond/g)||[]).length);
+console.log('Carolina Betancourt footer:',(c.match(/Carolina Betancourt/g)||[]).length);
