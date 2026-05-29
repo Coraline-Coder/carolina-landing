@@ -1659,15 +1659,15 @@ onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDow
 </html>
 `;
 const tools=[
-{id:"calculadora",emoji:"\u{1F9CA}",label:"No se si mis ads funcionan",title:"Calculadora de desperdicio",desc:"Calcula en 30 segundos cuánto dinero se va sin generar ventas reales.",html:calculadoraHTML},
-{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente qué está frenando el crecimiento de tus campañas.",html:scorecardHTML},
-{id:"benchmark",emoji:"\u{1F525}",label:"Ya invierto fuerte y quiero comparar",title:"Benchmark de performance",desc:"Compara tus métricas con el promedio de tu industria y detecta las fugas.",html:benchmarkHTML},
+{id:"calculadora",emoji:"\u{1F9CA}",label:"No se si mis ads funcionan",title:"Calculadora de desperdicio",desc:"Calcula en 30 segundos cuánto dinero se va sin generar ventas reales.",src:"/calculadora-desperdicio.html"},
+{id:"scorecard",emoji:"\u{1F321}\uFE0F",label:"Invierto pero quiero escalar",title:"Scorecard de madurez",desc:"6 preguntas para saber exactamente qué está frenando el crecimiento de tus campañas.",src:"/scorecard-meta-ads.html"},
+{id:"benchmark",emoji:"\u{1F525}",label:"Ya invierto fuerte y quiero comparar",title:"Benchmark de performance",desc:"Compara tus métricas con el promedio de tu industria y detecta las fugas.",src:"/benchmark-performance.html"},
 ];
-function ToolIframe({html,onHeight}:{html:string;onHeight:(h:number)=>void}){
+function ToolIframe({src,onHeight}:{src:string;onHeight:(h:number)=>void}){
 const iframeRef=useRef<HTMLIFrameElement>(null);
 const handleLoad=useCallback(()=>{try{const doc=iframeRef.current?.contentDocument;if(doc?.body)onHeight(doc.body.scrollHeight)}catch{onHeight(900)}},[onHeight]);
 useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.data?.type==="resize"&&typeof e.data.height==="number")onHeight(e.data.height)};window.addEventListener("message",handler);return()=>window.removeEventListener("message",handler)},[onHeight]);
-return<iframe ref={iframeRef} srcDoc={html} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:600,borderRadius:0,background:"transparent"}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
+return<iframe ref={iframeRef} src={src} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:600,borderRadius:0,background:"transparent"}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
 }
 export default function HerramientasGratisSection(){
 const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'center'}),550)}},[openTool]);
@@ -1702,7 +1702,7 @@ return(
 <button onClick={()=>setOpenTool(null)} style={{background:"transparent",border:"1px solid rgba(156,163,175,0.20)",borderRadius:3,padding:"4px 10px",fontFamily:"var(--font-dm-sans)",fontSize:"0.7rem",color:"#9CA3AF",cursor:"pointer",letterSpacing:"0.12em",textTransform:"uppercase" as const,transition:"all 0.2s"}}>Cerrar ✕</button>
 </div>
 <div style={{ width: "100%", overflow: "hidden" }}>
-                <ToolIframe key={openTool} html={tools.find((t)=>t.id===openTool)!.html} onHeight={(h)=>handleHeight(openTool,h)}/>
+                <ToolIframe key={openTool} src={tools.find((t)=>t.id===openTool)!.src} onHeight={(h)=>handleHeight(openTool,h)}/>
 </div>
 </div>
 </motion.div>)}

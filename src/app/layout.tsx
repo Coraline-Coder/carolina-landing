@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -10,15 +10,15 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const jost = Jost({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  variable: "--font-jost",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "CJB | Performance Marketing & Paid Media Strategy",
+  title: "Carolina Betancourt | Performance Marketing & Paid Media Strategy",
   description:
     "Estrategia de Performance Marketing y Meta Ads por Carolina Betancourt. ROAS real, sistema probado, resultados medibles.",
   keywords: [
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="es" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="antialiased">{children}
         {/* Meta Pixel Code */}
         <Script id="meta-pixel" strategy="afterInteractive">

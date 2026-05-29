@@ -173,7 +173,6 @@
     box-shadow: 0 8px 24px rgba(37,99,235,0.25);
   }
 
-  /* RESULTS */
   #results { display: none; }
 
   .waste-number {
@@ -205,7 +204,6 @@
     color: #9CA3AF;
   }
 
-  /* Metrics grid */
   .metrics-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -249,7 +247,6 @@
 
   .metric-box.highlight .m-value { color: #3B82F6; }
 
-  /* Semforo */
   .semaforo {
     border-radius: 16px;
     padding: 20px 24px;
@@ -288,7 +285,6 @@
     line-height: 1.6;
   }
 
-  /* CTA */
   .cta-box {
     text-align: center;
     padding: 28px 0 0;
@@ -375,6 +371,7 @@
 
   @media (max-width: 480px) {
     .card { padding: 28px 20px; }
+    .score-display { font-size: 42px; }
     .container { padding: 40px 16px 60px; }
     .metrics-row { grid-template-columns: 1fr; }
   }
@@ -384,7 +381,7 @@
 <div class="container">
 
   <div class="header animate-in">
-    <div class="badge">Carolina Betancourt · Herramienta Gratuita</div>
+    <div class="badge">Carolina Betancourt</div>
     <h1>¿Cuánto está<br><span>desperdiciando</span><br>tu negocio en Meta Ads?</h1>
     <p>Calcula en 30 segundos cuánto dinero se está yendo sin generar ventas reales.</p>
   </div>
@@ -397,7 +394,7 @@
         <span class="hint">MXN</span>
       </div>
       <div class="input-wrapper">
-        <span class="input-prefix">$</span>
+        <span class="input-prefix">\$</span>
         <input type="number" id="inversion" placeholder="5000" min="0" step="1" autocomplete="off" 
 onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
@@ -420,7 +417,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
         <span class="hint">MXN</span>
       </div>
       <div class="input-wrapper">
-        <span class="input-prefix">$</span>
+        <span class="input-prefix">\$</span>
         <input type="number" id="ticket" placeholder="800" min="0" step="1" autocomplete="off" 
 onwheel="this.blur()" onkeydown="if(event.key==='ArrowUp'||event.key==='ArrowDown')event.preventDefault()">
       </div>
@@ -445,7 +442,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
 
     <div class="waste-number">
       <div class="waste-label">Estás desperdiciando cada mes</div>
-      <div class="waste-amount" id="wasteAmount">$0</div>
+      <div class="waste-amount" id="wasteAmount">\$0</div>
       <div class="waste-sublabel" id="wasteSubLabel">en presupuesto que no se convierte en ventas</div>
     </div>
 
@@ -481,7 +478,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
     </div>
 
     <div class="cta-box">
-      <h3>Hay <span id="ctaWaste">$X</span> recuperables<br>en tu cuenta este mes</h3>
+      <h3>Hay <span id="ctaWaste">\$X</span> recuperables<br>en tu cuenta este mes</h3>
       <p id="ctaDesc">Eso no es dinero perdido para siempre. Es dinero mal dirigido que se puede redirigir con la estrategia correcta.</p>
       <a id="btnWA" class="btn-whatsapp" href="#" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -500,7 +497,7 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
 
 <script>
   function fmt(n) {
-    return '$' + Math.round(n).toLocaleString('es-MX');
+    return '\$' + Math.round(n).toLocaleString('es-MX');
   }
 
   function calcular() {
@@ -526,58 +523,4 @@ style="padding-left:16px;" onwheel="this.blur()" onkeydown="if(event.key==='Arro
     if (roas < 1) {
       semClass = 'red';
       semTitle = '🔴 Situación crítica — estás perdiendo dinero';
-      semDesc = `Por cada peso que inviertes en Meta, recuperas ${roas.toFixed(2)} pesos. Tu campaña está destruyendo capital. Esto tiene solución, pero requiere acción inmediata.`;
-    } else if (roas < 2.5) {
-      semClass = 'yellow';
-      semTitle = '🟡 Rendimiento bajo — hay fugas importantes';
-      semDesc = `Tu ROAS de ${roas.toFixed(1)}x está por debajo del mínimo saludable (2.5x). Estás generando algo, pero la mayoría del presupuesto no está convirtiendo. Con los ajustes correctos esto puede cambiar rápido.`;
-    } else {
-      semClass = 'green';
-      semTitle = '🟢 Base sólida — hay margen de escalamiento';
-      semDesc = `Tu ROAS de ${roas.toFixed(1)}x está bien. El siguiente paso es escalar sin perder eficiencia — ahí es donde la mayoría de negocios tropieza.`;
-    }
-
-    // Render
-    document.getElementById('formCard').style.display = 'none';
-    const res = document.getElementById('results');
-    res.style.display = 'block';
-
-    document.getElementById('wasteAmount').textContent = fmt(desperdicio);
-    document.getElementById('wasteSubLabel').textContent =
-      porcentajeDesperdicio > 50
-        ? `El ${Math.round(porcentajeDesperdicio)}% de tu inversión no regresa como ventas`
-        : `Hay oportunidad de optimizar el ${Math.round(100 - (roas/3.5)*100 > 0 ? 100 - (roas/3.5)*100 : 10)}% de tu inversión`;
-
-    document.getElementById('resInversion').textContent = fmt(inv);
-    document.getElementById('resIngresos').textContent = fmt(ingresos);
-    document.getElementById('resRoas').textContent = roas.toFixed(1) + 'x';
-    document.getElementById('resCpv').textContent = fmt(cpv);
-
-    const sem = document.getElementById('semaforo');
-    sem.className = 'semaforo ' + semClass;
-    document.getElementById('semaforoTitle').textContent = semTitle;
-    document.getElementById('semaforoDesc').textContent = semDesc;
-
-    document.getElementById('ctaWaste').textContent = fmt(desperdicio);
-
-    if (roas < 1) {
-      document.getElementById('ctaDesc').textContent = 'Tu cuenta necesita intervención urgente. Hablemos hoy — te digo exactamente qué está fallando y cómo pararlo.';
-    } else if (roas < 2.5) {
-      document.getElementById('ctaDesc').textContent = 'Eso no es dinero perdido para siempre. Es dinero mal dirigido que se puede redirigir con la estrategia correcta. Hablemos 15 minutos.';
-    } else {
-      document.getElementById('ctaDesc').textContent = 'Tienes una base sólida. El siguiente paso es escalar sin romper lo que funciona — eso requiere una estrategia específica.';
-    }
-
-    const msg = encodeURIComponent(
-      `Hola Carolina, acabo de calcular que estoy desperdiciando ${fmt(desperdicio)} MXN al mes en Meta Ads con un ROAS de ${roas.toFixed(1)}x. Quiero saber cómo mejorar esto.`
-    );
-    document.getElementById('btnWA').href = `https://wa.me/522292924043?text=${msg}`;
-  }
-
-  function restart() {
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('formCard').style.display = 'block';
-  }
-</script>
-</body>
-</html>
+      semDesc = \`Por cada peso que inviertes en Meta, recuperas \${roas.toFixed(2)} pesos. Tu campaña está destruyendo capital. Esto tiene solución, pero requiere acción inmediata.\
