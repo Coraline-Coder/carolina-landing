@@ -164,6 +164,7 @@ function Navbar() {
 
   
   const links = [
+    { label: "Herramientas", href: "#herramientas" },
     { label: "Método P.U.L.S.O.", href: "#sistema-filtro" },
     { label: "Capacidades", href: "#capacidades" },
     { label: "Proceso", href: "#proceso" },
@@ -1298,6 +1299,7 @@ export default function Page() {
       <Marquee />
       <ProblemaSection />
       <CasoDeExitoSection />
+      <div id="herramientas"></div>
       <HerramientasGratisSection />
       <SistemaFiltroSection />
       <CapacidadesSection />
