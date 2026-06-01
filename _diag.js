@@ -1,29 +1,17 @@
-var fs = require('fs');
-var c = fs.readFileSync('src/components/herramientas-gratis.tsx', 'utf8');
-var lines = c.split('\n');
+const fs = require('fs');
+const fp = 'src/components/herramientas-gratis.tsx';
+let h = fs.readFileSync(fp, 'utf8');
 
-console.log('=== TOTAL LINES: ' + lines.length + ' ===');
-
-// Search key areas
-console.log('\n--- IFRAME AREA (around line 100) ---');
-for (var i = 95; i < Math.min(115, lines.length); i++) {
-  console.log((i+1) + ': ' + lines[i]);
+function showContext(label, searchText) {
+  const idx = h.indexOf(searchText);
+  if (idx === -1) { console.log(label, ': NO ENCONTRADO'); return; }
+  const start = Math.max(0, idx - 100);
+  const end = Math.min(h.length, idx + searchText.length + 400);
+  console.log('\n=== ' + label + ' (pos ' + idx + ') ===');
+  console.log(h.slice(start, end));
+  console.log('=== FIN ===');
 }
 
-console.log('\n--- SECTION BG (around line 125) ---');
-for (var i = 123; i < Math.min(128, lines.length); i++) {
-  console.log((i+1) + ': ' + lines[i]);
-}
-
-console.log('\n--- MODAL AREA (around line 275) ---');
-for (var i = 270; i < Math.min(330, lines.length); i++) {
-  console.log((i+1) + ': ' + lines[i]);
-}
-
-console.log('\n--- BODY IN HTML TEMPLATES ---');
-var bodyMatches = [];
-var idx = -1;
-while ((idx = c.indexOf('body{', idx + 1)) !== -1) {
-  bodyMatches.push({pos: idx, ctx: c.substring(idx, idx + 80)});
-}
-bodyMatches.forEach(function(m) { console.log('pos ' + m.pos + ': ' + m.ctx); });
+showContext('CALC BOTON', 'Quiero saber dónde se está fugando ese dinero');
+showContext('SCORE BOTON', 'Quiero mi plan de mejora gratuito');
+showContext('BENCH BOTON', 'Quiero ver mis oportunidades de mejora');

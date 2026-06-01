@@ -1,10 +1,17 @@
-var fs = require('fs');
-var c = fs.readFileSync('src/components/herramientas-gratis.tsx', 'utf8');
-var lines = c.split('\n');
+const fs = require('fs');
+const fp = 'src/components/herramientas-gratis.tsx';
+let h = fs.readFileSync(fp, 'utf8');
 
-// Show exact content of key lines
-[2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2160,2161,2162,2163,2164,2165,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182].forEach(function(n) {
-  if (n <= lines.length) {
-    console.log(n + ': ' + lines[n-1]);
+// Buscar TODOS los enlaces WhatsApp (btnWA, btnWhatsapp, etc.)
+const patterns = ['btnWA', 'btnWhatsapp', 'whatsapp', '522292924043', 'wa.me'];
+for (const p of patterns) {
+  let idx = 0;
+  while ((idx = h.indexOf(p, idx)) !== -1) {
+    const start = Math.max(0, idx - 200);
+    const end = Math.min(h.length, idx + 300);
+    console.log('\n=== "' + p + '" en pos ' + idx + ' ===');
+    console.log(h.slice(start, end));
+    console.log('=== FIN ===');
+    idx += p.length;
   }
-});
+}
