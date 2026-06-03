@@ -1,3 +1,4 @@
+import { trackWhatsAppClick } from '@/lib/gtag'
 "use client"
 
 import CasoDeExitoSection from "@/components/caso-exito";
@@ -490,7 +491,7 @@ function HeroSection() {
             }}
             onMouseEnter={function(e){e.currentTarget.style.background="#2563EB";e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(37,99,235,0.25)";e.currentTarget.style.letterSpacing="2px";}}
             onMouseLeave={function(e){e.currentTarget.style.background="#3B82F6";e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";e.currentTarget.style.letterSpacing="1.5px";}}
-          >
+           onClick={() => trackWhatsAppClick('hero')}>
             Quiero saber qué está fallando
           </a>
           <a
@@ -1150,7 +1151,7 @@ function ContactSection() {
                 textDecoration: "none",
                 letterSpacing: "0.04em",
               }}
-              onMouseEnter={(e) => {
+              onMouseEnter={(e) = onClick={() => trackWhatsAppClick('metodo_pulso')}> {
                 e.currentTarget.style.background = "rgba(59,130,246,0.10)";
               }}
               onMouseLeave={(e) => {
@@ -1228,7 +1229,7 @@ function Footer() {
               letterSpacing: "0.06em",
               transition: "color 0.25s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
+            onMouseEnter={(e) = onClick={() => trackWhatsAppClick('footer')}> (e.currentTarget.style.color = BLUE_ELECTRIC)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
           >
             WhatsApp

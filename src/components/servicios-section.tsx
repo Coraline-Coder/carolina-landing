@@ -1,3 +1,4 @@
+import { trackWhatsAppClick } from '@/lib/gtag'
 "use client";
 
 import { useState, useEffect } from "react";

@@ -58,6 +58,25 @@ fbq('track', 'PageView');`}
           src="https://www.facebook.com/tr?id=1027187799634468&ev=PageView&noscript=1" />
         </noscript>
 
+        {/* ===== GOOGLE ANALYTICS 4 ===== */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-19E6F6BWZ4"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-19E6F6BWZ4', {
+                send_page_view: true
+              });
+            `,
+          }}
+        />
         {/* WhatsApp Lead Tracking */}
         <Script id="wa-lead-tracking" strategy="afterInteractive">
           {`document.querySelectorAll('a[href*='"wa.me"']').forEach(function(btn){btn.addEventListener('click',function(){fbq('track','Lead')})});`}
