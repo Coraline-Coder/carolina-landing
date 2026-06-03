@@ -1232,7 +1232,7 @@ function Footer() {
               transition: "color 0.25s",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = BLUE_ELECTRIC)}
-              onClick={() => trackWhatsAppClick('footer')}}
+              onClick={() => trackWhatsAppClick('footer')}
             onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
           >
             WhatsApp
