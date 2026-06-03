@@ -1,5 +1,6 @@
-import { trackWhatsAppClick } from '@/lib/gtag'
 "use client"
+
+import { trackWhatsAppClick } from '@/lib/gtag'
 
 import CasoDeExitoSection from "@/components/caso-exito";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
