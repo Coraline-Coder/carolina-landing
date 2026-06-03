@@ -1151,9 +1151,11 @@ function ContactSection() {
                 textDecoration: "none",
                 letterSpacing: "0.04em",
               }}
-              onMouseEnter={(e) = onClick={() => trackWhatsAppClick('metodo_pulso')}> {
+              onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(59,130,246,0.10)";
               }}
+              onClick={() => trackWhatsAppClick('metodo_pulso')}
+
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
               }}
