@@ -295,7 +295,7 @@ function Navbar() {
               href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() = onClick={() = onClick={() => trackCalendlyClick()}> trackCalendlyClick()}> setMobileOpen(false)}
+              onClick={() => trackCalendlyClick()}> setMobileOpen(false)}
               style={{
                 display: "inline-block",
                 fontFamily: "'DM Sans', sans-serif",
