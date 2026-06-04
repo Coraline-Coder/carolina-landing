@@ -454,7 +454,7 @@
     <div class="options" id="optionsContainer"></div>
     <div class="nav-buttons">
       <button class="btn-back" id="btnBack" onclick="prevQ()" style="display:none;">Atras</button>
-      <button class="btn-next" id="btnNext" onclick="nextQ()" disabled>Siguiente</button>
+      <button class="btn-next" id="btnNext" onclick="gtag('event', 'scorecard_inicio', {'event_category': 'lead_magnet', 'event_label': 'scorecard_madurez'}); nextQ()" disabled>Siguiente</button>
     </div>
   </div>
   <div class="card animate-in" id="resultsCard">
@@ -524,7 +524,8 @@ function nextQ(){
 function prevQ(){
   if(currentQ>0){currentQ--;renderQ();}
 }
-function mostrarResultados(){
+function mostrarResultados(){  gtag('event', 'scorecard_completado', {'event_category': 'lead_magnet', 'event_label': 'scorecard_madurez', 'value': Math.round(total)});
+
   var total=scores.reduce(function(a,b){return a+b;},0);
   var maxPosible=preguntas.length*17;
   var scoreNorm=Math.round((total/maxPosible)*100);
