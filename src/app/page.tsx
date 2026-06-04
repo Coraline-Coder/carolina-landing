@@ -1,6 +1,6 @@
 "use client"
 
-import { trackWhatsAppClick } from '@/lib/gtag'
+import { trackWhatsAppClick, trackCalendlyClick } from '@/lib/gtag'
 
 import CasoDeExitoSection from "@/components/caso-exito";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
@@ -295,7 +295,7 @@ function Navbar() {
               href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
+              onClick={() = onClick={() => trackCalendlyClick()}> setMobileOpen(false)}
               style={{
                 display: "inline-block",
                 fontFamily: "'DM Sans', sans-serif",
