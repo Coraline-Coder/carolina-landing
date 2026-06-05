@@ -228,6 +228,7 @@ function Navbar() {
           ))}
           <a
             href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
+            onClick={() => trackCalendlyClick()}
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontWeight: 500,
@@ -1117,6 +1118,7 @@ function ContactSection() {
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
+              onClick={() => trackCalendlyClick()}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1256,6 +1258,7 @@ function Footer() {
           </a>
           <a
             href="https://calendly.com/carolina-mkt" target="_blank" rel="noopener noreferrer"
+            onClick={() => trackCalendlyClick()}
             target="_blank"
             rel="noopener noreferrer"
             style={{
