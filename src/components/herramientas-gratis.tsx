@@ -1670,7 +1670,7 @@ function ToolIframe({src,onHeight}:{src:string;onHeight:(h:number)=>void}){
 const iframeRef=useRef<HTMLIFrameElement>(null);
 const handleLoad=useCallback(()=>{try{const doc=iframeRef.current?.contentDocument;if(doc?.body)onHeight(doc.body.scrollHeight)}catch{onHeight(900)}},[onHeight]);
 useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.data?.type==="resize"&&typeof e.data.height==="number")onHeight(e.data.height)};window.addEventListener("message",handler);return()=>window.removeEventListener("message",handler)},[onHeight]);
-return<iframe ref={iframeRef} src={src} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:600,borderRadius:0,background:"transparent"}} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/>;
+return<iframe ref={iframeRef} src={src} onLoad={handleLoad} style={{width:"100%",border:"none",display:"block",minHeight:600,borderRadius:0,background:"transparent"}} sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"/>;
 }
 export default function HerramientasGratisSection(){
 const[openTool,setOpenTool]=useState<string|null>(null);const panelRef=useRef<HTMLDivElement>(null);useEffect(()=>{if(openTool&&panelRef.current){setTimeout(()=>panelRef.current?.scrollIntoView({behavior:'smooth',block:'center'}),550)}},[openTool]);
