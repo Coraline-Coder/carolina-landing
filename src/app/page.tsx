@@ -1,6 +1,6 @@
 "use client"
 
-import { trackWhatsAppClick, trackCalendlyClick } from '@/lib/gtag'
+import { trackWhatsAppClick, trackCalendlyClick, trackMetaLead } from '@/lib/gtag'
 
 import CasoDeExitoSection from "@/components/caso-exito";
 import HerramientasGratisSection from "@/components/herramientas-gratis";
@@ -477,6 +477,7 @@ function HeroSection() {
         >
           <a
             href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20invierto%20en%20Meta%20Ads%20pero%20siento%20que%20algo%20no%20est%C3%A1%20funcionando%20bien.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20est%C3%A1%20frenando%20mis%20resultados."
+            onClick={() => { trackWhatsAppClick(); trackMetaLead(); }}
             style={{
               display: "inline-block",
               background: "#4A7CF7",
@@ -1140,6 +1141,7 @@ function ContactSection() {
             </a>
             <a
               href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20me%20interesa%20agendar%20una%20llamada%20estrat%C3%A9gica%20para%20hablar%20sobre%20mis%20campa%C3%B1as%20de%20Meta%20Ads."
+              onClick={() => { trackWhatsAppClick(); trackMetaLead(); }}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1223,6 +1225,7 @@ function Footer() {
         <div style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}>
           <a
             href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20c%C3%B3mo%20puedes%20ayudarme%20con%20mis%20Meta%20Ads."
+            onClick={() => { trackWhatsAppClick(); trackMetaLead(); }}
             target="_blank"
             rel="noopener noreferrer"
             style={{

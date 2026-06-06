@@ -1,6 +1,6 @@
 "use client";
 
-import { trackWhatsAppClick } from '@/lib/gtag'
+import { trackWhatsAppClick , trackMetaLead} from '@/lib/gtag'
 
 import { useState, useEffect } from "react";
 
@@ -57,6 +57,7 @@ export default function ServiciosSection() {
           ))}
         </div>
         <a href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20invierto%20en%20Meta%20Ads%20pero%20siento%20que%20algo%20no%20est%C3%A1%20funcionando%20bien.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20est%C3%A1%20frenando%20mis%20resultados." target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#FFFFFF", color: "#4A7CF7", fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase" as const, padding: "14px 28px", borderRadius: 3, textDecoration: "none", transition: "all 0.3s" }}
+        onClick={() => { trackWhatsAppClick(); trackMetaLead(); }}
           onMouseEnter={function(e){e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(0,0,0,0.15)";}}
           onMouseLeave={function(e){e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
           Quiero saber qué está fallando en mi cuenta
@@ -111,6 +112,7 @@ export default function ServiciosSection() {
         <div style={{ marginTop: 48 }}>
           <p style={{ fontFamily: "var(--font-jost)", fontWeight: 300, fontSize: 16, color: "rgba(255,255,255,0.5)", marginBottom: 20 }}>¿No sabes cuál necesitas? Hablemos.</p>
           <a href="https://wa.me/522292924043?text=Hola%20Carolina%2C%20invierto%20en%20Meta%20Ads%20pero%20siento%20que%20algo%20no%20est%C3%A1%20funcionando%20bien.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20est%C3%A1%20frenando%20mis%20resultados." target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#3B82F6", color: "#FFFFFF", fontFamily: "var(--font-jost)", fontWeight: 500, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase" as const, padding: "14px 28px", borderRadius: 3, textDecoration: "none", transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)" }}
+          onClick={() => { trackWhatsAppClick(); trackMetaLead(); }}
             onMouseEnter={function(e){e.currentTarget.style.background="#2563EB";e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(37,99,235,0.25)";}}
             onMouseLeave={function(e){e.currentTarget.style.background="#3B82F6";e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
             Agendar diagnóstico gratuito

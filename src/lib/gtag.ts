@@ -73,3 +73,16 @@ export const trackDiagnosticoClick = () =>
 
 export const trackCalendlyClick = () =>
   event({ action: 'calendly_click', category: 'conversion', label: 'agendar_sesion' })
+
+
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void;
+  }
+}
+
+export function trackMetaLead() {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", "Lead");
+  }
+}
