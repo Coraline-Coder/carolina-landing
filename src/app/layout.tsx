@@ -18,6 +18,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  verification: {
+    facebook: "gmrq5eu6p5wfk1d8t2npyoeex3cwvb",
+  },
   title: "Carolina Betancourt | Performance Marketing & Paid Media Strategy",
   description:
     "Estrategia de Performance Marketing y Meta Ads por Carolina Betancourt. ROAS real, sistema probado, resultados medibles.",
