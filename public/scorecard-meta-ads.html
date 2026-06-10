@@ -573,7 +573,7 @@ function mostrarResultados(){  gtag('event', 'scorecard_completado', {'event_cat
   else{document.getElementById('ctaDesc').textContent='Tu cuenta esta bien estructurada. El siguiente paso es escalar sin perder eficiencia — eso requiere una estrategia especifica de crecimiento.';}
   var msg=encodeURIComponent('Hola Carolina, hice el Scorecard de madurez Meta Ads y obtuve '+scoreNorm+'/100 — nivel: '+nivelText+'. Me interesa saber como mejorar mi cuenta.');
   document.getElementById('btnWA').href='https://wa.me/522292924043?text='+msg;
-      fbq('track', 'Lead');
+      fbq('track', 'Lead', { currency: 'MXN', value: 2500 });
   document.getElementById('progressFill').style.width='100%';
   document.getElementById('progressPct').textContent='100%';
   document.getElementById('progressLabel').textContent='Completado!';
