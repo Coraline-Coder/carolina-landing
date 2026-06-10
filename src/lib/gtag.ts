@@ -83,6 +83,6 @@ declare global {
 
 export function trackMetaLead() {
   if (typeof window !== "undefined" && typeof window.fbq === "function") {
-    window.fbq("track", "Lead");
+    window.fbq("track", "Lead", { currency: "MXN", value: 2500 });
   }
 }
